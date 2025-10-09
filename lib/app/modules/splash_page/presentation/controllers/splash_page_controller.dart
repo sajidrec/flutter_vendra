@@ -11,6 +11,6 @@ class SplashPageController extends GetxController {
 
   Future<void> _moveToNextScreen() async {
     await Future.delayed(Duration(seconds: 3));
-    Get.offAllNamed(AppRoutes.homeRoute);
+    Get.offAllNamed(AppRoutes.onBoardingRoute);
   }
 }

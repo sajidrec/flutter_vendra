@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
+import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
 import '../modules/home_page/presentation/bindings/home_binding.dart';
@@ -17,5 +19,11 @@ class AppPages {
       page: () => SplashPage(),
       binding: SplashPageBinding(),
     ),
+    GetPage(
+      name: AppRoutes.onBoardingRoute,
+      page: () => OnBoardingPage(),
+      binding: OnBoardingPageBinding(),
+    ),
+
   ];
 }

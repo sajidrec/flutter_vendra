@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vendra_app/app/core/constants/app_colors.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
 
         theme: ThemeData(
           textTheme: GoogleFonts.ptSerifTextTheme(Theme.of(context).textTheme),
+          scaffoldBackgroundColor: AppColors.primaryWhite,
         ),
       ),
     );
