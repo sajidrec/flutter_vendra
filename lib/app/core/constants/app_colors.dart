@@ -5,4 +5,6 @@ class AppColors {
   static const Color primaryWhite = Color(0xffffffff);
   static const Color nural6 = Color(0xff1c1c1c0f);
   static const Color nutral10 = Color(0xff1c1c1c1a);
+
+  static Color get nutral80 => primaryBlack.withValues(alpha: 0.8);
 }

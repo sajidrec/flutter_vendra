@@ -5,6 +5,9 @@ import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_p
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
 import '../modules/home_page/presentation/bindings/home_binding.dart';
 import '../modules/home_page/presentation/views/home_page.dart';
+import '../modules/on_boarding_page/views/on_boarding_page_02.dart';
+import '../modules/on_boarding_page/views/on_boarding_page_03.dart';
+import '../modules/on_boarding_page/views/on_boarding_page_04.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -24,6 +27,20 @@ class AppPages {
       page: () => OnBoardingPage(),
       binding: OnBoardingPageBinding(),
     ),
-
+    GetPage(
+      name: AppRoutes.onBoardingRoute2,
+      page: () => OnBoardingPage02(),
+      binding: OnBoardingPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.onBoardingRoute3,
+      page: () => OnBoardingPage03(),
+      binding: OnBoardingPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.onBoardingRoute4,
+      page: () => OnBoardingPage04(),
+      binding: OnBoardingPageBinding(),
+    ),
   ];
 }
