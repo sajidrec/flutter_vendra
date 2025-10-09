@@ -1,0 +1,43 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/constants/app_colors.dart';
+
+class SplashPage extends StatelessWidget {
+  const SplashPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.primaryBlack,
+        body: Stack(
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Text(
+                "Gavellia",
+                style: TextStyle(
+                  fontSize: 55.sp,
+                  color: AppColors.primaryWhite,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 76.h,
+              left: 0,
+              right: 0,
+              child: CupertinoActivityIndicator(
+                color: AppColors.primaryWhite,
+                radius: 22.r,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
