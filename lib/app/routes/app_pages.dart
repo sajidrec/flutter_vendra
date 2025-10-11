@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bottom_navbar_page.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
+import '../modules/bottom_navbar_page/presentation/binding/bottom_navbar_page_binding.dart';
 import '../modules/home_page/presentation/bindings/home_binding.dart';
 import '../modules/home_page/presentation/views/home_page.dart';
 import '../modules/on_boarding_page/views/on_boarding_page_02.dart';
@@ -13,14 +15,19 @@ import 'app_routes.dart';
 class AppPages {
   static final List<GetPage> pages = [
     GetPage(
-      name: AppRoutes.homeRoute,
-      page: () => HomePage(),
-      binding: HomeBinding(),
-    ),
-    GetPage(
       name: AppRoutes.splashRoute,
       page: () => SplashPage(),
       binding: SplashPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.bottomNavRoute,
+      page: () => BottomNavbarPage(),
+      binding: BottomNavbarPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.homeRoute,
+      page: () => HomePage(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: AppRoutes.onBoardingRoute,

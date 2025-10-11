@@ -33,7 +33,7 @@ class OnBoardingPageController extends GetxController {
         Get.offAllNamed(AppRoutes.homeRoute);
       }
     } else {
-      Get.offAllNamed(AppRoutes.homeRoute);
+      Get.offAllNamed(AppRoutes.bottomNavRoute);
     }
   }
 }
