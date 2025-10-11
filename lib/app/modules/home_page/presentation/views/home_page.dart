@@ -113,6 +113,42 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 55.h),
+                  Padding(
+                    padding: EdgeInsets.only(left: 16.w, top: 24.h),
+                    child: SizedBox(
+                      height: 170.h,
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        primary: false,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) => Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(16.r),
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                width: 133.w,
+                                height: 133.h,
+                                imageUrl:
+                                    "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?cs=srgb&dl=pexels-rostislav-5011647.jpg&fm=jpg",
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                              ),
+                            ),
+                            SizedBox(height: 14.h),
+                            Text(
+                              "ENDING SOON",
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                          ],
+                        ),
+                        separatorBuilder: (context, index) =>
+                            SizedBox(width: 12.w),
+                        itemCount: 5,
+                      ),
+                    ),
+                  ),
                 ],
               );
             },
