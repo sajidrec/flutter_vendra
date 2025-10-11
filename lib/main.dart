@@ -8,6 +8,7 @@ import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -20,12 +21,9 @@ class MyApp extends StatelessWidget {
       designSize: const Size(402, 874),
       minTextAdapt: true,
       splitScreenMode: true,
-
       child: GetMaterialApp(
         initialRoute: AppRoutes.splashRoute,
-
         getPages: AppPages.pages,
-
         theme: ThemeData(
           textTheme: GoogleFonts.ptSerifTextTheme(Theme.of(context).textTheme),
           scaffoldBackgroundColor: AppColors.primaryWhite,

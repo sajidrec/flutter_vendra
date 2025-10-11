@@ -21,7 +21,7 @@ class BottomNavbarPage extends StatelessWidget {
               selectedItemColor: AppColors.primaryBlack,
               unselectedItemColor: AppColors.primaryBlack,
               type: BottomNavigationBarType.fixed,
-              items: _buildBottomNavbarItemList(controller),
+              items: _buildBottomNavbarItems(controller),
               currentIndex: controller.index,
               onTap: (int index) {
                 controller.changePage(index);
@@ -31,16 +31,14 @@ class BottomNavbarPage extends StatelessWidget {
         ),
         body: GetBuilder<BottomNavbarPageController>(
           builder: (controller) {
-            return SingleChildScrollView(
-              child: controller.pages[controller.index],
-            );
+            return controller.pages[controller.index];
           },
         ),
       ),
     );
   }
 
-  List<BottomNavigationBarItem> _buildBottomNavbarItemList(
+  List<BottomNavigationBarItem> _buildBottomNavbarItems(
     BottomNavbarPageController controller,
   ) {
     return [

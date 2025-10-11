@@ -30,7 +30,7 @@ class OnBoardingPageController extends GetxController {
       locationStatus = await Permission.location.status;
 
       if (notificationStatus.isGranted && locationStatus.isGranted) {
-        Get.offAllNamed(AppRoutes.homeRoute);
+        Get.offAllNamed(AppRoutes.bottomNavRoute);
       }
     } else {
       Get.offAllNamed(AppRoutes.bottomNavRoute);
