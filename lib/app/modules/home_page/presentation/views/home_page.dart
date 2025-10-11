@@ -38,12 +38,31 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Your auction journey starts here",
-                      style: TextStyle(
-                        fontSize: 28.sp,
-                        color: AppColors.primaryBlack,
-                      ), // use Material text style
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            "Your auction journey starts here",
+                            style: TextStyle(
+                              fontSize: 28.sp,
+                              color: AppColors.primaryBlack,
+                            ), // use Material text style
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(
+                            Icons.close,
+
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .6).round(),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
                     SizedBox(height: 16.h),
