@@ -11,4 +11,11 @@ class AppAssets {
       "assets/icons/notification_outline_icon.svg";
   static const personOutlineIcon = "assets/icons/person_outline_icon.svg";
   static const plusCircleIcon = "assets/icons/plus_circle_outline_icon.svg";
+  static const loginOutlineButton = "assets/icons/login_outline_button.svg";
+  static const registerFilledButton = "assets/icons/register_filled_button.svg";
+
+  static const popUpMsgSegmentOne =
+      "assets/images/pop_up_get_discount_msg_img.svg";
+  static const popUpMsgSegmentTwo =
+      "assets/images/pop_up_list_first_item_msg_img.svg";
 }

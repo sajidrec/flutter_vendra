@@ -2,12 +2,92 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => Get.dialog(
+        Center(
+          child: Material(
+            color: Colors.transparent, // so corners can be rounded
+            child: Container(
+              width: MediaQuery.of(context).size.width - 20.w,
+              height: 428.h,
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(16.w),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Your auction journey starts here",
+                      style: TextStyle(
+                        fontSize: 28.sp,
+                        color: AppColors.primaryBlack,
+                      ), // use Material text style
+                    ),
+                    SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
+                    SizedBox(height: 16.h),
+                    SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
+                    SizedBox(height: 18.h),
+                    Row(
+                      children: [
+                        _buildLoginButton(),
+                        SizedBox(width: 12.w),
+                        _buildRegisterButton(),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+        barrierDismissible: true,
+      ),
+    );
+  }
+
+  InkWell _buildRegisterButton() {
+    return InkWell(
+      onTap: () {},
+      child: SvgPicture.asset(
+        AppAssets.registerFilledButton,
+        // height: 48.h,
+        // width: 168.w,
+      ),
+    );
+  }
+
+  InkWell _buildLoginButton() {
+    return InkWell(
+      onTap: () {},
+      child: SvgPicture.asset(
+        AppAssets.loginOutlineButton,
+        // height: 48.h,
+        // width: 168.w,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
