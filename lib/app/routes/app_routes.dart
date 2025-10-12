@@ -6,4 +6,5 @@ abstract class AppRoutes {
   static const String onBoardingRoute2 = '/onBoardingRoute2';
   static const String onBoardingRoute3 = '/onBoardingRoute3';
   static const String onBoardingRoute4 = '/onBoardingRoute4';
+  static const String registrationRoute = '/registrationRoute';
 }

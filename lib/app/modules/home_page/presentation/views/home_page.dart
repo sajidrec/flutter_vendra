@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -24,7 +25,7 @@ class _HomePageState extends State<HomePage> {
       (_) => Get.dialog(
         Center(
           child: Material(
-            color: Colors.transparent, // so corners can be rounded
+            color: Colors.transparent,
             child: Container(
               width: MediaQuery.of(context).size.width - 20.w,
               height: 428.h,
@@ -88,7 +89,9 @@ class _HomePageState extends State<HomePage> {
 
   InkWell _buildRegisterButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(AppRoutes.registrationRoute);
+      },
       child: SvgPicture.asset(
         AppAssets.registerFilledButton,
         // height: 48.h,

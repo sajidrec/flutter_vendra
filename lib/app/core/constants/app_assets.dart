@@ -14,8 +14,16 @@ class AppAssets {
   static const loginOutlineButton = "assets/icons/login_outline_button.svg";
   static const registerFilledButton = "assets/icons/register_filled_button.svg";
 
+  static const continueWithGoogleOutlineButton =
+      "assets/icons/continue_with_google_outline_button.svg";
+
   static const popUpMsgSegmentOne =
       "assets/images/pop_up_get_discount_msg_img.svg";
   static const popUpMsgSegmentTwo =
       "assets/images/pop_up_list_first_item_msg_img.svg";
+  static const backArrowIcon2 = "assets/icons/back_arrow_02.svg";
+  static const circularGrayTickIcon =
+      "assets/icons/circular_gray_tick_icon.svg";
+  static const circularGreenTickIcon =
+      "assets/icons/circular_green_tick_icon.svg";
 }
