@@ -14,6 +14,10 @@ class AppAssets {
   static const loginOutlineButton = "assets/icons/login_outline_button.svg";
   static const registerFilledButton = "assets/icons/register_filled_button.svg";
 
+  static const heartOutlineIcon = "assets/icons/heart_outlined.svg";
+  static const heartFilledIcon = "assets/icons/heart_filled.svg";
+  static const timerIcon = "assets/icons/timer_icon.svg";
+
   static const continueWithGoogleOutlineButton =
       "assets/icons/continue_with_google_outline_button.svg";
 

@@ -121,137 +121,110 @@ class _HomePageState extends State<HomePage> {
           child: GetBuilder<HomePageController>(
             builder: (controller) {
               return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildSearchInput(controller),
-                  Stack(
-                    clipBehavior: Clip.none,
-                    children: [
-                      CarouselSlider(
-                        items: [
-                          SizedBox(
-                            height: 424.h,
-                            width: double.infinity,
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  "https://img.freepik.com/premium-photo/online-fashion-shopping-with-computer_23-2150400628.jpg",
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                          SizedBox(
-                            height: 424.h,
-                            width: double.infinity,
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) =>
-                                  Icon(Icons.error),
-                            ),
-                          ),
-                        ],
-                        options: CarouselOptions(
-                          viewportFraction: 1,
-                          height: 424.h,
-                          onPageChanged: (index, reason) {
-                            controller.changeSliderIndex(activeIndex: index);
-                          },
-                          autoPlay: true,
-                        ),
+                  _buildCarouselSection(controller),
+                  SizedBox(height: 55.h),
+                  _buildCategorySection(),
+                  SizedBox(height: 35.h),
+                  _buildWeeklyTopPicks(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 16.w),
+                    child: Text(
+                      "Featured Auction",
+                      style: TextStyle(
+                        fontSize: 28.sp,
+                        color: AppColors.primaryBlack,
                       ),
-
-                      Positioned(
-                        left: 0,
-                        right: 0,
-                        bottom: -55.h,
+                    ),
+                  ),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    primary: false,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, // number of columns
+                      crossAxisSpacing: 0,
+                      mainAxisSpacing: 0,
+                      childAspectRatio: 0.70, // width/height ratio of each item
+                    ),
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.primaryBorderColor,
+                            width: 1,
+                          ),
+                        ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: Container(
-                            width: double.infinity,
-                            height: 132.h,
-                            decoration: BoxDecoration(
-                              color: AppColors.primaryWhite,
-                              borderRadius: BorderRadius.circular(5.r),
-                              border: Border.all(
-                                color: AppColors.primaryBlack.withAlpha(
-                                  (255 * .1).round(),
-                                ),
-                              ),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: AppColors.primaryBlack.withAlpha(
-                                    (255 * .1).round(),
-                                  ),
-                                  blurRadius: 8.r,
-                                  offset: Offset(0, 1),
-                                ),
-                              ],
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 20.w,
-                                vertical: 20.h,
-                              ),
-                              child: Column(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 8.w,
+                            vertical: 12.h,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Stack(
                                 children: [
-                                  Text(
-                                    "Women classic festival",
-                                    style: TextStyle(fontSize: 22.sp),
+                                  Positioned(
+                                    right: 0,
+                                    top: 0,
+                                    child: SvgPicture.asset(
+                                      AppAssets.heartOutlineIcon,
+                                      width: 20.w,
+                                      height: 20.h,
+                                    ),
                                   ),
-                                  SizedBox(height: 16.h),
-                                  Text(
-                                    "EXPLORE THE LOTS",
-                                    style: TextStyle(fontSize: 13.sp),
-                                  ),
-                                  SizedBox(height: 16.h),
-                                  _buildDotSlider(
-                                    activeDot: controller.sliderIndex,
-                                    dotLength: 2,
+                                  CachedNetworkImage(
+                                    width: double.infinity,
+                                    height: 142.h,
+                                    fit: BoxFit.contain,
+                                    imageUrl:
+                                        "https://static.vecteezy.com/system/resources/thumbnails/012/981/082/small_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
                                   ),
                                 ],
                               ),
-                            ),
+                              SizedBox(height: 10.h),
+                              Text(
+                                "Apple",
+                                style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              Text(
+                                "Noise-Canceling Wireless Headphone",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w400,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              Text(
+                                "Starting at £130",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  fontWeight: FontWeight.w500,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                              SizedBox(height: 5.h),
+                              Row(
+                                children: [
+                                  SvgPicture.asset(AppAssets.timerIcon),
+                                  Text(
+                                    "00d:05h:22 sec left",
+                                    style: TextStyle(fontSize: 13.sp),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 55.h),
-                  Padding(
-                    padding: EdgeInsets.only(left: 16.w, top: 24.h),
-                    child: SizedBox(
-                      height: 170.h,
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        primary: false,
-                        scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => Column(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(16.r),
-                              child: CachedNetworkImage(
-                                fit: BoxFit.cover,
-                                width: 133.w,
-                                height: 133.h,
-                                imageUrl:
-                                    "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?cs=srgb&dl=pexels-rostislav-5011647.jpg&fm=jpg",
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                            ),
-                            SizedBox(height: 14.h),
-                            Text(
-                              "ENDING SOON",
-                              style: TextStyle(fontSize: 13.sp),
-                            ),
-                          ],
-                        ),
-                        separatorBuilder: (context, index) =>
-                            SizedBox(width: 12.w),
-                        itemCount: 5,
-                      ),
-                    ),
+                      );
+                    },
                   ),
                 ],
               );
@@ -259,6 +232,169 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
+    );
+  }
+
+  Padding _buildWeeklyTopPicks() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(bottom: 14.h),
+            child: Text("Weekly Top Picks", style: TextStyle(fontSize: 28.sp)),
+          ),
+          SizedBox(
+            height: 168.h,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context, index) => Column(
+                children: [
+                  Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(6.r),
+                        child: CachedNetworkImage(
+                          width: 133.w,
+                          height: 133.h,
+                          imageUrl:
+                              "https://t4.ftcdn.net/jpg/15/05/51/47/360_F_1505514711_kJFZM5lwKSPszilnm7ooNMfe0tYqyfXB.jpg",
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                        ),
+                      ),
+                      Text("BAGS", style: TextStyle(fontSize: 13.sp)),
+                    ],
+                  ),
+                ],
+              ),
+              separatorBuilder: (context, index) => SizedBox(width: 8.w),
+              itemCount: 12,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding _buildCategorySection() {
+    return Padding(
+      padding: EdgeInsets.only(left: 16.w, top: 24.h),
+      child: SizedBox(
+        height: 170.h,
+        child: ListView.separated(
+          shrinkWrap: true,
+          primary: false,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) => Column(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16.r),
+                child: CachedNetworkImage(
+                  fit: BoxFit.cover,
+                  width: 133.w,
+                  height: 133.h,
+                  imageUrl:
+                      "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?cs=srgb&dl=pexels-rostislav-5011647.jpg&fm=jpg",
+                  errorWidget: (context, url, error) => Icon(Icons.error),
+                ),
+              ),
+              SizedBox(height: 14.h),
+              Text("ENDING SOON", style: TextStyle(fontSize: 13.sp)),
+            ],
+          ),
+          separatorBuilder: (context, index) => SizedBox(width: 12.w),
+          itemCount: 5,
+        ),
+      ),
+    );
+  }
+
+  Stack _buildCarouselSection(HomePageController controller) {
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        CarouselSlider(
+          items: [
+            SizedBox(
+              height: 424.h,
+              width: double.infinity,
+              child: CachedNetworkImage(
+                imageUrl:
+                    "https://img.freepik.com/premium-photo/online-fashion-shopping-with-computer_23-2150400628.jpg",
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+            SizedBox(
+              height: 424.h,
+              width: double.infinity,
+              child: CachedNetworkImage(
+                imageUrl:
+                    "https://gratisography.com/wp-content/uploads/2024/11/gratisography-augmented-reality-800x525.jpg",
+                fit: BoxFit.cover,
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+          ],
+          options: CarouselOptions(
+            viewportFraction: 1,
+            height: 424.h,
+            onPageChanged: (index, reason) {
+              controller.changeSliderIndex(activeIndex: index);
+            },
+            autoPlay: true,
+          ),
+        ),
+
+        Positioned(
+          left: 0,
+          right: 0,
+          bottom: -55.h,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: Container(
+              width: double.infinity,
+              height: 132.h,
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.circular(5.r),
+                border: Border.all(
+                  color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                    blurRadius: 8.r,
+                    offset: Offset(0, 1),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
+                child: Column(
+                  children: [
+                    Text(
+                      "Women classic festival",
+                      style: TextStyle(fontSize: 22.sp),
+                    ),
+                    SizedBox(height: 16.h),
+                    Text("EXPLORE THE LOTS", style: TextStyle(fontSize: 13.sp)),
+                    SizedBox(height: 16.h),
+                    _buildDotSlider(
+                      activeDot: controller.sliderIndex,
+                      dotLength: 2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 
