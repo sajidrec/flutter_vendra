@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/auth/login_page/presentation/binding/login_page_binding.dart';
+import 'package:vendra_app/app/modules/auth/login_page/presentation/views/login_page.dart';
 import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bottom_navbar_page.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
@@ -55,6 +57,11 @@ class AppPages {
       name: AppRoutes.registrationRoute,
       page: () => RegistrationPage(),
       binding: RegistrationPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.loginRoute,
+      page: () => LoginPage(),
+      binding: LoginPageBinding(),
     ),
   ];
 }

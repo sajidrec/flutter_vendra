@@ -102,7 +102,9 @@ class _HomePageState extends State<HomePage> {
 
   InkWell _buildLoginButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(AppRoutes.loginRoute);
+      },
       child: SvgPicture.asset(
         AppAssets.loginOutlineButton,
         // height: 48.h,

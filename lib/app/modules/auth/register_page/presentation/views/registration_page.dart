@@ -5,8 +5,9 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/auth/register_page/presentation/controllers/registration_page_controller.dart';
-import 'package:vendra_app/app/modules/auth/register_page/presentation/utils/helper/email_helper.dart';
-import 'package:vendra_app/app/modules/auth/register_page/presentation/utils/helper/password_helper.dart';
+
+import '../utils/helper/email_helper.dart';
+import '../utils/helper/password_helper.dart';
 
 class RegistrationPage extends StatelessWidget {
   const RegistrationPage({super.key});
@@ -377,7 +378,7 @@ class RegistrationPage extends StatelessWidget {
           Align(alignment: Alignment.centerLeft, child: _buildBackButton()),
           Center(
             child: Text(
-              "Register to Gavellia",
+              "Register To Gavellia",
               style: TextStyle(
                 fontSize: 17.sp,
                 fontWeight: FontWeight.w600,
