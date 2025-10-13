@@ -128,34 +128,33 @@ class BecomeSellerPage extends StatelessWidget {
                             width: double.infinity,
                             child: ListView.separated(
                               shrinkWrap: true,
-                              itemBuilder: (context, index) => GestureDetector(
-                                onTap: () {
-                                  if (controller.selectedIndex == index) {
-                                    controller.selectIndex(-1);
-                                  } else {
-                                    controller.selectIndex(index);
-                                  }
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.all(14.sp),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        controller.filteredStateList[index],
-                                        style: TextStyle(fontSize: 17.sp),
-                                      ),
-                                      Spacer(),
-                                      controller.selectedIndex == index
-                                          ? Icon(Icons.check)
-                                          : SizedBox.shrink(),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              separatorBuilder: (context, index) =>
-                                  SizedBox(height: 5.h),
                               itemCount: controller.filteredStateList.length,
+                              itemBuilder: (context, index) {
+                                final state = controller.filteredStateList[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    controller.selectState(state);
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.sp),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          state,
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
+                                        Spacer(),
+                                        controller.isSelected(state)
+                                            ? Icon(Icons.check)
+                                            : SizedBox.shrink(),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (context, index) => SizedBox(height: 5.h),
                             ),
+
                           ),
 
                           SizedBox(height: 8.h),

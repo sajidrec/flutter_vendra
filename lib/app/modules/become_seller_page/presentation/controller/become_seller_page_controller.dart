@@ -3,14 +3,18 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:fuzzy/fuzzy.dart';
-
 class BecomeSellerPageController extends GetxController {
   late final List<String> stateList;
-
-  // late Fuzzy fuse;
   Fuzzy? fuse;
+
   List<String> filteredStateList = [];
-  int selectedIndex = -1;
+  String? selectedState; // store selected state value
+
+  @override
+  void onInit() {
+    super.onInit();
+    loadStates();
+  }
 
   Future<void> loadStates() async {
     final String response = await rootBundle.loadString(
@@ -45,14 +49,17 @@ class BecomeSellerPageController extends GetxController {
     update();
   }
 
-  void selectIndex(int index) {
-    selectedIndex = index;
+  void selectState(String state) {
+    if (selectedState == state) {
+      selectedState = null;
+    } else {
+      selectedState = state;
+    }
     update();
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadStates();
+  bool isSelected(String state) {
+    return selectedState == state;
   }
 }
+
