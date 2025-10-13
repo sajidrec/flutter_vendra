@@ -1,6 +1,3 @@
-
 import 'package:get/get.dart';
 
-class BecomeSellerPageController extends GetxController {
-
-}
+class BecomeSellerPageController extends GetxController {}

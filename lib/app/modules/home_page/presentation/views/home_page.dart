@@ -26,57 +26,59 @@ class _HomePageState extends State<HomePage> {
         Center(
           child: Material(
             color: Colors.transparent,
-            child: Container(
-              width: MediaQuery.of(context).size.width - 20.w,
-              height: 428.h,
-              decoration: BoxDecoration(
-                color: AppColors.primaryWhite,
-                borderRadius: BorderRadius.circular(10.r),
-              ),
-              child: Padding(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            "Your auction journey starts here",
-                            style: TextStyle(
-                              fontSize: 28.sp,
-                              color: AppColors.primaryBlack,
-                            ), // use Material text style
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(
-                            Icons.close,
-
-                            color: AppColors.primaryBlack.withAlpha(
-                              (255 * .6).round(),
+            child: SingleChildScrollView(
+              child: Container(
+                // width: MediaQuery.of(context).size.width - 20.w,
+                // height: 428.h,
+                decoration: BoxDecoration(
+                  color: AppColors.primaryWhite,
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(16.w),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              "Your auction journey starts here",
+                              style: TextStyle(
+                                fontSize: 28.sp,
+                                color: AppColors.primaryBlack,
+                              ), // use Material text style
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
-                    SizedBox(height: 16.h),
-                    SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
-                    SizedBox(height: 18.h),
-                    Row(
-                      children: [
-                        _buildLoginButton(),
-                        SizedBox(width: 12.w),
-                        _buildRegisterButton(),
-                      ],
-                    ),
-                  ],
+                          IconButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            icon: Icon(
+                              Icons.close,
+              
+                              color: AppColors.primaryBlack.withAlpha(
+                                (255 * .6).round(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
+                      SizedBox(height: 16.h),
+                      SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
+                      SizedBox(height: 18.h),
+                      Row(
+                        children: [
+                          Expanded(child: _buildLoginButton()),
+                          SizedBox(width: 12.w),
+                          Expanded(child: _buildRegisterButton()),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -332,7 +332,7 @@ class BecomeSellerStepPage extends StatelessWidget {
 
               _buildSelectState(controller),
 
-              SizedBox(height: 36.h,),
+              SizedBox(height: 36.h),
 
               RichText(
                 text: TextSpan(
@@ -498,10 +498,10 @@ class BecomeSellerStepPage extends StatelessWidget {
                           ),
                         ),
 
-                        SizedBox(
-                          height: 250.h,
-                          width: double.infinity,
-                          child: ListView.separated(
+                        Flexible(
+                          // height: 250.h,
+                          // width: double.infinity,
+                          child: ListView.builder(
                             shrinkWrap: true,
                             itemCount: controller.filteredStateList.length,
                             itemBuilder: (context, index) {
@@ -527,18 +527,16 @@ class BecomeSellerStepPage extends StatelessWidget {
                                 ),
                               );
                             },
-                            separatorBuilder: (context, index) =>
-                                SizedBox(height: 5.h),
                           ),
                         ),
 
-                        SizedBox(height: 8.h),
+                        // SizedBox(height: 8.h),
                         Divider(
                           color: AppColors.primaryBlack.withAlpha(
                             (255 * .1).round(),
                           ),
                         ),
-                        SizedBox(height: 8.h),
+                        // SizedBox(height: 8.h),
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
@@ -552,12 +550,15 @@ class BecomeSellerStepPage extends StatelessWidget {
                             onPressed: () {
                               Get.back();
                             },
-                            child: Text(
-                              "Done",
-                              style: TextStyle(fontSize: 17.sp),
+                            child: Expanded(
+                              child: Text(
+                                "Done",
+                                style: TextStyle(fontSize: 17.sp),
+                              ),
                             ),
                           ),
                         ),
+                        SizedBox(height: 20.h),
                       ],
                     ),
                   ),

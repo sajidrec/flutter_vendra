@@ -83,7 +83,7 @@ class OnBoardingPage03 extends StatelessWidget {
                       "Join live auctions from anywhere, set automatic bids, and celebrate your wins. The thrill of the win, delivered to your door.",
                       style: TextStyle(fontSize: 17, color: AppColors.nutral80),
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 22.h),
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(

@@ -82,7 +82,7 @@ class OnBoardingPage02 extends StatelessWidget {
                       "Our experts verify every item. Bid and buy with confidence, backed by our escrow protection and secure payments.",
                       style: TextStyle(fontSize: 17, color: AppColors.nutral80),
                     ),
-                    SizedBox(height: 24.h),
+                    SizedBox(height: 22.h),
                     SizedBox(
                       width: double.infinity,
                       child: OutlinedButton(
