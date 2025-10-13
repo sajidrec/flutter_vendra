@@ -30,4 +30,7 @@ class AppAssets {
       "assets/icons/circular_gray_tick_icon.svg";
   static const circularGreenTickIcon =
       "assets/icons/circular_green_tick_icon.svg";
+
+  static const becomeSellerMessage = "assets/images/become_seller_msg_img.svg";
+  static const forwardArrowIcon = "assets/icons/forward_arrow_icon.svg";
 }

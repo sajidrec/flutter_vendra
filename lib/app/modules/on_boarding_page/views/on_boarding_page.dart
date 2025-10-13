@@ -19,10 +19,7 @@ class OnBoardingPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 73.w,
-                  vertical: 20.h,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 73.w, vertical: 20.h),
                 child: LinearProgressIndicator(
                   value: 0.25,
                   color: AppColors.primaryBlack,

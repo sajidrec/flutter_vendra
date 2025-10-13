@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: GetMaterialApp(
-        initialRoute: AppRoutes.bottomNavRoute,
+        initialRoute: AppRoutes.splashRoute,
         getPages: AppPages.pages,
         theme: ThemeData(
           textTheme: GoogleFonts.ptSerifTextTheme(Theme.of(context).textTheme),
