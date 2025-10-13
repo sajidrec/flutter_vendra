@@ -330,7 +330,9 @@ class BecomeSellerStepPage extends StatelessWidget {
                 ),
               ),
 
-              _buildSelectState(),
+              _buildSelectState(controller),
+
+              SizedBox(height: 36.h,),
 
               RichText(
                 text: TextSpan(
@@ -431,7 +433,7 @@ class BecomeSellerStepPage extends StatelessWidget {
     );
   }
 
-  GestureDetector _buildSelectState() {
+  GestureDetector _buildSelectState(BecomeSellerStepPageController controller) {
     return GestureDetector(
       onTap: () {
         Get.bottomSheet(
@@ -579,10 +581,14 @@ class BecomeSellerStepPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 17.h),
               child: Text(
-                "Select",
+                controller.selectedState == null
+                    ? "Select"
+                    : controller.selectedState ?? "",
                 style: TextStyle(
                   fontSize: 17.sp,
-                  color: AppColors.primaryBlack.withAlpha((255 * .35).round()),
+                  color: controller.selectedState == null
+                      ? AppColors.primaryBlack.withAlpha((255 * .35).round())
+                      : AppColors.primaryBlack,
                 ),
               ),
             ),
