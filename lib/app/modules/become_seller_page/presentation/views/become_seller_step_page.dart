@@ -491,7 +491,7 @@ class BecomeSellerStepPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: controller.pickedFileList.isEmpty ? null : () {},
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlack,
                     foregroundColor: AppColors.primaryWhite,
