@@ -67,127 +67,142 @@ class BecomeSellerStepPage extends StatelessWidget {
                 ),
                 SizedBox(height: 16.h),
 
-                GestureDetector(
-                  onTap: () {
-                    Get.bottomSheet(
-                      Container(
-                        decoration: BoxDecoration(
-                          color: AppColors.primaryWhite,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10.r),
-                            topRight: Radius.circular(10.r),
-                          ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 16.w,
-                            vertical: 24.h,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  IconButton(
-                                    onPressed: () {
-                                      Get.back();
-                                    },
-                                    icon: Icon(Icons.close),
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    "EIN",
-                                    style: TextStyle(
-                                      fontSize: 17.sp,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Spacer(),
-                                ],
-                              ),
-                              SizedBox(height: 16.h),
-                              Text("ID Number"),
-                              TextFormField(
-                                decoration: InputDecoration(
-                                  hintText: "GB123456789",
-                                  hintStyle: TextStyle(
-                                    color: AppColors.primaryBlack.withAlpha(
-                                      (255 * .35).round(),
-                                    ),
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                    horizontal: 14.w,
-                                    vertical: 17.h,
-                                  ),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(6.r),
-                                    borderSide: BorderSide(
-                                      color: AppColors.primaryBlack.withAlpha(
-                                        (255 * .01).round(),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 16.h),
-                              Text("Country of Registration"),
-                              _buildSelectCountryForDocumentVerification(
-                                controller,
-                              ),
-                              Spacer(),
-                              SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    foregroundColor: AppColors.primaryWhite,
-                                    backgroundColor: AppColors.primaryBlack,
-                                  ),
-                                  onPressed: () {},
-                                  child: Text("Done"),
-                                ),
-                              ),
-                              SizedBox(height: 20.h),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: AppColors.primaryBlack.withAlpha(
-                          (255 * .10).round(),
-                        ),
-                      ),
-                      borderRadius: BorderRadius.circular(4.r),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
-                        vertical: 26.h,
-                      ),
-                      child: Row(
-                        children: [
-                          Text("EIN"),
-                          Spacer(),
-                          SvgPicture.asset(
-                            AppAssets.forwardArrowIcon,
-                            width: 20.w,
-                            height: 20.h,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                _buildVerificationDocumentTypeButton(
+                  controller,
+                  documentTypeName: 'EIN',
+                ),
+                SizedBox(height: 8.h),
+                _buildVerificationDocumentTypeButton(
+                  controller,
+                  documentTypeName: 'SSN',
+                ),
+                SizedBox(height: 8.h),
+                _buildVerificationDocumentTypeButton(
+                  controller,
+                  documentTypeName: 'VAT',
+                ),
+                SizedBox(height: 8.h),
+                _buildVerificationDocumentTypeButton(
+                  controller,
+                  documentTypeName: 'Other',
                 ),
               ],
             ),
           );
         },
+      ),
+    );
+  }
+
+  GestureDetector _buildVerificationDocumentTypeButton(
+    BecomeSellerStepPageController controller, {
+    required String documentTypeName,
+  }) {
+    return GestureDetector(
+      onTap: () {
+        Get.bottomSheet(
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.primaryWhite,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.r),
+                topRight: Radius.circular(10.r),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(Icons.close),
+                      ),
+                      Spacer(),
+                      Text(
+                        documentTypeName,
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Spacer(),
+                    ],
+                  ),
+                  SizedBox(height: 16.h),
+                  Text("ID Number"),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      hintText: "GB123456789",
+                      hintStyle: TextStyle(
+                        color: AppColors.primaryBlack.withAlpha(
+                          (255 * .35).round(),
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal: 14.w,
+                        vertical: 17.h,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6.r),
+                        borderSide: BorderSide(
+                          color: AppColors.primaryBlack.withAlpha(
+                            (255 * .01).round(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16.h),
+                  Text("Country of Registration"),
+                  _buildSelectCountryForDocumentVerification(controller),
+                  Spacer(),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: AppColors.primaryWhite,
+                        backgroundColor: AppColors.primaryBlack,
+                      ),
+                      onPressed: () {},
+                      child: Text("Done"),
+                    ),
+                  ),
+                  SizedBox(height: 20.h),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.primaryBlack.withAlpha((255 * .10).round()),
+          ),
+          borderRadius: BorderRadius.circular(4.r),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 26.h),
+          child: Row(
+            children: [
+              Text(documentTypeName),
+              Spacer(),
+              SvgPicture.asset(
+                AppAssets.forwardArrowIcon,
+                width: 20.w,
+                height: 20.h,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -1062,9 +1077,10 @@ class BecomeSellerStepPage extends StatelessWidget {
                             // Search
                             TextField(
                               onChanged: (query) {
-                                controller.searchCountriesForDocumentVerification(
-                                  query,
-                                );
+                                controller
+                                    .searchCountriesForDocumentVerification(
+                                      query,
+                                    );
                               },
                               controller: controller
                                   .searchCountryForDocumentVerificationTec,
@@ -1112,9 +1128,10 @@ class BecomeSellerStepPage extends StatelessWidget {
                                             child: SizedBox(
                                               height: 24.h,
                                               width: 24.h,
-                                              child: CountryFlag.fromCountryCode(
-                                                country['code'],
-                                              ),
+                                              child:
+                                                  CountryFlag.fromCountryCode(
+                                                    country['code'],
+                                                  ),
                                             ),
                                           ),
                                           SizedBox(width: 12.w),
@@ -1184,10 +1201,14 @@ class BecomeSellerStepPage extends StatelessWidget {
             child: Row(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 17.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                    vertical: 17.h,
+                  ),
                   child: Row(
                     children: [
-                      if (controller.selectedCountryForDocumentVerification != null)
+                      if (controller.selectedCountryForDocumentVerification !=
+                          null)
                         ClipRRect(
                           borderRadius: BorderRadius.circular(50.r),
                           child: SizedBox(
@@ -1199,17 +1220,20 @@ class BecomeSellerStepPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                      if (controller.selectedCountryForDocumentVerification != null)
+                      if (controller.selectedCountryForDocumentVerification !=
+                          null)
                         SizedBox(width: 8.w),
                       Text(
-                        controller.selectedCountryForDocumentVerification == null
+                        controller.selectedCountryForDocumentVerification ==
+                                null
                             ? "Select"
                             : controller
                                   .selectedCountryForDocumentVerification!['name'],
                         style: TextStyle(
                           fontSize: 17.sp,
                           color:
-                              controller.selectedCountryForDocumentVerification ==
+                              controller
+                                      .selectedCountryForDocumentVerification ==
                                   null
                               ? AppColors.primaryBlack.withAlpha(
                                   (255 * .35).round(),
@@ -1237,7 +1261,7 @@ class BecomeSellerStepPage extends StatelessWidget {
             ),
           ),
         );
-      }
+      },
     );
   }
 }
