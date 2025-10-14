@@ -42,6 +42,7 @@ dependencies:
   permission_handler: ^12.0.1
   cached_network_image: ^3.4.1
   fuzzy: ^0.5.1
+  country_flags: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - lib/app/core/data/datasources/states_info.json
+    - lib/app/core/data/datasources/country_info.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
