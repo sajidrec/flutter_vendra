@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:open_file/open_file.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -424,7 +425,11 @@ class BecomeSellerStepPage extends StatelessWidget {
                                 style: TextStyle(fontSize: 12.sp),
                               ),
                               InkWell(
-                                onTap: () {},
+                                onTap: () {
+                                  OpenFile.open(
+                                    controller.pickedFileList[index]!.path,
+                                  );
+                                },
                                 child: Text(
                                   "Click to view".toUpperCase(),
                                   style: TextStyle(
