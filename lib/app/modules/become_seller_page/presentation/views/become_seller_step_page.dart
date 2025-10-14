@@ -14,6 +14,8 @@ class BecomeSellerStepPage extends StatelessWidget {
   late final List _pages = [
     _buildPersonalInformationPage(),
     _buildBusinessInformationPage(),
+
+    _buildPersonalInformationPage(),
   ];
 
   @override
@@ -202,6 +204,13 @@ class BecomeSellerStepPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: controller.businessNameTec,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    controller.setBusinessNameFilled(false);
+                  } else {
+                    controller.setBusinessNameFilled(true);
+                  }
+                },
                 decoration: InputDecoration(
                   hintText: "Enter your business name",
                   hintStyle: TextStyle(
@@ -233,6 +242,13 @@ class BecomeSellerStepPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: controller.businessTypeTec,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    controller.setBusinessTypeFilled(false);
+                  } else {
+                    controller.setBusinessTypeFilled(true);
+                  }
+                },
                 decoration: InputDecoration(
                   hintText: "e.g. LLC, Inc",
                   hintStyle: TextStyle(
@@ -267,6 +283,13 @@ class BecomeSellerStepPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: controller.streetTec,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    controller.setStreetFilled(false);
+                  } else {
+                    controller.setStreetFilled(true);
+                  }
+                },
                 decoration: InputDecoration(
                   hintText: "e.g. 123 Main Street, Suite 400",
                   hintStyle: TextStyle(
@@ -299,6 +322,13 @@ class BecomeSellerStepPage extends StatelessWidget {
               ),
               TextFormField(
                 controller: controller.cityTec,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    controller.setCityFilled(false);
+                  } else {
+                    controller.setCityFilled(true);
+                  }
+                },
                 decoration: InputDecoration(
                   hintText: "e.g. New York",
                   hintStyle: TextStyle(
@@ -377,7 +407,11 @@ class BecomeSellerStepPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed:
-                      (controller.firstNameFilled && controller.lastNameFilled)
+                      (controller.businessNameFilled &&
+                          controller.businessTypeFilled &&
+                          controller.streetFilled &&
+                          controller.cityFilled &&
+                          controller.selectedCountry != null)
                       ? () {
                           controller.increaseProgressIndex();
                         }

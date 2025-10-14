@@ -31,6 +31,11 @@ class BecomeSellerStepPageController extends GetxController {
   bool firstNameFilled = false;
   bool lastNameFilled = false;
 
+  bool businessNameFilled = false;
+  bool businessTypeFilled = false;
+  bool streetFilled = false;
+  bool cityFilled = false;
+
   int progressedIndex = 1;
 
   @override
@@ -57,6 +62,26 @@ class BecomeSellerStepPageController extends GetxController {
 
   void setLastNameFilled(bool value) {
     lastNameFilled = value;
+    update();
+  }
+
+  void setBusinessNameFilled(bool value) {
+    businessNameFilled = value;
+    update();
+  }
+
+  void setBusinessTypeFilled(bool value) {
+    businessTypeFilled = value;
+    update();
+  }
+
+  void setStreetFilled(bool value) {
+    streetFilled = value;
+    update();
+  }
+
+  void setCityFilled(bool value) {
+    cityFilled = value;
     update();
   }
 
@@ -105,7 +130,6 @@ class BecomeSellerStepPageController extends GetxController {
   bool isSelected(String state) {
     return selectedState == state;
   }
-
 
   Future<void> loadCountries() async {
     final String response = await rootBundle.loadString(
