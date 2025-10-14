@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'dart:io';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:fuzzy/fuzzy.dart';
@@ -24,11 +26,15 @@ class BecomeSellerStepPageController extends GetxController {
   late final List<String> stateList;
   Fuzzy? fuse;
 
+  FilePickerResult? pickedFiles;
+
   late final List<Map<String, dynamic>> countryList;
   late final List<Map<String, dynamic>> countryListForDocumentVerification;
 
   List<Map<String, dynamic>> filteredCountryList = [];
   List<Map<String, dynamic>> filteredCountryListForDocumentVerification = [];
+
+  List<File?> pickedFileList = [];
 
   Fuzzy? countryFuse;
   Fuzzy? countryFuseForDocumentVerification;
@@ -55,6 +61,17 @@ class BecomeSellerStepPageController extends GetxController {
     loadStates();
     loadCountries();
     loadCountriesForDocumentVerification();
+  }
+
+  Future<void> pickFiles() async {
+    pickedFiles = await FilePicker.platform.pickFiles(allowMultiple: true);
+
+    if (pickedFiles != null) {
+      pickedFileList =
+          pickedFiles?.paths.map((path) => File(path!)).toList() ?? [];
+    } else {}
+
+    update();
   }
 
   void increaseProgressIndex() {

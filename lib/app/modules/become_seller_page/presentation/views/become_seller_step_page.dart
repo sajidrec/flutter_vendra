@@ -8,6 +8,8 @@ import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../controller/become_seller_step_page_controller.dart';
 
+import 'package:path/path.dart' as path;
+
 class BecomeSellerStepPage extends StatelessWidget {
   BecomeSellerStepPage({super.key});
 
@@ -366,24 +368,87 @@ class BecomeSellerStepPage extends StatelessWidget {
         builder: (controller) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 "We need to Verify your Business Documents that it’s you",
                 style: TextStyle(fontSize: 28.sp),
               ),
-
               SizedBox(height: 20.h),
-
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await controller.pickFiles();
+                },
                 child: SvgPicture.asset(
                   AppAssets.uploadMsgBoxImg,
                   width: double.infinity,
                   height: 128.h,
                 ),
               ),
-
-              SizedBox(height: 286.h),
+              SizedBox(height: 16.h),
+              SizedBox(
+                height: 286.h,
+                width: double.infinity,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) => Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: AppColors.primaryBlack.withAlpha(
+                          (255 * .1).round(),
+                        ),
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.insert_drive_file),
+                        ),
+                        Spacer(),
+                        Padding(
+                          padding: EdgeInsets.all(16.sp),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text("Tax ID", style: TextStyle(fontSize: 15.sp)),
+                              Text(
+                                controller.pickedFileList.isNotEmpty
+                                    ? path.basename(
+                                        controller.pickedFileList[index]!.path,
+                                      )
+                                    : "No file",
+                                style: TextStyle(fontSize: 12.sp),
+                              ),
+                              InkWell(
+                                onTap: () {},
+                                child: Text(
+                                  "Click to view".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 17.sp,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.primaryBlack,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Spacer(),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                      ],
+                      // leading: ,
+                      // title:
+                      // trailing:
+                    ),
+                  ),
+                  separatorBuilder: (context, index) => SizedBox(height: 16.h),
+                  itemCount: controller.pickedFileList.length,
+                ),
+              ),
 
               RichText(
                 text: TextSpan(
