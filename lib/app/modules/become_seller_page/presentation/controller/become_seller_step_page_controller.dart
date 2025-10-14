@@ -16,14 +16,22 @@ class BecomeSellerStepPageController extends GetxController {
 
   final TextEditingController searchStateTec = TextEditingController();
   final TextEditingController searchCountryTec = TextEditingController();
+  final TextEditingController searchCountryForDocumentVerificationTec = TextEditingController();
 
   late final List<String> stateList;
   Fuzzy? fuse;
 
   late final List<Map<String, dynamic>> countryList;
+  late final List<Map<String, dynamic>> countryListForDocumentVerification;
+
   List<Map<String, dynamic>> filteredCountryList = [];
+  List<Map<String, dynamic>> filteredCountryListForDocumentVerification = [];
+
   Fuzzy? countryFuse;
+  Fuzzy? countryFuseForDocumentVerification;
+
   Map<String, dynamic>? selectedCountry;
+  Map<String, dynamic>? selectedCountryForDocumentVerification;
 
   List<String> filteredStateList = [];
   String? selectedState;
@@ -43,6 +51,7 @@ class BecomeSellerStepPageController extends GetxController {
     super.onInit();
     loadStates();
     loadCountries();
+    loadCountriesForDocumentVerification();
   }
 
   void increaseProgressIndex() {
@@ -146,6 +155,25 @@ class BecomeSellerStepPageController extends GetxController {
     update();
   }
 
+  Future<void> loadCountriesForDocumentVerification() async {
+    final String response = await rootBundle.loadString(
+      'lib/app/core/data/datasources/country_info.json',
+    );
+    final List<dynamic> data = json.decode(response);
+    countryListForDocumentVerification = data
+        .map((e) => Map<String, dynamic>.from(e))
+        .toList();
+    filteredCountryListForDocumentVerification = List.from(
+      countryListForDocumentVerification,
+    );
+
+    countryFuseForDocumentVerification = Fuzzy(
+      countryListForDocumentVerification.map((e) => e['name']).toList(),
+      options: FuzzyOptions(threshold: 0.5),
+    );
+    update();
+  }
+
   void searchCountries(String query) {
     if (countryFuse == null) return;
     if (query.isEmpty) {
@@ -159,8 +187,35 @@ class BecomeSellerStepPageController extends GetxController {
     update();
   }
 
+  void searchCountriesForDocumentVerification(String query) {
+    if (countryFuseForDocumentVerification == null) return;
+    if (query.isEmpty) {
+      filteredCountryListForDocumentVerification = List.from(
+        countryListForDocumentVerification,
+      );
+    } else {
+      final results = countryFuseForDocumentVerification!.search(query);
+      filteredCountryListForDocumentVerification = results
+          .map(
+            (r) => countryListForDocumentVerification.firstWhere(
+              (c) => c['name'] == r.item,
+            ),
+          )
+          .toList();
+    }
+    update();
+  }
+
   void selectCountry(Map<String, dynamic> country) {
     selectedCountry = (selectedCountry?['name'] == country['name'])
+        ? null
+        : country;
+    update();
+  }
+
+  void selectCountryForDocumentVerification(Map<String, dynamic> country) {
+    selectedCountryForDocumentVerification =
+        (selectedCountryForDocumentVerification?['name'] == country['name'])
         ? null
         : country;
     update();
@@ -169,6 +224,11 @@ class BecomeSellerStepPageController extends GetxController {
   bool isCountrySelected(Map<String, dynamic> country) {
     return selectedCountry != null &&
         selectedCountry!['name'] == country['name'];
+  }
+
+  bool isCountrySelectedForDocumentVerification(Map<String, dynamic> country) {
+    return selectedCountryForDocumentVerification != null &&
+        selectedCountryForDocumentVerification!['name'] == country['name'];
   }
 
   @override
