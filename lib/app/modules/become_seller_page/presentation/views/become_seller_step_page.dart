@@ -438,7 +438,12 @@ class BecomeSellerStepPage extends StatelessWidget {
                           ),
                         ),
                         Spacer(),
-                        IconButton(onPressed: () {}, icon: Icon(Icons.delete)),
+                        IconButton(
+                          onPressed: () {
+                            controller.removePickedFileAt(index);
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
                       ],
                       // leading: ,
                       // title:

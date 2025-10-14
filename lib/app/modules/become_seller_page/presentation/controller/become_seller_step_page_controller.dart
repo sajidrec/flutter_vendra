@@ -74,6 +74,11 @@ class BecomeSellerStepPageController extends GetxController {
     update();
   }
 
+  void removePickedFileAt(int index) async {
+    pickedFileList.removeAt(index);
+    update();
+  }
+
   void increaseProgressIndex() {
     progressedIndex++;
     update();
