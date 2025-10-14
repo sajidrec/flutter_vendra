@@ -16,6 +16,8 @@ class BecomeSellerStepPage extends StatelessWidget {
     _buildBusinessInformationPage(),
 
     _buildTaxVatNumberPage(),
+
+    _buildDocumentUploadPage(),
   ];
 
   @override
@@ -139,6 +141,7 @@ class BecomeSellerStepPage extends StatelessWidget {
                   SizedBox(height: 16.h),
                   Text("ID Number"),
                   TextFormField(
+                    controller: controller.idNumberTec,
                     decoration: InputDecoration(
                       hintText: "GB123456789",
                       hintStyle: TextStyle(
@@ -171,7 +174,16 @@ class BecomeSellerStepPage extends StatelessWidget {
                         foregroundColor: AppColors.primaryWhite,
                         backgroundColor: AppColors.primaryBlack,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (controller.idNumberTec.text.isNotEmpty &&
+                            controller.selectedCountryForDocumentVerification !=
+                                null) {
+                          Get.back();
+                          controller.increaseProgressIndex();
+                        } else {
+                          Get.snackbar("Give submit profile info", "");
+                        }
+                      },
                       child: Text("Done"),
                     ),
                   ),
@@ -338,6 +350,81 @@ class BecomeSellerStepPage extends StatelessWidget {
                     ),
                   ),
                   child: Text("Continue", style: TextStyle(fontSize: 17.sp)),
+                ),
+              ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Padding _buildDocumentUploadPage() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
+      child: GetBuilder<BecomeSellerStepPageController>(
+        builder: (controller) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "We need to Verify your Business Documents that it’s you",
+                style: TextStyle(fontSize: 28.sp),
+              ),
+
+              SizedBox(height: 20.h),
+
+              GestureDetector(
+                onTap: () {},
+                child: SvgPicture.asset(
+                  AppAssets.uploadMsgBoxImg,
+                  width: double.infinity,
+                  height: 128.h,
+                ),
+              ),
+
+              SizedBox(height: 286.h),
+
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(color: AppColors.primaryBlack),
+                  children: [
+                    TextSpan(text: "By continue, you agree to the Gavellia "),
+                    TextSpan(
+                      text: "Terms of Service and ",
+                      style: TextStyle(
+                        color: AppColors.primaryPeriwinkle,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    TextSpan(
+                      text:
+                          "to occasionally receive emails from us. Please read our ",
+                    ),
+                    TextSpan(
+                      text: "Privacy Policy",
+                      style: TextStyle(
+                        color: AppColors.primaryPeriwinkle,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                    TextSpan(text: " to learn how use your personal data."),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16.h),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.primaryBlack,
+                    foregroundColor: AppColors.primaryWhite,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4.r),
+                    ),
+                  ),
+                  child: Text("Submit", style: TextStyle(fontSize: 17.sp)),
                 ),
               ),
             ],

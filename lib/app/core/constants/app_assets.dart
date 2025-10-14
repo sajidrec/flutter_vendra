@@ -33,4 +33,5 @@ class AppAssets {
 
   static const becomeSellerMessage = "assets/images/become_seller_msg_img.svg";
   static const forwardArrowIcon = "assets/icons/forward_arrow_icon.svg";
+  static const uploadMsgBoxImg = "assets/images/upload_msg_box_img.svg";
 }

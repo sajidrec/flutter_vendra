@@ -16,7 +16,10 @@ class BecomeSellerStepPageController extends GetxController {
 
   final TextEditingController searchStateTec = TextEditingController();
   final TextEditingController searchCountryTec = TextEditingController();
-  final TextEditingController searchCountryForDocumentVerificationTec = TextEditingController();
+  final TextEditingController searchCountryForDocumentVerificationTec =
+      TextEditingController();
+
+  final TextEditingController idNumberTec = TextEditingController();
 
   late final List<String> stateList;
   Fuzzy? fuse;
@@ -240,6 +243,7 @@ class BecomeSellerStepPageController extends GetxController {
     streetTec.dispose();
     cityTec.dispose();
     searchCountryTec.dispose();
+    idNumberTec.dispose();
     super.onClose();
   }
 }
