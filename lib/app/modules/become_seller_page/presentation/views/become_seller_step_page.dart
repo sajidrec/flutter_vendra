@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
+import 'package:vendra_app/app/modules/become_seller_page/presentation/controller/become_seller_page_controller.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -568,7 +569,12 @@ class BecomeSellerStepPage extends StatelessWidget {
                                                   ),
                                                 ),
 
-                                                onPressed: () {
+                                                onPressed: () async {
+                                                  await Get.find<
+                                                        BecomeSellerPageController
+                                                      >()
+                                                      .setVerifiedSeller(true);
+
                                                   Get.back();
                                                 },
                                                 child: Text(

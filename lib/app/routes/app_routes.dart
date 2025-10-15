@@ -10,4 +10,5 @@ abstract class AppRoutes {
   static const String loginRoute = '/loginRoute';
   static const String becomeSellerRoute = '/becomeSellerRoute';
   static const String becomeSellerStepRoute = '/becomeSellerStepRoute';
+  static const String sellRoute = '/sellRoute';
 }
