@@ -1,4 +1,3 @@
-
 import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,9 +9,7 @@ import '../../../../core/constants/app_colors.dart';
 import '../controller/become_seller_step_page_controller.dart';
 
 class TaxVatNumberPageWidget extends StatelessWidget {
-  const TaxVatNumberPageWidget({
-    super.key,
-  });
+  const TaxVatNumberPageWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -67,9 +64,9 @@ class TaxVatNumberPageWidget extends StatelessWidget {
   }
 
   GestureDetector _buildVerificationDocumentTypeButton(
-      BecomeSellerStepPageController controller, {
-        required String documentTypeName,
-      }) {
+    BecomeSellerStepPageController controller, {
+    required String documentTypeName,
+  }) {
     return GestureDetector(
       onTap: () {
         Get.bottomSheet(
@@ -83,82 +80,86 @@ class TaxVatNumberPageWidget extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          Get.back();
-                        },
-                        icon: Icon(Icons.close),
-                      ),
-                      Spacer(),
-                      Text(
-                        documentTypeName,
-                        style: TextStyle(
-                          fontSize: 17.sp,
-                          fontWeight: FontWeight.w600,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(Icons.close),
                         ),
-                      ),
-                      Spacer(),
-                    ],
-                  ),
-                  SizedBox(height: 16.h),
-                  Text("ID Number"),
-                  TextFormField(
-                    controller: controller.idNumberTec,
-                    decoration: InputDecoration(
-                      hintText: "GB123456789",
-                      hintStyle: TextStyle(
-                        color: AppColors.primaryBlack.withAlpha(
-                          (255 * .35).round(),
+                        Spacer(),
+                        Text(
+                          documentTypeName,
+                          style: TextStyle(
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
-                      ),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 14.w,
-                        vertical: 17.h,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(6.r),
-                        borderSide: BorderSide(
+                        Spacer(),
+                      ],
+                    ),
+                    SizedBox(height: 16.h),
+                    Text("ID Number"),
+                    TextFormField(
+                      controller: controller.idNumberTec,
+                      decoration: InputDecoration(
+                        hintText: "GB123456789",
+                        hintStyle: TextStyle(
                           color: AppColors.primaryBlack.withAlpha(
-                            (255 * .01).round(),
+                            (255 * .35).round(),
+                          ),
+                        ),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 14.w,
+                          vertical: 17.h,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(6.r),
+                          borderSide: BorderSide(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .01).round(),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                  SizedBox(height: 16.h),
-                  Text("Country of Registration"),
-                  _buildSelectCountryForDocumentVerification(controller),
-                  Spacer(),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: AppColors.primaryWhite,
-                        backgroundColor: AppColors.primaryBlack,
+                    SizedBox(height: 16.h),
+                    Text("Country of Registration"),
+                    _buildSelectCountryForDocumentVerification(controller),
+                    SizedBox(height: 24.h),
+                    // Spacer(),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor: AppColors.primaryWhite,
+                          backgroundColor: AppColors.primaryBlack,
+                        ),
+                        onPressed: () {
+                          if (controller.idNumberTec.text.isNotEmpty &&
+                              controller
+                                      .selectedCountryForDocumentVerification !=
+                                  null) {
+                            Get.back();
+                            controller.increaseProgressIndex();
+                          } else {
+                            Get.snackbar("Give submit profile info", "");
+                          }
+                        },
+                        child: Text("Done"),
                       ),
-                      onPressed: () {
-                        if (controller.idNumberTec.text.isNotEmpty &&
-                            controller.selectedCountryForDocumentVerification !=
-                                null) {
-                          Get.back();
-                          controller.increaseProgressIndex();
-                        } else {
-                          Get.snackbar("Give submit profile info", "");
-                        }
-                      },
-                      child: Text("Done"),
                     ),
-                  ),
-                  SizedBox(height: 20.h),
-                ],
+                    SizedBox(height: 20.h),
+                  ],
+                ),
               ),
             ),
           ),
@@ -188,9 +189,10 @@ class TaxVatNumberPageWidget extends StatelessWidget {
       ),
     );
   }
+
   GetBuilder _buildSelectCountryForDocumentVerification(
-      BecomeSellerStepPageController controller,
-      ) {
+    BecomeSellerStepPageController controller,
+  ) {
     return GetBuilder<BecomeSellerStepPageController>(
       builder: (controller) {
         return GestureDetector(
@@ -238,8 +240,8 @@ class TaxVatNumberPageWidget extends StatelessWidget {
                               onChanged: (query) {
                                 controller
                                     .searchCountriesForDocumentVerification(
-                                  query,
-                                );
+                                      query,
+                                    );
                               },
                               controller: controller
                                   .searchCountryForDocumentVerificationTec,
@@ -272,8 +274,8 @@ class TaxVatNumberPageWidget extends StatelessWidget {
                                     onTap: () {
                                       controller
                                           .selectCountryForDocumentVerification(
-                                        country,
-                                      );
+                                            country,
+                                          );
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.all(14.sp),
@@ -288,9 +290,9 @@ class TaxVatNumberPageWidget extends StatelessWidget {
                                               height: 24.h,
                                               width: 24.h,
                                               child:
-                                              CountryFlag.fromCountryCode(
-                                                country['code'],
-                                              ),
+                                                  CountryFlag.fromCountryCode(
+                                                    country['code'],
+                                                  ),
                                             ),
                                           ),
                                           SizedBox(width: 12.w),
@@ -300,9 +302,9 @@ class TaxVatNumberPageWidget extends StatelessWidget {
                                           ),
                                           const Spacer(),
                                           controller
-                                              .isCountrySelectedForDocumentVerification(
-                                            country,
-                                          )
+                                                  .isCountrySelectedForDocumentVerification(
+                                                    country,
+                                                  )
                                               ? const Icon(Icons.check)
                                               : const SizedBox.shrink(),
                                         ],
@@ -384,19 +386,19 @@ class TaxVatNumberPageWidget extends StatelessWidget {
                         SizedBox(width: 8.w),
                       Text(
                         controller.selectedCountryForDocumentVerification ==
-                            null
+                                null
                             ? "Select"
                             : controller
-                            .selectedCountryForDocumentVerification!['name'],
+                                  .selectedCountryForDocumentVerification!['name'],
                         style: TextStyle(
                           fontSize: 17.sp,
                           color:
-                          controller
-                              .selectedCountryForDocumentVerification ==
-                              null
+                              controller
+                                      .selectedCountryForDocumentVerification ==
+                                  null
                               ? AppColors.primaryBlack.withAlpha(
-                            (255 * .35).round(),
-                          )
+                                  (255 * .35).round(),
+                                )
                               : AppColors.primaryBlack,
                         ),
                       ),
