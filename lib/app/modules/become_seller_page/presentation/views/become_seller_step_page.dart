@@ -770,8 +770,10 @@ class BecomeSellerStepPage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              controller.decreaseProgressIndex();
-              if (controller.progressedIndex == 0) {
+              if (controller.progressedIndex > 1) {
+                controller.decreaseProgressIndex();
+              }
+              if (controller.progressedIndex == 1) {
                 Get.back();
               }
             },

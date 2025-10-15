@@ -85,7 +85,10 @@ class BecomeSellerStepPageController extends GetxController {
   }
 
   void decreaseProgressIndex() {
-    progressedIndex--;
+    if (progressedIndex > 0) {
+      progressedIndex--;
+    }
+
     update();
   }
 
