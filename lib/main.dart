@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: GetMaterialApp(
         initialRoute: AppRoutes.splashRoute,
+        debugShowCheckedModeBanner: false,
         getPages: AppPages.pages,
         theme: ThemeData(
           textTheme: GoogleFonts.ptSerifTextTheme(Theme.of(context).textTheme),
