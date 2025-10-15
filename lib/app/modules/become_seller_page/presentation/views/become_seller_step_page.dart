@@ -491,7 +491,105 @@ class BecomeSellerStepPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: controller.pickedFileList.isEmpty ? null : () {},
+                  onPressed: controller.pickedFileList.isEmpty
+                      ? null
+                      : () {
+                          Get.dialog(
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.w),
+                              child: Center(
+                                child: Material(
+                                  color: Colors.transparent,
+                                  child: SingleChildScrollView(
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: AppColors.primaryWhite,
+                                        borderRadius: BorderRadius.circular(
+                                          10.r,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.all(16.w),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                Spacer(),
+                                                IconButton(
+                                                  onPressed: () {
+                                                    Get.back();
+                                                  },
+                                                  icon: Icon(
+                                                    Icons.close,
+                                                    color: AppColors
+                                                        .primaryBlack
+                                                        .withAlpha(
+                                                          (255 * .6).round(),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              "Application has been submitted successfully.",
+                                              style: TextStyle(
+                                                fontSize: 22.sp,
+                                                color: AppColors.primaryBlack,
+                                              ), // use Material text style
+                                            ),
+                                            SizedBox(height: 16.h),
+                                            Text(
+                                              "Your application is in under review. We will inform you within next 48 hours via your registered email. Keep patience and  keep in touch.",
+                                              style: TextStyle(
+                                                fontSize: 17.sp,
+                                                color: AppColors.primaryBlack
+                                                    .withAlpha(
+                                                      (255 * .8).round(),
+                                                    ),
+                                              ), // use Material text style
+                                            ),
+                                            SizedBox(height: 24.h),
+                                            SizedBox(
+                                              width: double.infinity,
+                                              child: OutlinedButton(
+                                                style: OutlinedButton.styleFrom(
+                                                  foregroundColor:
+                                                      AppColors.primaryBlack,
+
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          4.r,
+                                                        ),
+                                                  ),
+                                                ),
+
+                                                onPressed: () {
+                                                  Get.back();
+                                                },
+                                                child: Text(
+                                                  "Done",
+                                                  style: TextStyle(
+                                                    fontSize: 17.sp,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            barrierDismissible: true,
+                          );
+                        },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlack,
                     foregroundColor: AppColors.primaryWhite,
