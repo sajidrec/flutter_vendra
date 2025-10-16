@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_page.dart';
@@ -15,6 +16,22 @@ class SellPageController extends GetxController {
   bool descriptionFilled = false;
 
   List<Widget> pages = [LotDetailsPage(), UploadLotPhotoPage()];
+
+  List<PlatformFile> pickedFiles = [];
+
+  Future<void> pickFiles() async {
+    final result = await FilePicker.platform.pickFiles(allowMultiple: true);
+
+    if (result != null) {
+      pickedFiles = result.files;
+      update();
+    }
+  }
+
+  void deleteFile(int index) {
+    pickedFiles.removeAt(index);
+    update();
+  }
 
   void setLotTitleFilled(bool value) {
     lotTitleFilled = value;

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:open_file/open_file.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../controllers/sell_page_controller.dart';
+import 'package:path/path.dart' as path;
 
 class UploadLotPhotoPage extends StatelessWidget {
   const UploadLotPhotoPage({super.key});
@@ -32,7 +34,9 @@ class UploadLotPhotoPage extends StatelessWidget {
               SizedBox(height: 20.h),
 
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  await controller.pickFiles();
+                },
                 child: SvgPicture.asset(AppAssets.uploadMsgBoxImg),
               ),
 
@@ -53,19 +57,25 @@ class UploadLotPhotoPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(Icons.image),
+                          IconButton(onPressed: () {}, icon: Icon(Icons.image)),
                           Spacer(),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                "HannahBusing_photos",
+                                path.basenameWithoutExtension(
+                                  controller.pickedFiles[index].name,
+                                ),
                                 style: TextStyle(fontSize: 17.sp),
                               ),
-                              Text("HannahBusing_Resume.pdf"),
+                              Text(controller.pickedFiles[index].name),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  OpenFile.open(
+                                    controller.pickedFiles[index].path,
+                                  );
+                                },
                                 child: Text(
                                   "Click to view",
                                   style: TextStyle(
@@ -77,13 +87,18 @@ class UploadLotPhotoPage extends StatelessWidget {
                             ],
                           ),
                           Spacer(),
-                          Icon(Icons.delete),
+                          IconButton(
+                            onPressed: () {
+                              controller.deleteFile(index);
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
                         ],
                       ),
                     ),
                   ),
                   separatorBuilder: (context, index) => SizedBox(height: 10.h),
-                  itemCount: 20,
+                  itemCount: controller.pickedFiles.length,
                 ),
               ),
 
@@ -119,7 +134,7 @@ class UploadLotPhotoPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: controller.pickedFiles.length >= 3 ? () {} : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlack,
                     foregroundColor: AppColors.primaryWhite,
