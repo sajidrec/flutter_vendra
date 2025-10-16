@@ -1,6 +1,7 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/price_and_auction_type_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
@@ -12,6 +13,8 @@ class SellPageController extends GetxController {
   final TextEditingController specialCategoryTec = TextEditingController();
   final TextEditingController descriptionTec = TextEditingController();
   final TextEditingController auctionPriceTec = TextEditingController();
+  final TextEditingController startDateTec = TextEditingController();
+  final TextEditingController endDateTec = TextEditingController();
 
   bool lotTitleFilled = false;
   bool subCategoryFilled = false;
@@ -34,6 +37,74 @@ class SellPageController extends GetxController {
   void onInit() {
     super.onInit();
     auctionPriceTec.text = auctionPrice.toString();
+    startDateTec.text = "DD/MM/YY";
+    endDateTec.text = "DD/MM/YY";
+  }
+
+  Future<void> pickStartDateForTimedAuction(BuildContext context) async {
+    final startDate = await showDatePicker(
+      builder: (context, child) => Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.light(
+            primary: AppColors.primaryPurple,
+            onPrimary: AppColors.primaryWhite,
+            onSurface: AppColors.primaryBlack, // body text color
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              foregroundColor: AppColors.primaryPurple, // cancel/ok buttons
+            ),
+          ),
+        ),
+        child: child!,
+      ),
+      context: context,
+      firstDate: DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day,
+      ),
+      lastDate: DateTime(DateTime.now().year + 50),
+    );
+
+    if (startDate == null) {
+      startDateTec.text = "DD/MM/YY";
+    } else {
+      startDateTec.text = startDate.toString();
+    }
+  }
+
+  Future<void> pickEndDateForTimedAuction(BuildContext context) async {
+    final startDate = await showDatePicker(
+      builder: (context, child) => Theme(
+        data: Theme.of(context).copyWith(
+          colorScheme: ColorScheme.light(
+            primary: AppColors.primaryPurple,
+            onPrimary: AppColors.primaryWhite,
+            onSurface: AppColors.primaryBlack,
+          ),
+          textButtonTheme: TextButtonThemeData(
+            style: TextButton.styleFrom(
+              foregroundColor: AppColors.primaryPurple,
+            ),
+          ),
+        ),
+        child: child!,
+      ),
+      context: context,
+      firstDate: DateTime(
+        DateTime.now().year,
+        DateTime.now().month,
+        DateTime.now().day + 1,
+      ),
+      lastDate: DateTime(DateTime.now().year + 50),
+    );
+
+    if (startDate == null) {
+      endDateTec.text = "DD/MM/YY";
+    } else {
+      endDateTec.text = startDate.toString();
+    }
   }
 
   void toggleTimeAuctionMode() {
@@ -125,6 +196,8 @@ class SellPageController extends GetxController {
     specialCategoryTec.dispose();
     descriptionTec.dispose();
     auctionPriceTec.dispose();
+    startDateTec.dispose();
+    endDateTec.dispose();
     super.onClose();
   }
 }

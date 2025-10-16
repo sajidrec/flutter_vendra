@@ -219,6 +219,12 @@ class PriceAndAuctionTypePage extends StatelessWidget {
                 ],
               ),
 
+              SizedBox(height: 16.h),
+
+              controller.timeAuctionMode
+                  ? _buildTimePickerSection(controller, context)
+                  : SizedBox.shrink(),
+
               RichText(
                 text: TextSpan(
                   style: TextStyle(color: AppColors.primaryBlack),
@@ -273,6 +279,108 @@ class PriceAndAuctionTypePage extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+
+  Column _buildTimePickerSection(
+    SellPageController controller,
+    BuildContext context,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          "Start date",
+          style: TextStyle(fontSize: 13.sp, color: AppColors.primaryBlack),
+        ),
+        TextField(
+          controller: controller.startDateTec,
+          style: TextStyle(
+            color: AppColors.primaryBlack.withAlpha((255 * .35).round()),
+          ),
+          decoration: InputDecoration(
+            suffixIcon: Icon(Icons.calendar_today_outlined),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+          ),
+          readOnly: true,
+          onTap: () async {
+            await controller.pickStartDateForTimedAuction(context);
+          },
+        ),
+
+        Text(
+          "Based on the selected date your lot will get live to the bidders",
+          style: TextStyle(
+            fontSize: 13.sp,
+            color: AppColors.primaryBlack.withAlpha((255 * .6).round()),
+          ),
+        ),
+        SizedBox(height: 8.h),
+
+        Text(
+          "End Date",
+          style: TextStyle(fontSize: 13.sp, color: AppColors.primaryBlack),
+        ),
+
+        TextField(
+          controller: controller.endDateTec,
+          style: TextStyle(
+            color: AppColors.primaryBlack.withAlpha((255 * .35).round()),
+          ),
+          decoration: InputDecoration(
+            suffixIcon: Icon(Icons.calendar_today_outlined),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(6.r),
+              borderSide: BorderSide(
+                color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              ),
+            ),
+          ),
+          readOnly: true,
+          onTap: () async {
+            await controller.pickEndDateForTimedAuction(context);
+          },
+        ),
+        Text(
+          "Select the date when you want to end the timeline of your auction",
+          style: TextStyle(
+            fontSize: 13.sp,
+            color: AppColors.primaryBlack.withAlpha((255 * .6).round()),
+          ),
+        ),
+
+        SizedBox(height: 20.h),
+      ],
     );
   }
 }
