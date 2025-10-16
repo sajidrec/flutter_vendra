@@ -134,7 +134,13 @@ class UploadLotPhotoPage extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: controller.pickedFiles.length >= 3 ? () {} : null,
+                  onPressed:
+                      (controller.pickedFiles.length >= 3 &&
+                          controller.pickedFiles.length <= 6)
+                      ? () {
+                          controller.increaseProgressIndex();
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlack,
                     foregroundColor: AppColors.primaryWhite,

@@ -2,6 +2,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_page.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/price_and_auction_type_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 
 class SellPageController extends GetxController {
@@ -10,14 +11,46 @@ class SellPageController extends GetxController {
   final TextEditingController subCategoryTec = TextEditingController();
   final TextEditingController specialCategoryTec = TextEditingController();
   final TextEditingController descriptionTec = TextEditingController();
+  final TextEditingController auctionPriceTec = TextEditingController();
 
   bool lotTitleFilled = false;
   bool subCategoryFilled = false;
   bool descriptionFilled = false;
 
-  List<Widget> pages = [LotDetailsPage(), UploadLotPhotoPage()];
+  bool timeAuctionMode = false;
+  bool liveAuctionMode = false;
+
+  int auctionPrice = 0;
+
+  List<Widget> pages = [
+    LotDetailsPage(),
+    UploadLotPhotoPage(),
+    PriceAndAuctionTypePage(),
+  ];
 
   List<PlatformFile> pickedFiles = [];
+
+  @override
+  void onInit() {
+    super.onInit();
+    auctionPriceTec.text = auctionPrice.toString();
+  }
+
+  void toggleTimeAuctionMode() {
+    if (!timeAuctionMode) {
+      liveAuctionMode = false;
+    }
+    timeAuctionMode = !timeAuctionMode;
+    update();
+  }
+
+  void toggleLiveAuctionMode() {
+    if (!liveAuctionMode) {
+      timeAuctionMode = false;
+    }
+    liveAuctionMode = !liveAuctionMode;
+    update();
+  }
 
   Future<void> pickFiles() async {
     final result = await FilePicker.platform.pickFiles(allowMultiple: true);
@@ -30,6 +63,20 @@ class SellPageController extends GetxController {
 
   void deleteFile(int index) {
     pickedFiles.removeAt(index);
+    update();
+  }
+
+  void increaseAuctionPrice() {
+    auctionPrice++;
+    auctionPriceTec.text = auctionPrice.toString();
+    update();
+  }
+
+  void decreaseAuctionPrice() {
+    if (auctionPrice > 0) {
+      auctionPrice--;
+      auctionPriceTec.text = auctionPrice.toString();
+    }
     update();
   }
 
@@ -77,6 +124,7 @@ class SellPageController extends GetxController {
     subCategoryTec.dispose();
     specialCategoryTec.dispose();
     descriptionTec.dispose();
+    auctionPriceTec.dispose();
     super.onClose();
   }
 }
