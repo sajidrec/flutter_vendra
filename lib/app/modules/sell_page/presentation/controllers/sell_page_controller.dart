@@ -48,11 +48,11 @@ class SellPageController extends GetxController {
           colorScheme: ColorScheme.light(
             primary: AppColors.primaryPurple,
             onPrimary: AppColors.primaryWhite,
-            onSurface: AppColors.primaryBlack, // body text color
+            onSurface: AppColors.primaryBlack,
           ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor: AppColors.primaryPurple, // cancel/ok buttons
+              foregroundColor: AppColors.primaryPurple,
             ),
           ),
         ),
@@ -64,7 +64,9 @@ class SellPageController extends GetxController {
         DateTime.now().month,
         DateTime.now().day,
       ),
-      lastDate: DateTime(DateTime.now().year + 50),
+      lastDate: endDateTec.text.isNotEmpty && endDateTec.text != "DD/MM/YY"
+          ? DateTime.parse(endDateTec.text)
+          : DateTime(DateTime.now().year + 50),
     );
 
     if (startDate == null) {
@@ -75,7 +77,7 @@ class SellPageController extends GetxController {
   }
 
   Future<void> pickEndDateForTimedAuction(BuildContext context) async {
-    final startDate = await showDatePicker(
+    final endDate = await showDatePicker(
       builder: (context, child) => Theme(
         data: Theme.of(context).copyWith(
           colorScheme: ColorScheme.light(
@@ -92,7 +94,9 @@ class SellPageController extends GetxController {
         child: child!,
       ),
       context: context,
-      firstDate: DateTime(
+      firstDate: startDateTec.text.isNotEmpty && startDateTec.text != "DD/MM/YY"
+          ? DateTime.parse(startDateTec.text).add(Duration(days: 1)) // ✅ at least 1 day after start
+          : DateTime(
         DateTime.now().year,
         DateTime.now().month,
         DateTime.now().day + 1,
@@ -100,10 +104,10 @@ class SellPageController extends GetxController {
       lastDate: DateTime(DateTime.now().year + 50),
     );
 
-    if (startDate == null) {
+    if (endDate == null) {
       endDateTec.text = "DD/MM/YY";
     } else {
-      endDateTec.text = startDate.toString();
+      endDateTec.text = endDate.toString();
     }
   }
 
