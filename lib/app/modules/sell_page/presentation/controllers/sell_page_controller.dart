@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_page.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 
 class SellPageController extends GetxController {
   final TextEditingController lotTitleTec = TextEditingController();
@@ -11,6 +13,8 @@ class SellPageController extends GetxController {
   bool lotTitleFilled = false;
   bool subCategoryFilled = false;
   bool descriptionFilled = false;
+
+  List<Widget> pages = [LotDetailsPage(), UploadLotPhotoPage()];
 
   void setLotTitleFilled(bool value) {
     lotTitleFilled = value;
