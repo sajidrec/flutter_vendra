@@ -37,4 +37,7 @@ class AppAssets {
 
   static const circularMinusIcon = "assets/icons/circular_minus_icon.svg";
   static const circularPlusIcon = "assets/icons/circular_plus_icon.svg";
+
+  static const uploadItemTumbMsgImg =
+      "assets/images/upload_item_tumb_msg_img.svg";
 }

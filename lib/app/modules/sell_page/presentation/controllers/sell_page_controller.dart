@@ -6,6 +6,8 @@ import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_
 import 'package:vendra_app/app/modules/sell_page/presentation/views/price_and_auction_type_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 
+import '../views/final_touches_page.dart';
+
 class SellPageController extends GetxController {
   final TextEditingController lotTitleTec = TextEditingController();
   final TextEditingController categoryTec = TextEditingController();
@@ -29,6 +31,7 @@ class SellPageController extends GetxController {
     LotDetailsPage(),
     UploadLotPhotoPage(),
     PriceAndAuctionTypePage(),
+    FinalTouchesPage(),
   ];
 
   List<PlatformFile> pickedFiles = [];
@@ -95,12 +98,14 @@ class SellPageController extends GetxController {
       ),
       context: context,
       firstDate: startDateTec.text.isNotEmpty && startDateTec.text != "DD/MM/YY"
-          ? DateTime.parse(startDateTec.text).add(Duration(days: 1)) // ✅ at least 1 day after start
+          ? DateTime.parse(startDateTec.text).add(
+              Duration(days: 1),
+            ) // ✅ at least 1 day after start
           : DateTime(
-        DateTime.now().year,
-        DateTime.now().month,
-        DateTime.now().day + 1,
-      ),
+              DateTime.now().year,
+              DateTime.now().month,
+              DateTime.now().day + 1,
+            ),
       lastDate: DateTime(DateTime.now().year + 50),
     );
 
