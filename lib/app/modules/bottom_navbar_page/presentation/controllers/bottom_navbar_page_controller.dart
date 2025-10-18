@@ -4,6 +4,7 @@ import 'package:vendra_app/app/modules/become_seller_page/presentation/controlle
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_page.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/views/home_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/sell_page.dart';
+import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
 
 class BottomNavbarPageController extends GetxController {
   int index = 0;
@@ -13,7 +14,8 @@ class BottomNavbarPageController extends GetxController {
     const Center(child: Text("Favorite")),
     const BecomeSellerPage(),
     const Center(child: Text("Notification")),
-    const Center(child: Text("Me")),
+    const SellerProfilePage(),
+    //   Change in both place
   ];
 
   void changePage(int index) {
@@ -38,7 +40,7 @@ class BottomNavbarPageController extends GetxController {
           ? const SellPage() // show seller page if verified
           : const BecomeSellerPage(), // show become seller page otherwise
       const Center(child: Text("Notification")),
-      const Center(child: Text("Me")),
+      const SellerProfilePage(),
     ];
   }
 }

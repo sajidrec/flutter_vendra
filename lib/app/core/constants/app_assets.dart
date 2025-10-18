@@ -46,4 +46,9 @@ class AppAssets {
       "assets/images/your_lot_under_review_img.svg";
 
   static const yourDoneImg = "assets/images/your_done_img.svg";
+  static const verifiedBatchIcon = "assets/icons/verified_batch_icon.svg";
+  static const topSellerBatchIcon = "assets/icons/top_seller_batch_icon.svg";
+
+  static const cameraInsideCircleIcon =
+      "assets/icons/camera_inside_circle_icon.svg";
 }
