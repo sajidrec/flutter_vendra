@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/price_and_auction_type_page.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/publish_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 
 import '../views/final_touches_page.dart';
@@ -34,6 +35,7 @@ class SellPageController extends GetxController {
     UploadLotPhotoPage(),
     PriceAndAuctionTypePage(),
     FinalTouchesPage(),
+    PublishPage(),
   ];
 
   List<PlatformFile> pickedFiles = [];

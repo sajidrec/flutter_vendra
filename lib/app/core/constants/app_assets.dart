@@ -40,4 +40,10 @@ class AppAssets {
 
   static const uploadItemTumbMsgImg =
       "assets/images/upload_item_tumb_msg_img.svg";
+  static const publishPageImg = "assets/images/publish_page_img.svg";
+
+  static const yourLotUnderReviewImg =
+      "assets/images/your_lot_under_review_img.svg";
+
+  static const yourDoneImg = "assets/images/your_done_img.svg";
 }
