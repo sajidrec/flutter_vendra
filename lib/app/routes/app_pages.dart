@@ -9,7 +9,9 @@ import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bot
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/binding/sell_page_binding.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/binding/tag_page_binding.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/sell_page.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/tags_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
 import '../modules/auth/register_page/presentation/binding/registration_page_binding.dart';
@@ -87,6 +89,11 @@ class AppPages {
       name: AppRoutes.sellRoute,
       page: () => SellPage(),
       binding: SellPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.tagsRoute,
+      page: () => TagsPage(),
+      binding: TagPageBinding(),
     ),
   ];
 }

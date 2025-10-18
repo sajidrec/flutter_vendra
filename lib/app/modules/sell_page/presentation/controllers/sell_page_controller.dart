@@ -27,6 +27,8 @@ class SellPageController extends GetxController {
 
   int auctionPrice = 0;
 
+  FilePickerResult? thumbnailFile;
+
   List<Widget> pages = [
     LotDetailsPage(),
     UploadLotPhotoPage(),
@@ -42,6 +44,16 @@ class SellPageController extends GetxController {
     auctionPriceTec.text = auctionPrice.toString();
     startDateTec.text = "DD/MM/YY";
     endDateTec.text = "DD/MM/YY";
+  }
+
+  Future<void> pickThumbnailFile() async {
+    thumbnailFile = await FilePicker.platform.pickFiles(type: FileType.image);
+    update();
+  }
+
+  Future<void> removeThumbNailFile() async {
+    thumbnailFile = null;
+    update();
   }
 
   Future<void> pickStartDateForTimedAuction(BuildContext context) async {

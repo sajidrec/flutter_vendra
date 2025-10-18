@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -32,10 +35,75 @@ class FinalTouchesPage extends StatelessWidget {
 
               SizedBox(height: 20.h),
 
-              SvgPicture.asset(
-                AppAssets.uploadItemTumbMsgImg,
-                width: 371.w,
-                height: 371.h,
+              GestureDetector(
+                onTap: () async {
+                  await controller.pickThumbnailFile();
+                },
+                child: (controller.thumbnailFile?.files.isEmpty ?? true)
+                    ? SvgPicture.asset(
+                        AppAssets.uploadItemTumbMsgImg,
+                        width: 371.w,
+                        height: 371.h,
+                      )
+                    : SizedBox(
+                        width: 371.w,
+                        height: 371.h,
+                        child: Stack(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(6.r),
+                              child: Image.file(
+                                File(
+                                  controller.thumbnailFile?.files[0].path ?? "",
+                                ),
+                                fit: BoxFit.cover,
+                                width: 371.w,
+                                height: 371.h,
+                              ),
+                            ),
+                            Center(
+                              child: SizedBox(
+                                width: 139.w,
+                                height: 48.h,
+                                child: OutlinedButton(
+                                  onPressed: () async {
+                                    await controller.pickThumbnailFile();
+                                  },
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: AppColors.primaryWhite,
+                                    side: BorderSide(
+                                      width: 1,
+                                      color: AppColors.primaryWhite,
+                                    ),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.r),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "Change",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+              ),
+
+              SizedBox(height: 18.sp),
+
+              Row(
+                children: [
+                  Text("Add Tags", style: TextStyle(fontSize: 17.sp)),
+                  Spacer(),
+                  IconButton(
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.tagsRoute);
+                    },
+                    icon: Icon(Icons.add),
+                  ),
+                ],
               ),
 
               RichText(
@@ -70,10 +138,7 @@ class FinalTouchesPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed:
-                      (controller.lotTitleFilled &&
-                          controller.subCategoryFilled &&
-                          controller.descriptionFilled &&
-                          controller.selectedCategoryIndex >= 0)
+                      (controller.thumbnailFile?.files.isNotEmpty ?? false)
                       ? () {
                           controller.increaseProgressIndex();
                         }
