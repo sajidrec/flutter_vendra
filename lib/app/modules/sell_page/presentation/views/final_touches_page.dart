@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/controllers/tag_page_controller.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../../../../core/constants/app_assets.dart';
@@ -106,6 +107,16 @@ class FinalTouchesPage extends StatelessWidget {
                 ],
               ),
 
+              GetBuilder<TagPageController>(
+                builder: (controller) {
+                  return Wrap(
+                    children: controller.selectedTags
+                        .map((e) => _buildSelectedTagChip(name: e.toString()))
+                        .toList(),
+                  );
+                },
+              ),
+
               RichText(
                 text: TextSpan(
                   style: TextStyle(color: AppColors.primaryBlack),
@@ -162,6 +173,41 @@ class FinalTouchesPage extends StatelessWidget {
               ),
               SizedBox(height: 16.h),
             ],
+          ),
+        );
+      },
+    );
+  }
+
+  GetBuilder _buildSelectedTagChip({required String name}) {
+    return GetBuilder<TagPageController>(
+      builder: (controller) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(999.r),
+            color: AppColors.primaryPurple.withAlpha((255 * .08).round()),
+          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 16.sp),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "#$name",
+                  style: TextStyle(color: AppColors.primaryPurple),
+                ),
+                IconButton(
+                  onPressed: () {
+                    controller.removeFromSelectedTags(tagName: name);
+                  },
+                  icon: Icon(
+                    size: 20.sp,
+                    Icons.cancel_outlined,
+                    color: AppColors.primaryPurple,
+                  ),
+                ),
+              ],
+            ),
           ),
         );
       },
