@@ -4,7 +4,7 @@ import 'package:vendra_app/app/modules/become_seller_page/presentation/controlle
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/controllers/sell_page_controller.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/controllers/tag_page_controller.dart';
-import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
+import 'package:vendra_app/app/modules/seller_profile_page/presentation/controllers/seller_profile_page_controller.dart';
 
 import '../controllers/bottom_navbar_page_controller.dart';
 
@@ -17,6 +17,6 @@ class BottomNavbarPageBinding extends Bindings {
     Get.lazyPut(fenix: true, () => BecomeSellerStepPageController());
     Get.lazyPut(fenix: true, () => SellPageController());
     Get.lazyPut(fenix: true, () => TagPageController());
-    Get.lazyPut(fenix: true, () => SellerProfilePage());
+    Get.lazyPut(fenix: true, () => SellerProfilePageController());
   }
 }

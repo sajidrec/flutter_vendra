@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
+import 'package:vendra_app/app/modules/seller_profile_page/presentation/controllers/seller_profile_page_controller.dart';
 
 class SellerProfilePage extends StatelessWidget {
   const SellerProfilePage({super.key});
@@ -26,34 +28,71 @@ class SellerProfilePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 20.h),
-                _buildHeaderSection(),
-                SizedBox(height: 25.h),
-                _buildProfileShortStatistics(),
-                SizedBox(height: 24.h),
-                Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(6.r),
-                    border: Border.all(
-                      color: AppColors.primaryBlack.withAlpha(
-                        (255 * 0.1).round(),
+            child: GetBuilder<SellerProfilePageController>(
+              builder: (controller) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 20.h),
+                    _buildHeaderSection(),
+                    SizedBox(height: 25.h),
+                    _buildProfileShortStatistics(),
+                    SizedBox(height: 24.h),
+                    _buildNavMenu(controller),
+                  ],
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container _buildNavMenu(SellerProfilePageController controller) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6.r),
+        border: Border.all(
+          color: AppColors.primaryBlack.withAlpha((255 * 0.1).round()),
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+        child: Container(
+          decoration: BoxDecoration(
+            color: AppColors.primaryGray.withAlpha((255 * .12).round()),
+            borderRadius: BorderRadius.circular(8.r),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: controller.navList
+                .asMap()
+                .entries
+                .map(
+                  (entry) => GestureDetector(
+                    onTap: () {
+                      controller.changeNavIndex(index: entry.key);
+                    },
+                    child: Padding(
+                      padding: EdgeInsets.all(3.sp),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: controller.navIndex == entry.key
+                              ? AppColors.primaryWhite
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(7.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(8.sp),
+                          child: Text(entry.value.toString()),
+                        ),
                       ),
                     ),
                   ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.w,
-                      vertical: 20.h,
-                    ),
-                    child: Text("data"),
-                  ),
-                ),
-              ],
-            ),
+                )
+                .toList(),
           ),
         ),
       ),
@@ -125,7 +164,6 @@ class SellerProfilePage extends StatelessWidget {
               child: VerticalDivider(
                 color: AppColors.primaryBlack.withAlpha((255 * .35).round()),
                 thickness: 2,
-
                 width: 20,
               ),
             ),
