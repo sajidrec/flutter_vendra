@@ -7,8 +7,6 @@ import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/controllers/seller_profile_page_controller.dart';
 
-import 'overview_page.dart';
-
 class SellerProfilePage extends StatelessWidget {
   const SellerProfilePage({super.key});
 
@@ -41,10 +39,6 @@ class SellerProfilePage extends StatelessWidget {
                     _buildProfileShortStatistics(),
                     SizedBox(height: 24.h),
                     _buildNavMenu(controller),
-
-                    SizedBox(height: 34.h),
-
-                    OverViewPage(),
                   ],
                 );
               },
@@ -64,43 +58,51 @@ class SellerProfilePage extends StatelessWidget {
           color: AppColors.primaryBlack.withAlpha((255 * 0.1).round()),
         ),
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
-        child: Container(
-          decoration: BoxDecoration(
-            color: AppColors.primaryGray.withAlpha((255 * .12).round()),
-            borderRadius: BorderRadius.circular(8.r),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: controller.navList
-                .asMap()
-                .entries
-                .map(
-                  (entry) => GestureDetector(
-                    onTap: () {
-                      controller.changeNavIndex(index: entry.key);
-                    },
-                    child: Padding(
-                      padding: EdgeInsets.all(3.sp),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: controller.navIndex == entry.key
-                              ? AppColors.primaryWhite
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(7.r),
-                        ),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryGray.withAlpha((255 * .12).round()),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: controller.navList
+                    .asMap()
+                    .entries
+                    .map(
+                      (entry) => GestureDetector(
+                        onTap: () {
+                          controller.changeNavIndex(index: entry.key);
+                        },
                         child: Padding(
-                          padding: EdgeInsets.all(8.sp),
-                          child: Text(entry.value.toString()),
+                          padding: EdgeInsets.all(3.sp),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: controller.index == entry.key
+                                  ? AppColors.primaryWhite
+                                  : Colors.transparent,
+                              borderRadius: BorderRadius.circular(7.r),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(8.sp),
+                              child: Text(entry.value.toString()),
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                )
-                .toList(),
+                    )
+                    .toList(),
+              ),
+            ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14.w),
+            child: controller.pages[controller.index],
+          ),
+        ],
       ),
     );
   }
