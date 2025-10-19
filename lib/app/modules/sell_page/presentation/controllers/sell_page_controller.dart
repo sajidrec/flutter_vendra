@@ -112,9 +112,7 @@ class SellPageController extends GetxController {
       ),
       context: context,
       firstDate: startDateTec.text.isNotEmpty && startDateTec.text != "DD/MM/YY"
-          ? DateTime.parse(startDateTec.text).add(
-              Duration(days: 1),
-            ) // ✅ at least 1 day after start
+          ? DateTime.parse(startDateTec.text).add(Duration(days: 1))
           : DateTime(
               DateTime.now().year,
               DateTime.now().month,

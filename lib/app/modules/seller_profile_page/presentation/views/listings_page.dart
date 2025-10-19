@@ -121,8 +121,10 @@ class ListingsPage extends StatelessWidget {
   GestureDetector _buildEditListingItem() {
     return GestureDetector(
       onTap: () {
-        // TODO: fix error on navigating to this route throws error
-        Get.toNamed(AppRoutes.lotDetailsRoute);
+        Get.toNamed(
+          AppRoutes.lotDetailsRoute,
+          arguments: {"shouldWrapWithScaffold": true},
+        );
       },
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

@@ -12,6 +12,14 @@ class LotDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return (Get.arguments == null)
+        ? _buildThePage()
+        : (Get.arguments["shouldWrapWithScaffold"] ?? false)
+        ? Scaffold(body: SafeArea(child: _buildThePage()))
+        : _buildThePage();
+  }
+
+  GetBuilder<SellPageController> _buildThePage() {
     return GetBuilder<SellPageController>(
       builder: (controller) {
         return Padding(
