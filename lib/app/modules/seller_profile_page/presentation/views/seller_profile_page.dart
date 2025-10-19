@@ -7,6 +7,8 @@ import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/controllers/seller_profile_page_controller.dart';
 
+import 'overview_page.dart';
+
 class SellerProfilePage extends StatelessWidget {
   const SellerProfilePage({super.key});
 
@@ -39,6 +41,10 @@ class SellerProfilePage extends StatelessWidget {
                     _buildProfileShortStatistics(),
                     SizedBox(height: 24.h),
                     _buildNavMenu(controller),
+
+                    SizedBox(height: 34.h),
+
+                    OverViewPage(),
                   ],
                 );
               },
