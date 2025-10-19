@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -115,8 +114,8 @@ class LotDetailsPage extends StatelessWidget {
                                             ),
                                             Spacer(),
                                             index ==
-                                                controller
-                                                    .selectedCategoryIndex
+                                                    controller
+                                                        .selectedCategoryIndex
                                                 ? Icon(Icons.check)
                                                 : SizedBox.shrink(),
                                           ],
@@ -284,7 +283,7 @@ class LotDetailsPage extends StatelessWidget {
                     ),
                     TextSpan(
                       text:
-                      "to occasionally receive emails from us. Please read our ",
+                          "to occasionally receive emails from us. Please read our ",
                     ),
                     TextSpan(
                       text: "Privacy Policy",
@@ -302,13 +301,13 @@ class LotDetailsPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed:
-                  (controller.lotTitleFilled &&
-                      controller.subCategoryFilled &&
-                      controller.descriptionFilled &&
-                      controller.selectedCategoryIndex >= 0)
+                      (controller.lotTitleFilled &&
+                          controller.subCategoryFilled &&
+                          controller.descriptionFilled &&
+                          controller.selectedCategoryIndex >= 0)
                       ? () {
-                    controller.increaseProgressIndex();
-                  }
+                          controller.increaseProgressIndex();
+                        }
                       : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryBlack,

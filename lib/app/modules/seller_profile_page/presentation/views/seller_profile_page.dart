@@ -99,7 +99,7 @@ class SellerProfilePage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14.w),
+            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 14.w),
             child: controller.pages[controller.index],
           ),
         ],
