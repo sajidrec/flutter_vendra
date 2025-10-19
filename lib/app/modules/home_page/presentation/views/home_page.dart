@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                             },
                             icon: Icon(
                               Icons.close,
-              
+
                               color: AppColors.primaryBlack.withAlpha(
                                 (255 * .6).round(),
                               ),
@@ -360,7 +360,6 @@ class _HomePageState extends State<HomePage> {
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Container(
               width: double.infinity,
-              height: 132.h,
               decoration: BoxDecoration(
                 color: AppColors.primaryWhite,
                 borderRadius: BorderRadius.circular(5.r),
