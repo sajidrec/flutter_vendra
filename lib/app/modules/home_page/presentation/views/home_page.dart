@@ -66,9 +66,17 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
-                      SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
-                      SizedBox(height: 16.h),
-                      SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 103.h,
+                        child: SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
+                      ),
+                      // SizedBox(height: 8.h),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 123.h,
+                        child: SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
+                      ),
                       SizedBox(height: 18.h),
                       Row(
                         children: [
