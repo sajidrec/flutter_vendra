@@ -19,9 +19,7 @@ class UploadLotPhotoPage extends StatelessWidget {
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
         ? GetBuilder<SellPageController>(
             builder: (controller) {
-              return Scaffold(
-                body: SafeArea(child: _buildPage()),
-              );
+              return Scaffold(body: SafeArea(child: _buildPage()));
             },
           )
         : _buildPage();
@@ -49,7 +47,7 @@ class UploadLotPhotoPage extends StatelessWidget {
 
               GestureDetector(
                 onTap: () async {
-                  await controller.pickFiles();
+                  await controller.pickFiles(imageOnly: true);
                 },
                 child: SvgPicture.asset(AppAssets.uploadMsgBoxImg),
               ),
@@ -153,6 +151,15 @@ class UploadLotPhotoPage extends StatelessWidget {
                           controller.pickedFiles.length <= 6)
                       ? () {
                           controller.increaseProgressIndex();
+                          if (Get.arguments != null) {
+                            if (Get.arguments["shouldWrapWithScaffold"]) {
+                              Get.to(
+                                controller.pages[controller.progressedIndex -
+                                    1],
+                                arguments: {"shouldWrapWithScaffold": true},
+                              );
+                            }
+                          }
                         }
                       : null,
                   style: ElevatedButton.styleFrom(

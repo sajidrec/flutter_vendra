@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/controllers/tag_page_controller.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/publish_page.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../../../../core/constants/app_assets.dart';
@@ -16,6 +17,18 @@ class FinalTouchesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return (Get.arguments == null)
+        ? _buildPage()
+        : (Get.arguments["shouldWrapWithScaffold"] ?? false)
+        ? GetBuilder<SellPageController>(
+            builder: (controller) {
+              return Scaffold(body: SafeArea(child: _buildPage()));
+            },
+          )
+        : _buildPage();
+  }
+
+  GetBuilder<SellPageController> _buildPage() {
     return GetBuilder<SellPageController>(
       builder: (controller) {
         return Padding(
@@ -152,6 +165,15 @@ class FinalTouchesPage extends StatelessWidget {
                       (controller.thumbnailFile?.files.isNotEmpty ?? false)
                       ? () {
                           controller.increaseProgressIndex();
+
+                          if (Get.arguments != null) {
+                            if (Get.arguments["shouldWrapWithScaffold"]) {
+                              Get.to(
+                                PublishPage(),
+                                arguments: {"shouldWrapWithScaffold": true},
+                              );
+                            }
+                          }
                         }
                       : null,
                   style: ElevatedButton.styleFrom(

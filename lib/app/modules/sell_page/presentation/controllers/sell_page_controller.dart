@@ -19,7 +19,6 @@ class SellPageController extends GetxController {
   final TextEditingController startDateTec = TextEditingController();
   final TextEditingController endDateTec = TextEditingController();
 
-
   bool lotTitleFilled = false;
   bool subCategoryFilled = false;
   bool descriptionFilled = false;
@@ -147,8 +146,11 @@ class SellPageController extends GetxController {
     update();
   }
 
-  Future<void> pickFiles() async {
-    final result = await FilePicker.platform.pickFiles(allowMultiple: true);
+  Future<void> pickFiles({required bool imageOnly}) async {
+    final result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: imageOnly ? FileType.image : FileType.any,
+    );
 
     if (result != null) {
       pickedFiles = result.files;

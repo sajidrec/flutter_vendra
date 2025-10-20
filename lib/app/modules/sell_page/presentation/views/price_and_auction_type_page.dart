@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/final_touches_page.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../controllers/sell_page_controller.dart';
@@ -12,6 +13,18 @@ class PriceAndAuctionTypePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return (Get.arguments == null)
+        ? _buildPage(context)
+        : (Get.arguments["shouldWrapWithScaffold"] ?? false)
+        ? GetBuilder<SellPageController>(
+            builder: (controller) {
+              return Scaffold(body: SafeArea(child: _buildPage(context)));
+            },
+          )
+        : _buildPage(context);
+  }
+
+  GetBuilder<SellPageController> _buildPage(BuildContext context) {
     return GetBuilder<SellPageController>(
       builder: (controller) {
         return Padding(
@@ -259,6 +272,14 @@ class PriceAndAuctionTypePage extends StatelessWidget {
                   onPressed: controller.pickedFiles.length >= 3
                       ? () {
                           controller.increaseProgressIndex();
+                          if (Get.arguments != null) {
+                            if (Get.arguments["shouldWrapWithScaffold"]) {
+                              Get.to(
+                                FinalTouchesPage(),
+                                arguments: {"shouldWrapWithScaffold": true},
+                              );
+                            }
+                          }
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
