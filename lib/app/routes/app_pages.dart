@@ -14,6 +14,7 @@ import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_details_
 import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_under_review_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/sell_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/tags_page.dart';
+import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/binding/seller_profile_binding.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
@@ -112,6 +113,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.lotDetailsRoute,
       page: () => LotDetailsPage(),
+      binding: SellPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.uploadPhotoRoute,
+      page: () => UploadLotPhotoPage(),
       binding: SellPageBinding(),
     ),
   ];

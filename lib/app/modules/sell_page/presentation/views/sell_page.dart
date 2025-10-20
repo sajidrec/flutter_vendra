@@ -9,25 +9,29 @@ class SellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
-          child: GetBuilder<SellPageController>(
-            builder: (controller) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  ProgressBarWidget(
-                    progressedIndex: controller.progressedIndex,
-                    progressLength: controller.pages.length,
-                    controller: controller,
-                  ),
-                  controller.pages[controller.progressedIndex - 1],
-                ],
-              );
-            },
-          ),
-        ),
+      child: GetBuilder<SellPageController>(
+        builder: (controller) {
+          return Scaffold(
+            body: SingleChildScrollView(
+              child: GetBuilder<SellPageController>(
+                builder: (controller) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      ProgressBarWidget(
+                        progressedIndex: controller.progressedIndex,
+                        progressLength: controller.pages.length,
+                        controller: controller,
+                      ),
+                      controller.pages[controller.progressedIndex - 1],
+                    ],
+                  );
+                },
+              ),
+            ),
+          );
+        },
       ),
     );
   }

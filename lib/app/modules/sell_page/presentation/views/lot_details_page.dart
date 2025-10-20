@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -15,7 +16,11 @@ class LotDetailsPage extends StatelessWidget {
     return (Get.arguments == null)
         ? _buildThePage()
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
-        ? Scaffold(body: SafeArea(child: _buildThePage()))
+        ? GetBuilder<SellPageController>(
+            builder: (controller) {
+              return Scaffold(body: SafeArea(child: _buildThePage()));
+            },
+          )
         : _buildThePage();
   }
 
@@ -315,6 +320,15 @@ class LotDetailsPage extends StatelessWidget {
                           controller.selectedCategoryIndex >= 0)
                       ? () {
                           controller.increaseProgressIndex();
+
+                          if (Get.arguments != null) {
+                            if (Get.arguments["shouldWrapWithScaffold"]) {
+                              Get.toNamed(
+                                AppRoutes.uploadPhotoRoute,
+                                arguments: {"shouldWrapWithScaffold": true},
+                              );
+                            }
+                          }
                         }
                       : null,
                   style: ElevatedButton.styleFrom(

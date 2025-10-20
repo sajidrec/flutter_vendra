@@ -14,6 +14,20 @@ class UploadLotPhotoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return (Get.arguments == null)
+        ? _buildPage()
+        : (Get.arguments["shouldWrapWithScaffold"] ?? false)
+        ? GetBuilder<SellPageController>(
+            builder: (controller) {
+              return Scaffold(
+                body: SafeArea(child: _buildPage()),
+              );
+            },
+          )
+        : _buildPage();
+  }
+
+  GetBuilder<SellPageController> _buildPage() {
     return GetBuilder<SellPageController>(
       builder: (controller) {
         return Padding(

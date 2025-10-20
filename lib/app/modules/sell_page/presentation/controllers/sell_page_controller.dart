@@ -19,6 +19,7 @@ class SellPageController extends GetxController {
   final TextEditingController startDateTec = TextEditingController();
   final TextEditingController endDateTec = TextEditingController();
 
+
   bool lotTitleFilled = false;
   bool subCategoryFilled = false;
   bool descriptionFilled = false;
@@ -27,6 +28,8 @@ class SellPageController extends GetxController {
   bool liveAuctionMode = false;
 
   int auctionPrice = 0;
+  int progressedIndex = 1;
+  int selectedCategoryIndex = -1;
 
   FilePickerResult? thumbnailFile;
 
@@ -186,10 +189,6 @@ class SellPageController extends GetxController {
     descriptionFilled = value;
     update();
   }
-
-  int progressedIndex = 1;
-
-  int selectedCategoryIndex = -1;
 
   setSelectedCategoryIndex(int index) {
     selectedCategoryIndex = index;
