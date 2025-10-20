@@ -21,58 +21,65 @@ class ListingsPage extends StatelessWidget {
           children: [
             SizedBox(
               width: 168.w,
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+              child: GestureDetector(
+                onTap: () {
+                  Get.toNamed(AppRoutes.liveAuctionDetailsRoute);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.sp),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 20.h),
-                        child: CachedNetworkImage(
-                          height: 142.h,
-                          fit: BoxFit.cover,
-                          imageUrl:
-                              "https://static.vecteezy.com/system/resources/thumbnails/012/981/082/small_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
+                  child: Padding(
+                    padding: EdgeInsets.all(8.sp),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 20.h),
+                          child: CachedNetworkImage(
+                            height: 142.h,
+                            fit: BoxFit.cover,
+                            imageUrl:
+                                "https://static.vecteezy.com/system/resources/thumbnails/012/981/082/small_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Apple".toUpperCase(),
-                        style: TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w500,
+                        Text(
+                          "Apple".toUpperCase(),
+                          style: TextStyle(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Noise-Canceling Wireless Headphone",
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w400,
-                          overflow: TextOverflow.ellipsis,
+                        Text(
+                          "Noise-Canceling Wireless Headphone",
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w400,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                      Text(
-                        "Starting at £130",
-                        style: TextStyle(
-                          fontSize: 13.sp,
-                          fontWeight: FontWeight.w500,
-                          overflow: TextOverflow.ellipsis,
+                        Text(
+                          "Starting at £130",
+                          style: TextStyle(
+                            fontSize: 13.sp,
+                            fontWeight: FontWeight.w500,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
-                      ),
-                      Row(
-                        children: [
-                          SvgPicture.asset(AppAssets.timerIcon),
-                          Text("00d:05h:22 sec left"),
-                        ],
-                      ),
-                    ],
+                        Row(
+                          children: [
+                            SvgPicture.asset(AppAssets.timerIcon),
+                            Text("00d:05h:22 sec left"),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

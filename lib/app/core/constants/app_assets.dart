@@ -51,4 +51,7 @@ class AppAssets {
 
   static const cameraInsideCircleIcon =
       "assets/icons/camera_inside_circle_icon.svg";
+
+  static const walkingPersonIcon =
+      "assets/icons/walking_person.svg";
 }
