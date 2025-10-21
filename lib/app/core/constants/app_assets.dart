@@ -52,6 +52,10 @@ class AppAssets {
   static const cameraInsideCircleIcon =
       "assets/icons/camera_inside_circle_icon.svg";
 
-  static const walkingPersonIcon =
-      "assets/icons/walking_person.svg";
+  static const walkingPersonIcon = "assets/icons/walking_person.svg";
+
+  static const addInsideSquareIcon = "assets/icons/add_inside_square_icon.svg";
+  static const logoutIcon = "assets/icons/logout_icon.svg";
+  static const settingsIcon = "assets/icons/settings_icon.svg";
+  static const supportIcon = "assets/icons/support_icon.svg";
 }

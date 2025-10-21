@@ -21,9 +21,7 @@ class SellerProfilePage extends StatelessWidget {
             style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
           ),
           backgroundColor: AppColors.primaryWhite,
-          actions: [
-            IconButton(onPressed: () {}, icon: Icon(Icons.more_vert_outlined)),
-          ],
+          actions: [_buildMoreOptions()],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -46,6 +44,173 @@ class SellerProfilePage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  IconButton _buildMoreOptions() {
+    return IconButton(
+      onPressed: () {
+        Get.bottomSheet(
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.primaryWhite,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(6.r),
+                topRight: Radius.circular(6.r),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.sp),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.addInsideSquareIcon,
+                        width: 30.w,
+                        height: 30.h,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(9.sp),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Create new listing",
+                                style: TextStyle(fontSize: 17.sp),
+                              ),
+                              Text(
+                                "Add a new item to your listing",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  color: AppColors.primaryBlack.withAlpha(
+                                    (255 * .6).round(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.settingsIcon,
+                        width: 30.w,
+                        height: 30.h,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(9.sp),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Settings",
+                                style: TextStyle(fontSize: 17.sp),
+                              ),
+                              Text(
+                                "Update security, add payment method change currency ",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: AppColors.primaryBlack.withAlpha(
+                                    (255 * .6).round(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.supportIcon,
+                        width: 30.w,
+                        height: 30.h,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(9.sp),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Support",
+                                style: TextStyle(fontSize: 17.sp),
+                              ),
+                              Text(
+                                "Get instant Live support from admin",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: AppColors.primaryBlack.withAlpha(
+                                    (255 * .6).round(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(
+                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                  ),
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.logoutIcon,
+                        width: 30.w,
+                        height: 30.h,
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.all(9.sp),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Log out",
+                                style: TextStyle(fontSize: 17.sp),
+                              ),
+                              Text(
+                                "Exit from your account",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                  color: AppColors.primaryBlack.withAlpha(
+                                    (255 * .6).round(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      icon: Icon(Icons.more_vert_outlined),
     );
   }
 

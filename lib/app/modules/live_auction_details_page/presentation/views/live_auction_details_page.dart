@@ -276,8 +276,101 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
+                    onPressed: () {
+                      Get.dialog(
+                        Center(
+                          child: Container(
+                            width: Get.width - 32,
+                            decoration: BoxDecoration(
+                              color: AppColors.primaryWhite,
+                              borderRadius: BorderRadius.circular(10.r),
+                            ),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(10.r),
+                              color: AppColors.primaryWhite,
+                              child: Padding(
+                                padding: EdgeInsets.all(24.sp),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      "Are you sure?",
+                                      style: TextStyle(fontSize: 28.sp),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 12.sp),
+                                      child: Text(
+                                        "You want to declare the bid winner to Pristine Auction?",
+                                        style: TextStyle(fontSize: 17.sp),
+                                      ),
+                                    ),
 
-                    onPressed: () {},
+                                    Text(
+                                      "With amount of",
+                                      style: TextStyle(fontSize: 16.sp),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 24.sp),
+                                      child: Text(
+                                        "£980",
+                                        style: TextStyle(fontSize: 36.sp),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            onPressed: () {},
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColors.primaryBlack,
+                                              foregroundColor:
+                                                  AppColors.primaryWhite,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.r),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              "Yes, Confirm",
+                                              style: TextStyle(fontSize: 17.sp),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 12.w),
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              Get.back();
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColors.primaryWhite,
+                                              foregroundColor:
+                                                  AppColors.primaryBlack,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.r),
+                                              ),
+                                            ),
+                                            child: Text(
+                                              "Cancel",
+                                              style: TextStyle(fontSize: 17.sp),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                     child: Text(
                       "Declare winner",
                       style: TextStyle(fontSize: 17.sp),
