@@ -9,7 +9,9 @@ import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 class ListingsPage extends StatelessWidget {
-  const ListingsPage({super.key});
+  const ListingsPage({super.key, required this.auctionItemModel});
+
+  final AuctionItemModel auctionItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +32,30 @@ class ListingsPage extends StatelessWidget {
                       id: index.toString(),
                       description: "custom description",
                       highestBid: 12345,
-                      imgUrl: "",
+                      imgUrl:
+                          "https://cdn.mos.cms.futurecdn.net/yDn3ZSXu9eSBxmXQDZ4PCF.jpg",
                       isFavourite: false,
                       itemName: "I-phun",
                       timeLeft: "",
                       topBidders: [
-                        TopBidders(name: "Jackma", price: 999, profilePic: ""),
-                        TopBidders(name: "Jack", price: 998, profilePic: ""),
-                        TopBidders(name: "Jac", price: 997, profilePic: ""),
+                        TopBidders(
+                          name: "Jackma",
+                          price: 999,
+                          profilePic:
+                              "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        ),
+                        TopBidders(
+                          name: "Jack",
+                          price: 998,
+                          profilePic:
+                              "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        ),
+                        TopBidders(
+                          name: "Jac",
+                          price: 997,
+                          profilePic:
+                              "https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+                        ),
                       ],
                     ).toJson(),
                   );
@@ -60,21 +78,20 @@ class ListingsPage extends StatelessWidget {
                           child: CachedNetworkImage(
                             height: 142.h,
                             fit: BoxFit.cover,
-                            imageUrl:
-                                "https://static.vecteezy.com/system/resources/thumbnails/012/981/082/small_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
+                            imageUrl: auctionItemModel.imgUrl ?? "",
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),
                         ),
                         Text(
-                          "Apple".toUpperCase(),
+                          auctionItemModel.itemName!.toUpperCase(),
                           style: TextStyle(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w500,
                           ),
                         ),
                         Text(
-                          "Noise-Canceling Wireless Headphone",
+                          auctionItemModel.description ?? "",
                           style: TextStyle(
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w400,
@@ -82,7 +99,7 @@ class ListingsPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Starting at £130",
+                          "Starting at £${auctionItemModel.highestBid}",
                           style: TextStyle(
                             fontSize: 13.sp,
                             fontWeight: FontWeight.w500,
@@ -93,7 +110,7 @@ class ListingsPage extends StatelessWidget {
                           children: [
                             SvgPicture.asset(AppAssets.timerIcon),
                             Text(
-                              "00d:05h:22 sec left",
+                              "${auctionItemModel.timeLeft} sec left",
                               style: TextStyle(fontSize: 13.sp),
                             ),
                           ],
