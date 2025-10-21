@@ -18,7 +18,11 @@ class LotDetailsPage extends StatelessWidget {
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
         ? GetBuilder<SellPageController>(
             builder: (controller) {
-              return Scaffold(body: SafeArea(child: _buildThePage()));
+              return Scaffold(
+                body: SafeArea(
+                  child: SingleChildScrollView(child: _buildThePage()),
+                ),
+              );
             },
           )
         : _buildThePage();

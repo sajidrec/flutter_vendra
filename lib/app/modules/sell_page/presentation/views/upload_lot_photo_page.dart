@@ -19,7 +19,7 @@ class UploadLotPhotoPage extends StatelessWidget {
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
         ? GetBuilder<SellPageController>(
             builder: (controller) {
-              return Scaffold(body: SafeArea(child: _buildPage()));
+              return Scaffold(body: SafeArea(child: SingleChildScrollView(child: _buildPage())));
             },
           )
         : _buildPage();

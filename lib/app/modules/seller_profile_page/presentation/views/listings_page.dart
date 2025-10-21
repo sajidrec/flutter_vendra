@@ -20,7 +20,7 @@ class ListingsPage extends StatelessWidget {
         itemBuilder: (context, index) => Stack(
           children: [
             SizedBox(
-              width: 168.w,
+              width: 175.w,
               child: GestureDetector(
                 onTap: () {
                   Get.toNamed(AppRoutes.liveAuctionDetailsRoute);
@@ -75,7 +75,10 @@ class ListingsPage extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset(AppAssets.timerIcon),
-                            Text("00d:05h:22 sec left"),
+                            Text(
+                              "00d:05h:22 sec left",
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
                           ],
                         ),
                       ],

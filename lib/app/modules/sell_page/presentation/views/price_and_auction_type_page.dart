@@ -18,7 +18,7 @@ class PriceAndAuctionTypePage extends StatelessWidget {
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
         ? GetBuilder<SellPageController>(
             builder: (controller) {
-              return Scaffold(body: SafeArea(child: _buildPage(context)));
+              return Scaffold(body: SafeArea(child: SingleChildScrollView(child: _buildPage(context))));
             },
           )
         : _buildPage(context);

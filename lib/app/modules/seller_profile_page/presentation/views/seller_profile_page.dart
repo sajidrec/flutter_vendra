@@ -337,7 +337,7 @@ class SellerProfilePage extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 16.h),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.primaryGray.withAlpha((255 * .12).round()),
@@ -354,7 +354,7 @@ class SellerProfilePage extends StatelessWidget {
                           controller.changeNavIndex(index: entry.key);
                         },
                         child: Padding(
-                          padding: EdgeInsets.all(3.sp),
+                          padding: EdgeInsets.all(2.sp),
                           child: Container(
                             decoration: BoxDecoration(
                               color: controller.index == entry.key
