@@ -5,9 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 
 class LiveAuctionDetailsPage extends StatelessWidget {
-  const LiveAuctionDetailsPage({super.key});
+  const LiveAuctionDetailsPage({super.key, required this.auctionItemModel});
+
+  final AuctionItemModel auctionItemModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,88 +20,7 @@ class LiveAuctionDetailsPage extends StatelessWidget {
           centerTitle: true,
           title: Text("Live auction"),
           backgroundColor: AppColors.primaryWhite,
-          actions: [
-            IconButton(
-              onPressed: () {
-                Get.bottomSheet(
-                  Container(
-                    height: 160.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryWhite,
-                      borderRadius: BorderRadius.only(
-                        topRight: Radius.circular(10.r),
-                        topLeft: Radius.circular(10.r),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(16.sp),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              SvgPicture.asset(
-                                AppAssets.walkingPersonIcon,
-                                width: 24.w,
-                                height: 24.h,
-                              ),
-                              SizedBox(width: 8.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Switch bid",
-                                    style: TextStyle(fontSize: 17.sp),
-                                  ),
-                                  Text(
-                                    "Move to next live auction",
-                                    style: TextStyle(
-                                      fontSize: 13.sp,
-                                      color: AppColors.primaryBlack.withAlpha(
-                                        (255 * .6).round(),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.close,
-                                color: AppColors.primaryDanger,
-                                size: 24.sp,
-                              ),
-                              SizedBox(width: 8.w),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Cancel bid",
-                                    style: TextStyle(fontSize: 17.sp),
-                                  ),
-                                  Text(
-                                    "Don’t want to sell the item",
-                                    style: TextStyle(
-                                      fontSize: 13.sp,
-                                      color: AppColors.primaryBlack.withAlpha(
-                                        (255 * .6).round(),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
-              },
-              icon: Icon(Icons.more_vert_outlined),
-            ),
-          ],
+          actions: [_buildMoreOptions()],
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -106,13 +28,16 @@ class LiveAuctionDetailsPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Apple", style: TextStyle(fontSize: 17.sp)),
                 Text(
-                  "Noise-Canceling Wireless Headphone",
+                  auctionItemModel.itemName ?? "",
+                  style: TextStyle(fontSize: 17.sp),
+                ),
+                Text(
+                  auctionItemModel.description ?? "",
                   style: TextStyle(fontSize: 13.sp),
                 ),
                 Text(
-                  "Lot #C4567",
+                  "Lot #${auctionItemModel.id}",
                   style: TextStyle(
                     fontSize: 13.sp,
                     color: AppColors.primaryPurple,
@@ -123,7 +48,7 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "£ 3,160",
+                      "£ ${auctionItemModel.highestBid}",
                       style: TextStyle(
                         fontSize: 34.sp,
                         color: AppColors.primaryBlack,
@@ -143,6 +68,7 @@ class LiveAuctionDetailsPage extends StatelessWidget {
 
                 ListView.separated(
                   shrinkWrap: true,
+                  primary: false,
                   itemBuilder: (context, index) => Container(
                     decoration: BoxDecoration(
                       color: AppColors.primaryPurple.withAlpha(
@@ -161,7 +87,10 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                             children: [
                               CircleAvatar(
                                 backgroundImage: CachedNetworkImageProvider(
-                                  "https://avatars.githubusercontent.com/u/69637820?v=4",
+                                  auctionItemModel
+                                          .topBidders![index]
+                                          .profilePic ??
+                                      "",
                                 ),
                               ),
                               SizedBox(width: 12.w),
@@ -169,11 +98,12 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "Pristine Auction",
+                                    auctionItemModel.topBidders![index].name ??
+                                        "",
                                     style: TextStyle(fontSize: 17.sp),
                                   ),
                                   Text(
-                                    "£3,160",
+                                    "${auctionItemModel.topBidders![index].price ?? 0.00}",
                                     style: TextStyle(fontSize: 15.sp),
                                   ),
                                 ],
@@ -185,7 +115,7 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                     ),
                   ),
                   separatorBuilder: (context, index) => SizedBox(height: 8.sp),
-                  itemCount: 3,
+                  itemCount: auctionItemModel.topBidders!.length,
                 ),
 
                 SizedBox(height: 24.h),
@@ -394,6 +324,83 @@ class LiveAuctionDetailsPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  IconButton _buildMoreOptions() {
+    return IconButton(
+      onPressed: () {
+        Get.bottomSheet(
+          Container(
+            height: 160.h,
+            decoration: BoxDecoration(
+              color: AppColors.primaryWhite,
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10.r),
+                topLeft: Radius.circular(10.r),
+              ),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.sp),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(
+                        AppAssets.walkingPersonIcon,
+                        width: 24.w,
+                        height: 24.h,
+                      ),
+                      SizedBox(width: 8.w),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Switch bid", style: TextStyle(fontSize: 17.sp)),
+                          Text(
+                            "Move to next live auction",
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              color: AppColors.primaryBlack.withAlpha(
+                                (255 * .6).round(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.close,
+                        color: AppColors.primaryDanger,
+                        size: 24.sp,
+                      ),
+                      SizedBox(width: 8.w),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Cancel bid", style: TextStyle(fontSize: 17.sp)),
+                          Text(
+                            "Don’t want to sell the item",
+                            style: TextStyle(
+                              fontSize: 13.sp,
+                              color: AppColors.primaryBlack.withAlpha(
+                                (255 * .6).round(),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+      icon: Icon(Icons.more_vert_outlined),
     );
   }
 }

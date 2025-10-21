@@ -6,6 +6,8 @@ import 'package:vendra_app/app/modules/become_seller_page/presentation/binding/b
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_page.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_step_page.dart';
 import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bottom_navbar_page.dart';
+import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favorite_page_binding.dart';
+import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/live_auction_details_page/presentation/binding/live_auction_details_page_binding.dart';
 import 'package:vendra_app/app/modules/live_auction_details_page/presentation/views/live_auction_details_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/binding/notification_page_binding.dart';
@@ -22,6 +24,7 @@ import 'package:vendra_app/app/modules/seller_profile_page/presentation/binding/
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
+import '../core/data/models/auction_item_model.dart';
 import '../modules/auth/register_page/presentation/binding/registration_page_binding.dart';
 import '../modules/auth/register_page/presentation/views/registration_page.dart';
 import '../modules/bottom_navbar_page/presentation/binding/bottom_navbar_page_binding.dart';
@@ -126,13 +129,20 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.liveAuctionDetailsRoute,
-      page: () => LiveAuctionDetailsPage(),
+      page: () => LiveAuctionDetailsPage(
+        auctionItemModel: AuctionItemModel.fromJson(Get.arguments),
+      ),
       binding: LiveAuctionDetailsPageBinding(),
     ),
     GetPage(
       name: AppRoutes.notificationRoute,
       page: () => NotificationPage(),
       binding: NotificationPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.favoriteRoute,
+      page: () => FavoritePage(),
+      binding: FavoritePageBinding(),
     ),
   ];
 }

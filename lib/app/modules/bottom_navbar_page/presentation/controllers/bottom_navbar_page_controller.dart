@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/controller/become_seller_page_controller.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_page.dart';
+import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/views/home_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/views/notification_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/sell_page.dart';
@@ -12,7 +13,7 @@ class BottomNavbarPageController extends GetxController {
 
   List<Widget> pages = [
     const HomePage(),
-    const Center(child: Text("Favorite")),
+    const FavoritePage(),
     const BecomeSellerPage(),
     const NotificationPage(),
     const SellerProfilePage(),
@@ -36,7 +37,7 @@ class BottomNavbarPageController extends GetxController {
 
     pages = [
       const HomePage(),
-      const Center(child: Text("Favorite")),
+      const FavoritePage(),
       isVerified
           ? const SellPage() // show seller page if verified
           : const BecomeSellerPage(), // show become seller page otherwise

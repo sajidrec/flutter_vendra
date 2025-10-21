@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 class ListingsPage extends StatelessWidget {
@@ -23,7 +24,23 @@ class ListingsPage extends StatelessWidget {
               width: 175.w,
               child: GestureDetector(
                 onTap: () {
-                  Get.toNamed(AppRoutes.liveAuctionDetailsRoute);
+                  Get.toNamed(
+                    AppRoutes.liveAuctionDetailsRoute,
+                    arguments: AuctionItemModel(
+                      id: index.toString(),
+                      description: "custom description",
+                      highestBid: 12345,
+                      imgUrl: "",
+                      isFavourite: false,
+                      itemName: "I-phun",
+                      timeLeft: "",
+                      topBidders: [
+                        TopBidders(name: "Jackma", price: 999, profilePic: ""),
+                        TopBidders(name: "Jack", price: 998, profilePic: ""),
+                        TopBidders(name: "Jac", price: 997, profilePic: ""),
+                      ],
+                    ).toJson(),
+                  );
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -165,88 +182,86 @@ class ListingsPage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.dialog(
-          Container(
-            child: Center(
-              child: Material(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.delete_outline,
+          Center(
+            child: Material(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(12),
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.delete_outline,
+                          color: AppColors.primaryDanger,
+                        ),
+                        Text(
+                          "Delete item",
+                          style: TextStyle(
+                            fontSize: 20.sp,
                             color: AppColors.primaryDanger,
                           ),
-                          Text(
-                            "Delete item",
-                            style: TextStyle(
-                              fontSize: 20.sp,
-                              color: AppColors.primaryDanger,
-                            ),
+                        ),
+                        Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          icon: Icon(Icons.close),
+                        ),
+                      ],
+                    ),
+                    Divider(),
+                    Wrap(
+                      children: [
+                        Text(
+                          "Are you sure you want to delete the item from your listing? ",
+                          style: TextStyle(fontSize: 17.sp),
+                        ),
+                        Text(
+                          "Once you delete the item it will remove permanently from your listing ",
+                          style: TextStyle(
+                            fontSize: 17.sp,
+                            color: AppColors.primaryDanger,
                           ),
-                          Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            icon: Icon(Icons.close),
-                          ),
-                        ],
-                      ),
-                      Divider(),
-                      Wrap(
-                        children: [
-                          Text(
-                            "Are you sure you want to delete the item from your listing? ",
-                            style: TextStyle(fontSize: 17.sp),
-                          ),
-                          Text(
-                            "Once you delete the item it will remove permanently from your listing ",
-                            style: TextStyle(
-                              fontSize: 17.sp,
-                              color: AppColors.primaryDanger,
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 20.h),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primaryBlack,
-                                foregroundColor: AppColors.primaryWhite,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.r),
-                                ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryBlack,
+                              foregroundColor: AppColors.primaryWhite,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4.r),
                               ),
-                              child: Text("No, keep it"),
                             ),
+                            child: Text("No, keep it"),
                           ),
-                          SizedBox(width: 12.w),
-                          Expanded(
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.primaryDanger,
-                                foregroundColor: AppColors.primaryWhite,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.r),
-                                ),
+                        ),
+                        SizedBox(width: 12.w),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.primaryDanger,
+                              foregroundColor: AppColors.primaryWhite,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(4.r),
                               ),
-                              child: Text("Yes, delete"),
                             ),
+                            child: Text("Yes, delete"),
                           ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
