@@ -11,16 +11,50 @@ class NotificationPage extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: AppColors.primaryWhite,
-          title: Text("Notifications"),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Notifications",
+                style: TextStyle(fontWeight: FontWeight.w700),
+              ),
+              Icon(Icons.notifications, color: AppColors.primaryPurple),
+            ],
+          ),
           centerTitle: true,
         ),
-        body: ListView.separated(
-          shrinkWrap: true,
-          itemBuilder: (context, index) => Row(children: [
-
-          ]),
-          separatorBuilder: (context, index) => SizedBox(height: 10.h),
-          itemCount: 100,
+        body: Padding(
+          padding: EdgeInsets.all(16.sp),
+          child: ListView.separated(
+            shrinkWrap: true,
+            itemBuilder: (context, index) => Row(
+              children: [
+                Icon(Icons.notifications_outlined),
+                SizedBox(width: 10.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Title",
+                        style: TextStyle(
+                          fontSize: 17.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        "Description this is multiline description of the notification.",
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            separatorBuilder: (context, index) => Divider(
+              color: AppColors.primaryBlack.withAlpha((255 * 0.25).round()),
+            ),
+            itemCount: 20,
+          ),
         ),
       ),
     );
