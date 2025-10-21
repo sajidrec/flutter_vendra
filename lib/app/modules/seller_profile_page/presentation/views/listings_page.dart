@@ -109,9 +109,15 @@ class ListingsPage extends StatelessWidget {
                         Row(
                           children: [
                             SvgPicture.asset(AppAssets.timerIcon),
-                            Text(
-                              "${auctionItemModel.timeLeft} sec left",
-                              style: TextStyle(fontSize: 13.sp),
+                            Expanded(
+                              child: Text(
+                                "${auctionItemModel.timeLeft} sec left",
+                                style: TextStyle(
+                                  fontSize: 13.sp,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                maxLines: 1,
+                              ),
                             ),
                           ],
                         ),

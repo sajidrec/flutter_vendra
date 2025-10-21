@@ -74,7 +74,6 @@ class LiveAuctionDetailsPage extends StatelessWidget {
                       color: AppColors.primaryPurple.withAlpha(
                         (255 * .07).round(),
                       ),
-
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                     child: Padding(
