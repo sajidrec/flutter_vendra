@@ -171,38 +171,149 @@ class SellerProfilePage extends StatelessWidget {
                   Divider(
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.logoutIcon,
-                        width: 30.w,
-                        height: 30.h,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(9.sp),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Log out",
-                                style: TextStyle(fontSize: 17.sp),
+                  GestureDetector(
+                    onTap: () {
+                      Get.dialog(
+                        Center(
+                          child: Material(
+                            color: Colors.transparent,
+                            child: Container(
+                              width: Get.width - 30.w,
+                              padding: EdgeInsets.all(20),
+                              decoration: BoxDecoration(
+                                color: AppColors.primaryWhite,
+                                borderRadius: BorderRadius.circular(6.r),
                               ),
-                              Text(
-                                "Exit from your account",
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: AppColors.primaryBlack.withAlpha(
-                                    (255 * .6).round(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      SvgPicture.asset(
+                                        AppAssets.logoutIcon,
+                                        width: 24.w,
+                                        height: 24.h,
+                                      ),
+                                      Text(
+                                        "Log out",
+                                        style: TextStyle(
+                                          fontSize: 20.sp,
+                                          color: AppColors.primaryDanger,
+                                        ),
+                                      ),
+
+                                      Spacer(),
+                                      IconButton(
+                                        onPressed: () {
+                                          Get.back();
+                                        },
+                                        icon: Icon(Icons.close),
+                                      ),
+                                    ],
                                   ),
-                                ),
+                                  Divider(),
+
+                                  Padding(
+                                    padding: EdgeInsets.only(bottom: 20.h),
+                                    child: Text(
+                                      "Do you want to log out your account?",
+                                      style: TextStyle(
+                                        fontSize: 16.sp,
+                                        color: AppColors.primaryBlack.withAlpha(
+                                          (255 * .8).round(),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppColors.primaryBlack,
+                                            foregroundColor:
+                                                AppColors.primaryWhite,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.r),
+                                            ),
+                                          ),
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          child: Text(
+                                            "No, keep me in",
+                                            style: TextStyle(fontSize: 17.sp),
+                                          ),
+                                        ),
+                                      ),
+
+                                      SizedBox(width: 12.w),
+
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor:
+                                                AppColors.primaryDanger,
+                                            foregroundColor:
+                                                AppColors.primaryWhite,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(4.r),
+                                            ),
+                                          ),
+                                          onPressed: () {},
+                                          child: Text(
+                                            "Yes, log out",
+                                            style: TextStyle(fontSize: 17.sp),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.logoutIcon,
+                          width: 30.w,
+                          height: 30.h,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(9.sp),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Log out",
+                                  style: TextStyle(fontSize: 17.sp),
+                                ),
+                                Text(
+                                  "Exit from your account",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    overflow: TextOverflow.ellipsis,
+                                    color: AppColors.primaryBlack.withAlpha(
+                                      (255 * .6).round(),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
