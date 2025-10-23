@@ -6,14 +6,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
+import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.auctionItemModel});
 
   @override
   State<HomePage> createState() => _HomePageState();
+
+  final AuctionItemModel auctionItemModel;
 }
 
 class _HomePageState extends State<HomePage> {
@@ -149,6 +152,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
+
                   GridView.builder(
                     shrinkWrap: true,
                     primary: false,
@@ -160,77 +164,124 @@ class _HomePageState extends State<HomePage> {
                     ),
                     itemCount: 10,
                     itemBuilder: (context, index) {
-                      return Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppColors.primaryBorderColor,
-                            width: 1,
+                      return GestureDetector(
+                        onTap: () {
+                          Get.toNamed(
+                            AppRoutes.liveAuctionDetailsRoute,
+                            arguments: AuctionItemModel(
+                              id: "3",
+                              itemName: "Test Demo",
+                              isFavourite: false,
+                              highestBid: 99,
+                              description: "Test",
+                              imgUrl:
+                                  "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+                              timeLeft: DateTime.now().toString(),
+                              topBidders: [
+                                TopBidders(
+                                  price: 99,
+                                  profilePic:
+                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+                                  name: "Random test product",
+                                ),
+                                TopBidders(
+                                  price: 99,
+                                  profilePic:
+                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+                                  name: "Random test product",
+                                ),
+                                TopBidders(
+                                  price: 99,
+                                  profilePic:
+                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+                                  name: "Random test product",
+                                ),
+                              ],
+                            ).toJson(),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppColors.primaryBorderColor,
+                              width: 1,
+                            ),
                           ),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 8.w,
-                            vertical: 12.h,
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Stack(
-                                children: [
-                                  Positioned(
-                                    right: 0,
-                                    top: 0,
-                                    child: SvgPicture.asset(
-                                      AppAssets.heartOutlineIcon,
-                                      width: 20.w,
-                                      height: 20.h,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 8.w,
+                              vertical: 12.h,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Stack(
+                                  children: [
+                                    CachedNetworkImage(
+                                      width: double.infinity,
+                                      height: 142.h,
+                                      fit: BoxFit.contain,
+                                      imageUrl:
+                                          widget.auctionItemModel.imgUrl ?? "",
                                     ),
-                                  ),
-                                  CachedNetworkImage(
-                                    width: double.infinity,
-                                    height: 142.h,
-                                    fit: BoxFit.contain,
-                                    imageUrl:
-                                        "https://static.vecteezy.com/system/resources/thumbnails/012/981/082/small_2x/wireless-headphones-side-view-white-icon-on-a-transparent-background-3d-rendering-png.png",
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 10.h),
-                              Text(
-                                "Apple",
-                                style: TextStyle(
-                                  fontSize: 15.sp,
-                                  fontWeight: FontWeight.w500,
+                                    Positioned(
+                                      right: 0,
+                                      top: 0,
+                                      child: GestureDetector(
+                                        onTap: () {
+
+                                        },
+                                        child: SvgPicture.asset(
+                                          AppAssets.heartOutlineIcon,
+                                          width: 20.w,
+                                          height: 20.h,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Text(
-                                "Noise-Canceling Wireless Headphone",
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w400,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              Text(
-                                "Starting at £130",
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  fontWeight: FontWeight.w500,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                              SizedBox(height: 5.h),
-                              Row(
-                                children: [
-                                  SvgPicture.asset(AppAssets.timerIcon),
-                                  Text(
-                                    "00d:05h:22 sec left",
-                                    style: TextStyle(fontSize: 13.sp),
+                                SizedBox(height: 10.h),
+                                Text(
+                                  widget.auctionItemModel.itemName ?? "",
+                                  style: TextStyle(
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.w500,
                                   ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                Text(
+                                  widget.auctionItemModel.description ?? "",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                Text(
+                                  "Starting at £${widget.auctionItemModel.highestBid}",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w500,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                SizedBox(height: 5.h),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(AppAssets.timerIcon),
+                                    Expanded(
+                                      child: Text(
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+
+                                        "${widget.auctionItemModel.timeLeft} sec left",
+                                        style: TextStyle(fontSize: 13.sp),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

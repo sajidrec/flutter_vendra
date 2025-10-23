@@ -50,7 +50,8 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.homeRoute,
-      page: () => HomePage(),
+      page: () =>
+          HomePage(auctionItemModel: AuctionItemModel.fromJson(Get.arguments)),
       binding: HomeBinding(),
     ),
     GetPage(
