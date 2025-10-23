@@ -77,6 +77,7 @@ flutter:
     - assets/icons/
     - lib/app/core/data/datasources/states_info.json
     - lib/app/core/data/datasources/country_info.json
+    - assets/fonts
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -84,7 +85,10 @@ flutter:
 
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/to/asset-from-package
-
+  fonts:
+    - family: SFPro
+      fonts:
+        - asset: assets/fonts/sf_pro_regular.otf
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
