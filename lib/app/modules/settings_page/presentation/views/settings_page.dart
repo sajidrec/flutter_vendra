@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
+import 'package:get/get.dart';
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -27,7 +29,9 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.generalPeopleIcon,
                   optionName: "General",
                   optionDescription: "Change display name & other information",
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.generalSettingRoute);
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),

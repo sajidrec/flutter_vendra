@@ -8,6 +8,8 @@ import 'package:vendra_app/app/modules/become_seller_page/presentation/views/bec
 import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bottom_navbar_page.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favorite_page_binding.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
+import 'package:vendra_app/app/modules/general_setting_page/bindings/general_setting_page_binding.dart';
+import 'package:vendra_app/app/modules/general_setting_page/views/general_setting_page.dart';
 import 'package:vendra_app/app/modules/live_auction_details_page/presentation/binding/live_auction_details_page_binding.dart';
 import 'package:vendra_app/app/modules/live_auction_details_page/presentation/views/live_auction_details_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/binding/notification_page_binding.dart';
@@ -151,6 +153,11 @@ class AppPages {
       name: AppRoutes.settingsRoute,
       page: () => SettingsPage(),
       binding: SettingsPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.generalSettingRoute,
+      page: () => GeneralSettingPage(),
+      binding: GeneralSettingPageBinding(),
     ),
   ];
 }
