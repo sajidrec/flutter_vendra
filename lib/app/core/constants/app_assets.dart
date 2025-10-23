@@ -58,4 +58,14 @@ class AppAssets {
   static const logoutIcon = "assets/icons/logout_icon.svg";
   static const settingsIcon = "assets/icons/settings_icon.svg";
   static const supportIcon = "assets/icons/support_icon.svg";
+  static const switchPeopleVersionIcon = "assets/icons/switch_people_icon.svg";
+  static const generalPeopleIcon = "assets/icons/general_people_icon.svg";
+  static const lockIcon = "assets/icons/lock_icon.svg";
+  static const bankIcon = "assets/icons/bank_icon.svg";
+  static const moneyIcon = "assets/icons/money_icon.svg";
+  static const infoIcon = "assets/icons/info_icon.svg";
+  static const sheildWithRightTickIcon =
+      "assets/icons/sheild_with_right_tick_icon.svg";
+  static const notificationBellRingIcon =
+      "assets/icons/notification_bell_ring_icon.svg";
 }

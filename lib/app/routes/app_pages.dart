@@ -22,6 +22,8 @@ import 'package:vendra_app/app/modules/sell_page/presentation/views/tags_page.da
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/binding/seller_profile_binding.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
+import 'package:vendra_app/app/modules/settings_page/presentation/binding/settings_page_binding.dart';
+import 'package:vendra_app/app/modules/settings_page/presentation/views/settings_page.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/binding/splash_page_binding.dart';
 import 'package:vendra_app/app/modules/splash_page/presentation/views/splash_page.dart';
 import '../core/data/models/auction_item_model.dart';
@@ -144,6 +146,11 @@ class AppPages {
       name: AppRoutes.favoriteRoute,
       page: () => FavoritePage(),
       binding: FavoritePageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.settingsRoute,
+      page: () => SettingsPage(),
+      binding: SettingsPageBinding(),
     ),
   ];
 }

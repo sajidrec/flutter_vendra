@@ -108,38 +108,43 @@ class SellerProfilePage extends StatelessWidget {
                   Divider(
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.settingsIcon,
-                        width: 30.w,
-                        height: 30.h,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(9.sp),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Settings",
-                                style: TextStyle(fontSize: 17.sp),
-                              ),
-                              Text(
-                                "Update security, add payment method change currency ",
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: AppColors.primaryBlack.withAlpha(
-                                    (255 * .6).round(),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(AppRoutes.settingsRoute);
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.settingsIcon,
+                          width: 30.w,
+                          height: 30.h,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(9.sp),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Settings",
+                                  style: TextStyle(fontSize: 17.sp),
+                                ),
+                                Text(
+                                  "Update security, add payment method change currency ",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    overflow: TextOverflow.ellipsis,
+                                    color: AppColors.primaryBlack.withAlpha(
+                                      (255 * .6).round(),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Divider(
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
