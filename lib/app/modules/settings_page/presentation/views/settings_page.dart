@@ -100,7 +100,12 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.sheildWithRightTickIcon,
                   optionName: "Privacy Policy",
                   optionDescription: "Learn about Privacy policy",
-                  onTap: () {},
+                  onTap: () {
+                    Get.bottomSheet(
+                      isScrollControlled: true,
+                      _buildPrivacyPolicy(),
+                    );
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
@@ -233,6 +238,58 @@ class SettingsPage extends StatelessWidget {
                   ],
                 ),
               ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  GetBuilder<SettingsPageController> _buildPrivacyPolicy() {
+    return GetBuilder<SettingsPageController>(
+      init: SettingsPageController(),
+      builder: (controller) {
+        return Container(
+          width: double.infinity,
+          height: Get.height * .9,
+          decoration: BoxDecoration(
+            color: AppColors.primaryWhite,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 12.h),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            "Privacy policy",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 20.h),
+                  SvgPicture.asset(AppAssets.privacyPolicyImg),
+                ],
+              ),
             ),
           ),
         );

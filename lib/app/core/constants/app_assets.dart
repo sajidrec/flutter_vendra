@@ -70,4 +70,5 @@ class AppAssets {
       "assets/icons/notification_bell_ring_icon.svg";
 
   static const cardsLogoImg = "assets/images/cards_logo_img.svg";
+  static const privacyPolicyImg = "assets/images/privacy_policy_img.svg";
 }
