@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/payment_method_page/controllers/add_card_page_controller.dart';
 
@@ -48,16 +50,19 @@ class AddCardPage extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-
                     SizedBox(height: 20.h),
 
                     // Card Number
                     _buildLabel("Card Number"),
                     SizedBox(height: 6.h),
                     TextField(
+                      maxLength: 19,
+
                       controller: controller.cardNumberTec,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
+                        counterText: "",
+                        suffix: SvgPicture.asset(AppAssets.cardsLogoImg),
                         hintText: "XXXX XXXX XXXX XXXX",
                         border: border,
                         focusedBorder: border,
