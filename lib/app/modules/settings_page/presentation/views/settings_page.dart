@@ -40,7 +40,9 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.lockIcon,
                   optionName: "Security",
                   optionDescription: "Change your account password",
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.securitySettingsRoute);
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),

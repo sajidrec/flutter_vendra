@@ -34,7 +34,9 @@ class GeneralSettingPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.back();
+                    },
                     child: Text(
                       "Save changes",
                       style: TextStyle(fontSize: 17.sp),

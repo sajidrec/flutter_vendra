@@ -21,6 +21,5 @@ abstract class AppRoutes {
   static const String favoriteRoute = '/notificationRoute';
   static const String settingsRoute = '/settingsRoute';
   static const String generalSettingRoute = '/generalSettingRoute';
-
-
+  static const String securitySettingsRoute = '/securitySettingsRoute';
 }
