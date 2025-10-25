@@ -114,7 +114,9 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.infoIcon,
                   optionName: "About",
                   optionDescription: "Version 2.0",
-                  onTap: () {},
+                  onTap: () {
+                    Get.bottomSheet(isScrollControlled: true, _buildAbout());
+                  },
                 ),
               ],
             ),
@@ -288,6 +290,131 @@ class SettingsPage extends StatelessWidget {
 
                   SizedBox(height: 20.h),
                   SvgPicture.asset(AppAssets.privacyPolicyImg),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  GetBuilder<SettingsPageController> _buildAbout() {
+    return GetBuilder<SettingsPageController>(
+      init: SettingsPageController(),
+      builder: (controller) {
+        return Container(
+          width: double.infinity,
+          height: Get.height * .9,
+          decoration: BoxDecoration(
+            color: AppColors.primaryWhite,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 12.h),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            "About",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Get.back();
+                        },
+                        icon: Icon(Icons.close),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: 20.h),
+
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(6.r),
+                      border: Border.all(
+                        color: AppColors.primaryBlack.withAlpha(
+                          (255 * .1).round(),
+                        ),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(16.sp),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Version", style: TextStyle(fontSize: 17.sp)),
+                          Text("2.0.0.7", style: TextStyle(fontSize: 13.sp)),
+
+                          Divider(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .1).round(),
+                            ),
+                          ),
+
+                          Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Terms of use",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Learn about our terms of service",
+                                    style: TextStyle(fontSize: 13.sp),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              Icon(Icons.arrow_forward_ios),
+                            ],
+                          ),
+
+                          Divider(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .1).round(),
+                            ),
+                          ),
+
+                          Row(
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Visit us",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Find us online",
+                                    style: TextStyle(fontSize: 13.sp),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              Icon(Icons.arrow_forward_ios),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
