@@ -15,7 +15,7 @@ class ChooseCurrencyBottomSheet extends StatelessWidget {
       init: ChooseCurrencyController(),
       builder: (controller) {
         return Container(
-          height: 500.h,
+          height: Get.height / 2,
           decoration: BoxDecoration(
             color: AppColors.primaryWhite,
             borderRadius: BorderRadius.vertical(top: Radius.circular(20.r)),

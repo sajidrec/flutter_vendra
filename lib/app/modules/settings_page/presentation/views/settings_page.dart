@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/settings_page/presentation/controllers/settings_page_controller.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../widgets/choose_currency_bottomsheet_widget.dart';
@@ -85,7 +86,12 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.notificationBellRingIcon,
                   optionName: "Notifications Preferences",
                   optionDescription: "Customize your notification settings",
-                  onTap: () {},
+                  onTap: () {
+                    Get.bottomSheet(
+                      isScrollControlled: true,
+                      _buildNotificationPreferencePopup(),
+                    );
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
@@ -110,6 +116,127 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  GetBuilder<SettingsPageController> _buildNotificationPreferencePopup() {
+    return GetBuilder<SettingsPageController>(
+      builder: (controller) {
+        return Container(
+          width: double.infinity,
+          height: Get.height * .9,
+          decoration: BoxDecoration(
+            color: AppColors.primaryWhite,
+            borderRadius: BorderRadius.circular(6.r),
+          ),
+
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 12.h),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          "Notifications and preferences",
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: Icon(Icons.close),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: 24.h),
+                Text(
+                  "Updates and promotions",
+                  style: TextStyle(fontSize: 28.sp),
+                ),
+                Text(
+                  "Be the first to know about new features, promo codes and deals",
+                  style: TextStyle(
+                    fontSize: 15.sp,
+                    color: AppColors.primaryBlack.withAlpha(
+                      (255 * .80).round(),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 24.h),
+                Row(
+                  children: [
+                    Text("Email", style: TextStyle(fontSize: 17.sp)),
+                    Spacer(),
+                    Switch(
+                      inactiveThumbColor: AppColors.primaryWhite,
+                      inactiveTrackColor: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                      value: controller.emailUpdate,
+                      onChanged: (value) {
+                        controller.toggleEmailUpdate();
+                      },
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                ),
+                Row(
+                  children: [
+                    Text("SMS", style: TextStyle(fontSize: 17.sp)),
+                    Spacer(),
+                    Switch(
+                      inactiveThumbColor: AppColors.primaryWhite,
+                      inactiveTrackColor: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                      value: controller.smsUpdate,
+                      onChanged: (value) {
+                        controller.toggleSmsUpdate();
+                      },
+                    ),
+                  ],
+                ),
+                Divider(
+                  color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      "Push notifications",
+                      style: TextStyle(fontSize: 17.sp),
+                    ),
+                    Spacer(),
+                    Switch(
+                      inactiveThumbColor: AppColors.primaryWhite,
+                      inactiveTrackColor: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                      value: controller.pushNotification,
+                      onChanged: (value) {
+                        controller.togglePushNotification();
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 
