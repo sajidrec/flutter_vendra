@@ -68,4 +68,6 @@ class AppAssets {
       "assets/icons/sheild_with_right_tick_icon.svg";
   static const notificationBellRingIcon =
       "assets/icons/notification_bell_ring_icon.svg";
+
+  static const cardsLogoImg = "assets/images/cards_logo_img.svg";
 }

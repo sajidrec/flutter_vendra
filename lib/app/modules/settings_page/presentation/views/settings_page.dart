@@ -51,7 +51,9 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.bankIcon,
                   optionName: "Payment Method",
                   optionDescription: "Update or add your payment method",
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(AppRoutes.paymentMethodRoute);
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
