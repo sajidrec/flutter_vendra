@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,6 +7,8 @@ import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
+
+import '../widgets/choose_currency_bottomsheet_widget.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -62,7 +66,17 @@ class SettingsPage extends StatelessWidget {
                   iconPath: AppAssets.moneyIcon,
                   optionName: "Currency",
                   optionDescription: "Choose your currency",
-                  onTap: () {},
+                  onTap: () async {
+                    final selected = await Get.bottomSheet(
+                      const ChooseCurrencyBottomSheet(),
+                      isScrollControlled: true,
+                      backgroundColor: Colors.transparent,
+                    );
+
+                    if (selected != null) {
+                      log("Selected currency: $selected");
+                    }
+                  },
                 ),
                 Divider(
                   color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
