@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/controllers/seller_profile_page_controller.dart';
+import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/support_page.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
 class SellerProfilePage extends StatelessWidget {
@@ -149,38 +150,43 @@ class SellerProfilePage extends StatelessWidget {
                   Divider(
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(
-                        AppAssets.supportIcon,
-                        width: 30.w,
-                        height: 30.h,
-                      ),
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsets.all(9.sp),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Support",
-                                style: TextStyle(fontSize: 17.sp),
-                              ),
-                              Text(
-                                "Get instant Live support from admin",
-                                style: TextStyle(
-                                  fontSize: 13.sp,
-                                  overflow: TextOverflow.ellipsis,
-                                  color: AppColors.primaryBlack.withAlpha(
-                                    (255 * .6).round(),
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(SupportPage());
+                    },
+                    child: Row(
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.supportIcon,
+                          width: 30.w,
+                          height: 30.h,
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.all(9.sp),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Support",
+                                  style: TextStyle(fontSize: 17.sp),
+                                ),
+                                Text(
+                                  "Get instant Live support from admin",
+                                  style: TextStyle(
+                                    fontSize: 13.sp,
+                                    overflow: TextOverflow.ellipsis,
+                                    color: AppColors.primaryBlack.withAlpha(
+                                      (255 * .6).round(),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                   Divider(
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
