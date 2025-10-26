@@ -24,4 +24,5 @@ abstract class AppRoutes {
   static const String securitySettingsRoute = '/securitySettingsRoute';
   static const String paymentMethodRoute = '/paymentMethodRoute';
   static const String addCardRoute = '/addCardRoute';
+  static const String forgetPassRoute = '/forgetPassRoute';
 }

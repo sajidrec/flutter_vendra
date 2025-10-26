@@ -8,6 +8,7 @@ import 'package:vendra_app/app/modules/auth/login_page/presentation/utils/passwo
 
 import '../../../../../core/constants/app_assets.dart';
 import '../../../../../core/constants/app_colors.dart';
+import '../../../../../routes/app_routes.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -118,6 +119,26 @@ class LoginPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                          ),
+
+                          SizedBox(height: 5.h),
+
+                          Row(
+                            children: [
+                              Spacer(),
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.forgetPassRoute);
+                                },
+                                child: Text(
+                                  "Forget password?",
+                                  style: TextStyle(
+                                    fontSize: 15.sp,
+                                    color: AppColors.primaryPurple,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
 
                           SizedBox(height: 16.h),

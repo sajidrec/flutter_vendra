@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/auth/forget_pass_page/binding/forget_pass_page_binding.dart';
+import 'package:vendra_app/app/modules/auth/forget_pass_page/views/forget_pass_page.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/binding/login_page_binding.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/views/login_page.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/binding/become_seller_page_binding.dart';
@@ -179,6 +181,11 @@ class AppPages {
       name: AppRoutes.addCardRoute,
       page: () => AddCardPage(),
       binding: AddCardPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.forgetPassRoute,
+      page: () => ForgetPassPage(),
+      binding: ForgetPassPageBinding(),
     ),
   ];
 }
