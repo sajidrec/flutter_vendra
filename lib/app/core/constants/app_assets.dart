@@ -71,4 +71,10 @@ class AppAssets {
 
   static const cardsLogoImg = "assets/images/cards_logo_img.svg";
   static const privacyPolicyImg = "assets/images/privacy_policy_img.svg";
+
+  static const notificationFilledIcon =
+      "assets/icons/notification_filled_icon.svg";
+  static const personFilledIcon = "assets/icons/person_filled_icon.svg";
+
+  static const plusCircleFilledIcon = "assets/icons/plusCircleFilledIcon.svg";
 }

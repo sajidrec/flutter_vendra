@@ -64,7 +64,9 @@ class BottomNavbarPage extends StatelessWidget {
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
-          AppAssets.plusCircleIcon,
+          controller.index == 2
+              ? AppAssets.plusCircleFilledIcon
+              : AppAssets.plusCircleIcon,
           width: 24.w,
           height: 24.h,
         ),
@@ -72,15 +74,20 @@ class BottomNavbarPage extends StatelessWidget {
       ),
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
-          AppAssets.notificationOutlineIcon,
+          controller.index == 3
+              ? AppAssets.notificationFilledIcon
+              : AppAssets.notificationOutlineIcon,
           width: 24.w,
           height: 24.h,
         ),
         label: "Notifications",
       ),
+
       BottomNavigationBarItem(
         icon: SvgPicture.asset(
-          AppAssets.personOutlineIcon,
+          controller.index == 4
+              ? AppAssets.personFilledIcon
+              : AppAssets.personOutlineIcon,
           width: 24.w,
           height: 24.h,
         ),
