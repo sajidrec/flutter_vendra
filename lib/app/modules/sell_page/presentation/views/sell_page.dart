@@ -8,11 +8,11 @@ class SellPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: GetBuilder<SellPageController>(
-        builder: (controller) {
-          return Scaffold(
-            body: SingleChildScrollView(
+    return GetBuilder<SellPageController>(
+      builder: (controller) {
+        return Scaffold(
+          body: SafeArea(
+            child: SingleChildScrollView(
               child: GetBuilder<SellPageController>(
                 builder: (controller) {
                   return Column(
@@ -30,9 +30,9 @@ class SellPage extends StatelessWidget {
                 },
               ),
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -16,14 +16,14 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Settings"),
-          backgroundColor: AppColors.primaryWhite,
-          centerTitle: true,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Settings"),
+        backgroundColor: AppColors.primaryWhite,
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(
@@ -73,7 +73,7 @@ class SettingsPage extends StatelessWidget {
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
                     );
-
+            
                     if (selected != null) {
                       log("Selected currency: $selected");
                     }

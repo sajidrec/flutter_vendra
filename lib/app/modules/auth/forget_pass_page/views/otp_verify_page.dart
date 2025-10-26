@@ -11,14 +11,14 @@ class OtpVerifyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Verify OTP"),
-          centerTitle: true,
-          backgroundColor: AppColors.primaryWhite,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Verify OTP"),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryWhite,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<OtpVerifyPageController>(
             init: OtpVerifyPageController(),
             builder: (controller) {

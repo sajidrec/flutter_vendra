@@ -15,9 +15,9 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<LoginPageController>(
             builder: (controller) {
               return Column(
@@ -71,9 +71,9 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           ),
-
+            
                           SizedBox(height: 16.h),
-
+            
                           Text(
                             "Password",
                             style: TextStyle(
@@ -120,9 +120,9 @@ class LoginPage extends StatelessWidget {
                               ),
                             ),
                           ),
-
+            
                           SizedBox(height: 5.h),
-
+            
                           Row(
                             children: [
                               Spacer(),
@@ -140,9 +140,9 @@ class LoginPage extends StatelessWidget {
                               ),
                             ],
                           ),
-
+            
                           SizedBox(height: 16.h),
-
+            
                           _buildLoginButton(controller),
                         ],
                       ),

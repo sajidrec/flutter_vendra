@@ -10,14 +10,14 @@ class PaymentMethodPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Payment Method"),
-          centerTitle: true,
-          backgroundColor: AppColors.primaryWhite,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Payment Method"),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryWhite,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.sp),
             child: Column(
@@ -50,9 +50,9 @@ class PaymentMethodPage extends StatelessWidget {
                             ),
                           ),
                         ),
-
+            
                         SizedBox(height: 24.h),
-
+            
                         GestureDetector(
                           onTap: () {
                             Get.toNamed(AppRoutes.addCardRoute);

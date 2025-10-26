@@ -14,9 +14,9 @@ class RegistrationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<RegistrationPageController>(
             builder: (controller) {
               return Column(
@@ -79,9 +79,9 @@ class RegistrationPage extends StatelessWidget {
                               ),
                             ],
                           ),
-
+            
                           SizedBox(height: 16.h),
-
+            
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -124,9 +124,9 @@ class RegistrationPage extends StatelessWidget {
                               ),
                             ],
                           ),
-
+            
                           SizedBox(height: 16.h),
-
+            
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -147,7 +147,7 @@ class RegistrationPage extends StatelessWidget {
                                     controller: controller,
                                   );
                                 },
-
+            
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
@@ -251,9 +251,9 @@ class RegistrationPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-
+            
                               SizedBox(height: 24.h),
-
+            
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [

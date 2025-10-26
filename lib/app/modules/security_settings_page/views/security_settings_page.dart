@@ -13,14 +13,14 @@ class SecuritySettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Security"),
-          backgroundColor: AppColors.primaryWhite,
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Security"),
+        backgroundColor: AppColors.primaryWhite,
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.sp),
             child: GetBuilder<SecuritySettingsPageController>(
@@ -58,20 +58,20 @@ class SecuritySettingsPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
+            
                                 SizedBox(height: 24.h),
                                 _buildPasswordInputFiled(
                                   controller: controller,
                                   inputText: "Password",
                                   hintText: "Enter current password",
                                 ),
-
+            
                                 SizedBox(height: 16.h),
-
+            
                                 _buildNewPasswordField(controller),
-
+            
                                 SizedBox(height: 16.h),
-
+            
                                 Text(
                                   "Confirm Password",
                                   style: TextStyle(fontSize: 13.sp),
@@ -92,7 +92,7 @@ class SecuritySettingsPage extends StatelessWidget {
                                     } else {
                                       controller.setBothPasswordMatch(false);
                                     }
-
+            
                                     if (controller
                                             .newPasswordTEC
                                             .text
@@ -142,7 +142,7 @@ class SecuritySettingsPage extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
+            
                                 SizedBox(height: 24.h),
                                 SizedBox(
                                   width: double.infinity,

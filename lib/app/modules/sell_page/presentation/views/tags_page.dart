@@ -9,40 +9,42 @@ class TagsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Tag#",
-            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17.sp),
-          ),
-          backgroundColor: AppColors.primaryWhite,
-          actions: [
-            GestureDetector(
-              onTap: () {},
-              child: Padding(
-                padding: EdgeInsets.only(right: 16.sp),
-                child: Row(
-                  children: [
-                    Text(
-                      "Save ",
-                      style: TextStyle(
-                        fontSize: 17.sp,
-                        color: AppColors.primaryPurple,
-                      ),
-                    ),
-                    Icon(
-                      Icons.check_circle_outline,
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Tag#",
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17.sp),
+        ),
+        backgroundColor: AppColors.primaryWhite,
+        actions: [
+          GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: Padding(
+              padding: EdgeInsets.only(right: 16.sp),
+              child: Row(
+                children: [
+                  Text(
+                    "Save ",
+                    style: TextStyle(
+                      fontSize: 17.sp,
                       color: AppColors.primaryPurple,
                     ),
-                  ],
-                ),
+                  ),
+                  Icon(
+                    Icons.check_circle_outline,
+                    color: AppColors.primaryPurple,
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-        body: SingleChildScrollView(
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 10.sp),
             child: GetBuilder<TagPageController>(

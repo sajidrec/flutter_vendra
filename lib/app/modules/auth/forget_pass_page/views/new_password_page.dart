@@ -11,15 +11,15 @@ class NewPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Change Password"),
-          centerTitle: true,
-          backgroundColor: AppColors.primaryWhite,
-        ),
-
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Change Password"),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryWhite,
+      ),
+    
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<NewPasswordPageController>(
             init: NewPasswordPageController(),
             builder: (controller) {
@@ -35,7 +35,7 @@ class NewPasswordPage extends StatelessWidget {
                           value: value,
                           controller: controller,
                         );
-
+            
                         if (value.isNotEmpty) {
                           if (value == controller.confirmPassTEC.text) {
                             controller.setBothPassMatchedStatus(true);
@@ -65,7 +65,7 @@ class NewPasswordPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 10.h),
-
+            
                     Text("Confirm password"),
                     TextField(
                       controller: controller.confirmPassTEC,
@@ -74,7 +74,7 @@ class NewPasswordPage extends StatelessWidget {
                           value: value,
                           controller: controller,
                         );
-
+            
                         if (value.isNotEmpty) {
                           if (value == controller.confirmPassTEC.text) {
                             controller.setBothPassMatchedStatus(true);
@@ -103,7 +103,7 @@ class NewPasswordPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 12.h),
-
+            
                     (controller.atLeast1Number &&
                             controller.atLeast8Char &&
                             controller.bothUpperAndLowerCase &&
@@ -116,7 +116,7 @@ class NewPasswordPage extends StatelessWidget {
                               fontSize: 13.sp,
                             ),
                           ),
-
+            
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(

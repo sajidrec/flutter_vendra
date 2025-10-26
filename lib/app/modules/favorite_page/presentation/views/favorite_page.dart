@@ -71,14 +71,14 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Favorite"),
-          centerTitle: true,
-          backgroundColor: AppColors.primaryWhite,
-        ),
-        body: ListView.separated(
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Favorite"),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryWhite,
+      ),
+      body: SafeArea(
+        child: ListView.separated(
           itemBuilder: (context, index) => Padding(
             padding: EdgeInsets.symmetric(horizontal: 14.sp, vertical: 6.sp),
             child: Container(

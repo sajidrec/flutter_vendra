@@ -12,23 +12,23 @@ class AddCardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
+    return Scaffold(
+      backgroundColor: AppColors.primaryWhite,
+      appBar: AppBar(
         backgroundColor: AppColors.primaryWhite,
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryWhite,
-          centerTitle: true,
-          elevation: 0,
-          title: Text(
-            "Add Card",
-            style: TextStyle(
-              fontSize: 17.sp,
-              fontWeight: FontWeight.w600,
-              color: AppColors.primaryBlack,
-            ),
+        centerTitle: true,
+        elevation: 0,
+        title: Text(
+          "Add Card",
+          style: TextStyle(
+            fontSize: 17.sp,
+            fontWeight: FontWeight.w600,
+            color: AppColors.primaryBlack,
           ),
         ),
-        body: SingleChildScrollView(
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(20.sp),
             child: GetBuilder<AddCardPageController>(
@@ -39,7 +39,7 @@ class AddCardPage extends StatelessWidget {
                     color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
                   ),
                 );
-
+            
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -51,13 +51,13 @@ class AddCardPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 20.h),
-
+            
                     // Card Number
                     _buildLabel("Card Number"),
                     SizedBox(height: 6.h),
                     TextField(
                       maxLength: 19,
-
+            
                       controller: controller.cardNumberTec,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -73,9 +73,9 @@ class AddCardPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
+            
                     SizedBox(height: 16.h),
-
+            
                     // Name on Card
                     _buildLabel("Name on Card"),
                     SizedBox(height: 6.h),
@@ -92,9 +92,9 @@ class AddCardPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
+            
                     SizedBox(height: 16.h),
-
+            
                     // Expiry Date and CVC Row
                     Row(
                       children: [
@@ -148,15 +148,15 @@ class AddCardPage extends StatelessWidget {
                         ),
                       ],
                     ),
-
+            
                     SizedBox(height: 16.h),
-
+            
                     Text(
                       "Billing address",
                       style: GoogleFonts.ptSerif(fontSize: 28.sp),
                     ),
                     SizedBox(height: 12.h),
-
+            
                     _buildLabel("Address"),
                     TextField(
                       controller: controller.addressTec,
@@ -171,7 +171,7 @@ class AddCardPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
+            
                     _buildLabel("Zip Code"),
                     TextField(
                       controller: controller.addressTec,
@@ -187,30 +187,30 @@ class AddCardPage extends StatelessWidget {
                         ),
                       ),
                     ),
-
+            
                     Row(
                       children: [
                         Text(
                           "Save this card for future Gavellia payments",
                           style: TextStyle(fontSize: 13.sp),
                         ),
-
+            
                         Spacer(),
-
+            
                         Switch(
                           value: controller.saveCardInfoForLater,
                           inactiveThumbColor: AppColors.primaryWhite,
                           inactiveTrackColor: AppColors.primaryBlack.withAlpha(
                             (255 * .1).round(),
                           ),
-
+            
                           onChanged: (value) {
                             controller.toggleSaveCardInfoForLater();
                           },
                         ),
                       ],
                     ),
-
+            
                     SizedBox(height: 30.h),
                     // Submit button (optional)
                     SizedBox(

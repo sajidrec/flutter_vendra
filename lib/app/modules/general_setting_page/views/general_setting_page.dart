@@ -10,14 +10,14 @@ class GeneralSettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryWhite,
-          centerTitle: true,
-          title: Text("General"),
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryWhite,
+        centerTitle: true,
+        title: Text("General"),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.sp),
             child: Column(

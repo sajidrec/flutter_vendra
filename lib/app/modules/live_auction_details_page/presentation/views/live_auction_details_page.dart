@@ -14,15 +14,15 @@ class LiveAuctionDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text("Live auction"),
-          backgroundColor: AppColors.primaryWhite,
-          actions: [_buildMoreOptions()],
-        ),
-        body: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Live auction"),
+        backgroundColor: AppColors.primaryWhite,
+        actions: [_buildMoreOptions()],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Column(

@@ -12,18 +12,18 @@ class ForgetPassPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryWhite,
-          title: Text(
-            "Forget password",
-            style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
-          ),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryWhite,
+        title: Text(
+          "Forget password",
+          style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
         ),
-
-        body: SingleChildScrollView(
+        centerTitle: true,
+      ),
+    
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<ForgetPassPageController>(
             builder: (controller) {
               return Padding(
