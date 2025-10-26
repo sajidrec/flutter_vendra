@@ -14,18 +14,18 @@ class SellerProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "Profile",
-            style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
-          ),
-          backgroundColor: AppColors.primaryWhite,
-          actions: [_buildMoreOptions()],
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "Profile",
+          style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
         ),
-        body: SingleChildScrollView(
+        backgroundColor: AppColors.primaryWhite,
+        actions: [_buildMoreOptions()],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: GetBuilder<SellerProfilePageController>(

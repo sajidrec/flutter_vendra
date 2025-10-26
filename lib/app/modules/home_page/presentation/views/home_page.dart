@@ -128,9 +128,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: GetBuilder<HomePageController>(
             builder: (controller) {
               return Column(
@@ -152,7 +152,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-
+            
                   GridView.builder(
                     shrinkWrap: true,
                     primary: false,
@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> {
                                       top: 0,
                                       child: GestureDetector(
                                         onTap: () {
-
+            
                                         },
                                         child: SvgPicture.asset(
                                           AppAssets.heartOutlineIcon,
@@ -273,7 +273,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Text(
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-
+            
                                         "${widget.auctionItemModel.timeLeft} sec left",
                                         style: TextStyle(fontSize: 13.sp),
                                       ),

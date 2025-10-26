@@ -11,10 +11,10 @@ class OnBoardingPage04 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: Padding(
-          padding: EdgeInsets.all(17.sp),
+    return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
           child: SizedBox(
             width: double.infinity,
             child: GetBuilder<OnBoardingPageController>(
@@ -42,7 +42,9 @@ class OnBoardingPage04 extends StatelessWidget {
             ),
           ),
         ),
-        body: SingleChildScrollView(
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,

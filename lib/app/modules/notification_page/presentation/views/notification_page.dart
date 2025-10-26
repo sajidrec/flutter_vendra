@@ -7,23 +7,23 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryWhite,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Notifications",
-                style: TextStyle(fontWeight: FontWeight.w700),
-              ),
-              Icon(Icons.notifications, color: AppColors.primaryPurple),
-            ],
-          ),
-          centerTitle: true,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primaryWhite,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Notifications",
+              style: TextStyle(fontWeight: FontWeight.w700),
+            ),
+            Icon(Icons.notifications, color: AppColors.primaryPurple),
+          ],
         ),
-        body: Padding(
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Padding(
           padding: EdgeInsets.all(16.sp),
           child: ListView.separated(
             shrinkWrap: true,

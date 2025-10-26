@@ -12,28 +12,26 @@ class BottomNavbarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: GetBuilder<BottomNavbarPageController>(
-          builder: (controller) {
-            return BottomNavigationBar(
-              backgroundColor: AppColors.primaryWhite,
-              selectedItemColor: AppColors.primaryBlack,
-              unselectedItemColor: AppColors.primaryBlack,
-              type: BottomNavigationBarType.fixed,
-              items: _buildBottomNavbarItems(controller),
-              currentIndex: controller.index,
-              onTap: (int index) {
-                controller.changePage(index);
-              },
-            );
-          },
-        ),
-        body: GetBuilder<BottomNavbarPageController>(
-          builder: (controller) {
-            return controller.pages[controller.index];
-          },
-        ),
+    return Scaffold(
+      bottomNavigationBar: GetBuilder<BottomNavbarPageController>(
+        builder: (controller) {
+          return BottomNavigationBar(
+            backgroundColor: AppColors.primaryWhite,
+            selectedItemColor: AppColors.primaryBlack,
+            unselectedItemColor: AppColors.primaryBlack,
+            type: BottomNavigationBarType.fixed,
+            items: _buildBottomNavbarItems(controller),
+            currentIndex: controller.index,
+            onTap: (int index) {
+              controller.changePage(index);
+            },
+          );
+        },
+      ),
+      body: GetBuilder<BottomNavbarPageController>(
+        builder: (controller) {
+          return controller.pages[controller.index];
+        },
       ),
     );
   }

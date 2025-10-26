@@ -11,9 +11,36 @@ class OnBoardingPage03 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.onBoardingRoute4);
+              },
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: AppColors.primaryBlack),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4.r),
+                ),
+              ),
+              child: Text(
+                "Next",
+                style: TextStyle(
+                  color: AppColors.primaryBlack,
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -62,7 +89,7 @@ class OnBoardingPage03 extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(height: 115.h),
+              SizedBox(height: 110.h),
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.sp),
@@ -84,28 +111,6 @@ class OnBoardingPage03 extends StatelessWidget {
                       style: TextStyle(fontSize: 17, color: AppColors.nutral80),
                     ),
                     SizedBox(height: 22.h),
-                    SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Get.toNamed(AppRoutes.onBoardingRoute4);
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: AppColors.primaryBlack),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.r),
-                          ),
-                        ),
-                        child: Text(
-                          "Next",
-                          style: TextStyle(
-                            color: AppColors.primaryBlack,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

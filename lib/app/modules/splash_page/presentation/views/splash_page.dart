@@ -10,10 +10,10 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.primaryBlack,
-        body: Stack(
+    return Scaffold(
+      backgroundColor: AppColors.primaryBlack,
+      body: SafeArea(
+        child: Stack(
           // crossAxisAlignment: CrossAxisAlignment.center,
           // mainAxisAlignment: MainAxisAlignment.center,
           children: [

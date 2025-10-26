@@ -11,9 +11,9 @@ class BecomeSellerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Center(
+    return Scaffold(
+      body: SafeArea(
+        child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -47,7 +47,7 @@ class BecomeSellerPage extends StatelessWidget {
                     ),
                   ),
                 ),
-
+            
               ],
             ),
           ),

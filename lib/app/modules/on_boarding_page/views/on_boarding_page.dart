@@ -11,13 +11,42 @@ class OnBoardingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: SingleChildScrollView(
+    return Scaffold(
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.all(16.w),
+          child: SizedBox(
+            width: double.infinity,
+            child: OutlinedButton(
+              onPressed: () {
+                Get.toNamed(AppRoutes.onBoardingRoute2);
+              },
+              style: OutlinedButton.styleFrom(
+                side: BorderSide(color: AppColors.primaryBlack),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4.r),
+                ),
+              ),
+              child: Text(
+                "Next",
+                style: TextStyle(
+                  color: AppColors.primaryBlack,
+                  fontSize: 17.sp,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: EdgeInsets.only(bottom: 32.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              /// Progress bar
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 73.w, vertical: 20.h),
                 child: LinearProgressIndicator(
@@ -27,20 +56,22 @@ class OnBoardingPage extends StatelessWidget {
                   minHeight: 2.h,
                 ),
               ),
+
               SizedBox(height: 31.h),
 
+              /// Carousel
               _buildCarousel(),
 
               SizedBox(height: 47.h),
 
+              /// Text content
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Discover rare finds",
-                      // textAlign: TextAlign.start,
                       style: TextStyle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
@@ -49,31 +80,9 @@ class OnBoardingPage extends StatelessWidget {
                     ),
                     SizedBox(height: 16.h),
                     Text(
-                      "Bid on authenticated luxury—from vintage Rolex to classic Ferraris. Uncover treasures you won't find anywhere else.",
+                      "Bid on authenticated luxury—from vintage Rolex to classic Ferraris. "
+                      "Uncover treasures you won't find anywhere else.",
                       style: TextStyle(fontSize: 17, color: AppColors.nutral80),
-                    ),
-                    SizedBox(height: 24.h),
-                    SizedBox(
-                      width: double.infinity,
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Get.toNamed(AppRoutes.onBoardingRoute2);
-                        },
-                        style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: AppColors.primaryBlack),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.r),
-                          ),
-                        ),
-                        child: Text(
-                          "Next",
-                          style: TextStyle(
-                            color: AppColors.primaryBlack,
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
                     ),
                   ],
                 ),
@@ -85,9 +94,10 @@ class OnBoardingPage extends StatelessWidget {
     );
   }
 
+  /// Carousel Builder
   Padding _buildCarousel() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+      padding: EdgeInsets.symmetric(horizontal: 16.w),
       child: GetBuilder<OnBoardingPageController>(
         builder: (controller) {
           return Stack(
@@ -104,16 +114,18 @@ class OnBoardingPage extends StatelessWidget {
                     builder: (BuildContext context) {
                       return Container(
                         height: 466.h,
-                        width: MediaQuery.of(context).size.width,
-                        decoration: BoxDecoration(),
+                        width: double.infinity,
+                        decoration: const BoxDecoration(),
                         child: Image.asset(img, fit: BoxFit.cover),
                       );
                     },
                   );
                 }).toList(),
               ),
+
+              /// Dots Indicator
               Positioned(
-                bottom: 20.h, // adjust for top overlay
+                bottom: 20.h,
                 left: 0,
                 right: 0,
                 child: Row(
@@ -122,7 +134,7 @@ class OnBoardingPage extends StatelessWidget {
                     return Container(
                       width: 6.w,
                       height: 6.h,
-                      margin: EdgeInsets.symmetric(horizontal: 4.0),
+                      margin: EdgeInsets.symmetric(horizontal: 4.w),
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: controller.currentIndex == entry.key
