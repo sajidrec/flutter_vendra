@@ -554,38 +554,65 @@ class SellerProfilePage extends StatelessWidget {
           ],
         ),
         SizedBox(width: 16.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+        GetBuilder<SellerProfilePageController>(
+          builder: (controller) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: Get.width / 2.1,
+                      child: TextField(
+                        readOnly: !controller.editMode,
+                        controller: TextEditingController(text: "His"),
+                        decoration: InputDecoration(
+                          enabledBorder: controller.editMode
+                              ? OutlineInputBorder()
+                              : InputBorder.none,
+                          focusedBorder: controller.editMode
+                              ? OutlineInputBorder()
+                              : InputBorder.none,
+                        ),
+                      ),
+                    ),
+
+                    // Text(
+                    //   "Example Business",
+                    //   style: TextStyle(
+                    //     fontSize: 22.sp,
+                    //     fontWeight: FontWeight.w700,
+                    //   ),
+                    // ),
+                    SizedBox(width: 16.w),
+                    InkWell(
+                      onTap: () {
+                        controller.toggleEditMode();
+                      },
+                      child: Icon(
+                        controller.editMode ? Icons.save : Icons.edit_outlined,
+                      ),
+                    ),
+                  ],
+                ),
                 Text(
-                  "Example Business",
+                  "@example_business",
                   style: TextStyle(
-                    fontSize: 22.sp,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 13.sp,
+                    color: AppColors.primaryBlack.withAlpha((255 * .6).round()),
                   ),
                 ),
-                SizedBox(width: 16.w),
-                InkWell(onTap: () {}, child: Icon(Icons.edit_outlined)),
+                SizedBox(height: 10.h),
+                Row(
+                  children: [
+                    SvgPicture.asset(AppAssets.verifiedBatchIcon),
+                    SizedBox(width: 8.w),
+                    SvgPicture.asset(AppAssets.topSellerBatchIcon),
+                  ],
+                ),
               ],
-            ),
-            Text(
-              "@example_business",
-              style: TextStyle(
-                fontSize: 13.sp,
-                color: AppColors.primaryBlack.withAlpha((255 * .6).round()),
-              ),
-            ),
-            SizedBox(height: 10.h),
-            Row(
-              children: [
-                SvgPicture.asset(AppAssets.verifiedBatchIcon),
-                SizedBox(width: 8.w),
-                SvgPicture.asset(AppAssets.topSellerBatchIcon),
-              ],
-            ),
-          ],
+            );
+          },
         ),
       ],
     );

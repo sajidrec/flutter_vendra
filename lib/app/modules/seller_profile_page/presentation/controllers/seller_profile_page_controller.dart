@@ -47,9 +47,23 @@ class SellerProfilePageController extends GetxController {
   ];
 
   int index = 0;
+  bool editMode = false;
+
+  final TextEditingController personTEC = TextEditingController();
 
   void changeNavIndex({required int index}) {
     this.index = index;
     update();
+  }
+
+  void toggleEditMode() {
+    editMode = !editMode;
+    update();
+  }
+
+  @override
+  void onClose() {
+    personTEC.dispose();
+    super.onClose();
   }
 }
