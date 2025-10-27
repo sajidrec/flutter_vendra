@@ -11,6 +11,8 @@ import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
+import '../../../../global_widgets/dot_slider_widget.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.auctionItemModel});
 
@@ -183,9 +185,9 @@ class _HomePageState extends State<HomePage> {
                               title: "PARADA",
                               subtitle: "Vintage Leather Jacket",
                               lotImages: [
-                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
-                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
-                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
+                                "https://i.sstatic.net/zMoo4.jpg",
+                                "https://i.sstatic.net/zMoo4.jpg",
+                                "https://i.sstatic.net/zMoo4.jpg",
                               ],
                               sellerProfile: SellerProfile(
                                 name: "sajid",
@@ -193,8 +195,7 @@ class _HomePageState extends State<HomePage> {
                                 id: "unique01",
                                 messageList: ["user01"],
                               ),
-                              thumbnail:
-                                  "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
+                              thumbnail: "https://i.sstatic.net/zMoo4.jpg",
                               totalBids: 5,
                               startingPrice: 75,
                               specialFeature: "Nothing",
@@ -443,9 +444,9 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(height: 16.h),
                     Text("EXPLORE THE LOTS", style: TextStyle(fontSize: 13.sp)),
                     SizedBox(height: 16.h),
-                    _buildDotSlider(
-                      activeDot: controller.sliderIndex,
+                    DotSliderWidget(
                       dotLength: 2,
+                      activeDot: controller.sliderIndex,
                     ),
                   ],
                 ),
@@ -454,38 +455,6 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ],
-    );
-  }
-
-  Row _buildDotSlider({required int dotLength, required int activeDot}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        dotLength,
-        (index) => Row(
-          children: [
-            index == activeDot
-                ? Container(
-                    width: 6.w,
-                    height: 6.h,
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryBlack,
-                      borderRadius: BorderRadius.circular(50.r),
-                    ),
-                  )
-                : Container(
-                    width: 6.w,
-                    height: 6.h,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.primaryBlack),
-                      color: AppColors.primaryWhite,
-                      borderRadius: BorderRadius.circular(50.r),
-                    ),
-                  ),
-            if (index != dotLength - 1) SizedBox(width: 6.w),
-          ],
-        ),
-      ),
     );
   }
 
