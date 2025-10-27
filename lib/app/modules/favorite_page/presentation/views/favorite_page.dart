@@ -93,7 +93,7 @@ class FavoritePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                       children: [
                         Text(
                           auctionItemModelList[index].itemName ?? "",
                           style: TextStyle(fontSize: 20.sp),
