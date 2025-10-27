@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/modules/auth/register_page/presentation/controllers/registration_page_controller.dart';
+import 'package:vendra_app/app/modules/auth/register_page/presentation/views/verify_otp_page.dart';
 
 import '../utils/helper/email_helper.dart';
 import '../utils/helper/password_helper.dart';
@@ -79,9 +80,9 @@ class RegistrationPage extends StatelessWidget {
                               ),
                             ],
                           ),
-            
+
                           SizedBox(height: 16.h),
-            
+
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -124,9 +125,9 @@ class RegistrationPage extends StatelessWidget {
                               ),
                             ],
                           ),
-            
+
                           SizedBox(height: 16.h),
-            
+
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -147,7 +148,7 @@ class RegistrationPage extends StatelessWidget {
                                     controller: controller,
                                   );
                                 },
-            
+
                                 decoration: InputDecoration(
                                   suffixIcon: IconButton(
                                     onPressed: () {
@@ -251,9 +252,9 @@ class RegistrationPage extends StatelessWidget {
                                   ),
                                 ],
                               ),
-            
+
                               SizedBox(height: 24.h),
-            
+
                               Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -349,7 +350,9 @@ class RegistrationPage extends StatelessWidget {
                 controller.atLeast1Number &&
                 controller.bothUpperAndLowerCase &&
                 controller.acceptTermsAndCondition)
-            ? () {}
+            ? () {
+                Get.to(VerifyOtpPage());
+              }
             : null,
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primaryBlack,
