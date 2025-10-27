@@ -7,8 +7,8 @@ import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 
-class LiveAuctionDetailsPage extends StatelessWidget {
-  const LiveAuctionDetailsPage({super.key, required this.auctionItemModel});
+class SellerAuctionItemDetailPage extends StatelessWidget {
+  const SellerAuctionItemDetailPage({super.key, required this.auctionItemModel});
 
   final AuctionItemModel auctionItemModel;
 

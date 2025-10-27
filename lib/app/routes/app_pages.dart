@@ -12,8 +12,6 @@ import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favori
 import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/general_setting_page/bindings/general_setting_page_binding.dart';
 import 'package:vendra_app/app/modules/general_setting_page/views/general_setting_page.dart';
-import 'package:vendra_app/app/modules/live_auction_details_page/presentation/binding/live_auction_details_page_binding.dart';
-import 'package:vendra_app/app/modules/live_auction_details_page/presentation/views/live_auction_details_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/binding/notification_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
@@ -30,6 +28,8 @@ import 'package:vendra_app/app/modules/sell_page/presentation/views/lot_under_re
 import 'package:vendra_app/app/modules/sell_page/presentation/views/sell_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/tags_page.dart';
 import 'package:vendra_app/app/modules/sell_page/presentation/views/upload_lot_photo_page.dart';
+import 'package:vendra_app/app/modules/seller_auction_item_detail_page/presentation/binding/seller_auction_item_detail_page_binding.dart';
+import 'package:vendra_app/app/modules/seller_auction_item_detail_page/presentation/views/seller_auction_item_detail_page.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/binding/seller_profile_binding.dart';
 import 'package:vendra_app/app/modules/seller_profile_page/presentation/views/seller_profile_page.dart';
 import 'package:vendra_app/app/modules/settings_page/presentation/binding/settings_page_binding.dart';
@@ -142,10 +142,10 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.liveAuctionDetailsRoute,
-      page: () => LiveAuctionDetailsPage(
+      page: () => SellerAuctionItemDetailPage(
         auctionItemModel: AuctionItemModel.fromJson(Get.arguments),
       ),
-      binding: LiveAuctionDetailsPageBinding(),
+      binding: SellerAuctionItemDetailPageBinding(),
     ),
     GetPage(
       name: AppRoutes.notificationRoute,
