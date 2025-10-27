@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/constants/app_assets.dart';
 import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
+import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
 import 'package:vendra_app/app/modules/home_page/presentation/controllers/home_page_controller.dart';
 import 'package:vendra_app/app/routes/app_routes.dart';
 
@@ -152,7 +153,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-            
+
                   GridView.builder(
                     shrinkWrap: true,
                     primary: false,
@@ -167,36 +168,36 @@ class _HomePageState extends State<HomePage> {
                       return GestureDetector(
                         onTap: () {
                           Get.toNamed(
-                            AppRoutes.liveAuctionDetailsRoute,
-                            arguments: AuctionItemModel(
-                              id: "3",
-                              itemName: "Test Demo",
-                              isFavourite: false,
-                              highestBid: 99,
-                              description: "Test",
-                              imgUrl:
-                                  "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+                            AppRoutes.lotDetailsTimeAuctionPage,
+                            arguments: LotDetailsModel(
+                              color: "Black",
+                              highestBid: 999,
+                              isFavourite: true,
                               timeLeft: DateTime.now().toString(),
-                              topBidders: [
-                                TopBidders(
-                                  price: 99,
-                                  profilePic:
-                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
-                                  name: "Random test product",
-                                ),
-                                TopBidders(
-                                  price: 99,
-                                  profilePic:
-                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
-                                  name: "Random test product",
-                                ),
-                                TopBidders(
-                                  price: 99,
-                                  profilePic:
-                                      "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
-                                  name: "Random test product",
-                                ),
+                              description: "Testing description",
+                              size: "XXL",
+                              condition: "New",
+                              deliveryAvailableIn: ["USA", "UK", "BD"],
+                              isLive: false,
+                              joinLiveAuction: null,
+                              title: "PARADA",
+                              subtitle: "Vintage Leather Jacket",
+                              lotImages: [
+                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
+                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
+                                "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
                               ],
+                              sellerProfile: SellerProfile(
+                                name: "sajid",
+                                followerList: ["user01"],
+                                id: "unique01",
+                                messageList: ["user01"],
+                              ),
+                              thumbnail:
+                                  "https://png.pngtree.com/thumb_back/fh260/background/20230524/pngtree-three-gold-and-pink-tin-cans-of-the-same-size-set-image_2603886.jpg",
+                              totalBids: 5,
+                              startingPrice: 75,
+                              specialFeature: "Nothing",
                             ).toJson(),
                           );
                         },
@@ -229,9 +230,7 @@ class _HomePageState extends State<HomePage> {
                                       right: 0,
                                       top: 0,
                                       child: GestureDetector(
-                                        onTap: () {
-            
-                                        },
+                                        onTap: () {},
                                         child: SvgPicture.asset(
                                           AppAssets.heartOutlineIcon,
                                           width: 20.w,
@@ -273,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                                       child: Text(
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
-            
+
                                         "${widget.auctionItemModel.timeLeft} sec left",
                                         style: TextStyle(fontSize: 13.sp),
                                       ),

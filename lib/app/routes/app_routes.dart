@@ -25,4 +25,5 @@ abstract class AppRoutes {
   static const String paymentMethodRoute = '/paymentMethodRoute';
   static const String addCardRoute = '/addCardRoute';
   static const String forgetPassRoute = '/forgetPassRoute';
+  static const String lotDetailsTimeAuctionPage = '/lotDetailsTimeAuctionPage';
 }

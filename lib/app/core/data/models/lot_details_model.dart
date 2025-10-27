@@ -19,6 +19,7 @@
 library;
 
 class LotDetailsModel {
+
   LotDetailsModel({
     List<String>? lotImages,
     String? thumbnail,

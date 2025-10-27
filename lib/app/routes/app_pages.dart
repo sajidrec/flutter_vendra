@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
 import 'package:vendra_app/app/modules/auth/forget_pass_page/binding/forget_pass_page_binding.dart';
 import 'package:vendra_app/app/modules/auth/forget_pass_page/views/forget_pass_page.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/binding/login_page_binding.dart';
@@ -12,6 +13,7 @@ import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favori
 import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/general_setting_page/bindings/general_setting_page_binding.dart';
 import 'package:vendra_app/app/modules/general_setting_page/views/general_setting_page.dart';
+import 'package:vendra_app/app/modules/lot_details_time_auction_page/views/lot_details_time_auction_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/binding/notification_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
@@ -42,6 +44,7 @@ import '../modules/auth/register_page/presentation/views/registration_page.dart'
 import '../modules/bottom_navbar_page/presentation/binding/bottom_navbar_page_binding.dart';
 import '../modules/home_page/presentation/bindings/home_binding.dart';
 import '../modules/home_page/presentation/views/home_page.dart';
+import '../modules/lot_details_time_auction_page/binding/lot_details_time_auction_page_binding.dart';
 import '../modules/notification_page/presentation/views/notification_page.dart';
 import '../modules/on_boarding_page/views/on_boarding_page_02.dart';
 import '../modules/on_boarding_page/views/on_boarding_page_03.dart';
@@ -186,6 +189,13 @@ class AppPages {
       name: AppRoutes.forgetPassRoute,
       page: () => ForgetPassPage(),
       binding: ForgetPassPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.lotDetailsTimeAuctionPage,
+      page: () => LotDetailsTimeAuctionPage(
+        lotDetailsModel: LotDetailsModel.fromJson(Get.arguments),
+      ),
+      binding: LotDetailsTimeAuctionPageBinding(),
     ),
   ];
 }
