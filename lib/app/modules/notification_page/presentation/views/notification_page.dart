@@ -34,147 +34,210 @@ class NotificationPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25.sp, vertical: 7.sp),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primaryGray.withAlpha((255 * .12).round()),
-                  borderRadius: BorderRadius.circular(8.r),
-                ),
-                child: GetBuilder<NotificationPageController>(
-                  builder: (controller) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(2.r),
-                            child: InkWell(
-                              onTap: () {
-                                controller.setCategoryIndex(0);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: controller.categoryIndex == 0
-                                      ? AppColors.primaryWhite
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(7.r),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 6.sp,
-                                    horizontal: 12.sp,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      controller.notificationCategoryList[0],
-                                      style: TextStyle(fontSize: 13.sp),
-                                    ),
-                                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildCategorySelectionNavbar(),
+              SizedBox(height: 16.h),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  primary: false,
+                  itemBuilder: (context, index) => Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.all(8.sp),
+                        child: Icon(Icons.notifications),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "You've been outbid!",
+                              style: TextStyle(fontSize: 17.sp),
+                            ),
+                            Text(
+                              "Someone bid higher on Vintage Rolex Daytona. Bid again to win!",
+                              style: TextStyle(
+                                fontSize: 13.sp,
+                                color: AppColors.primaryBlack.withAlpha(
+                                  (255 * .8).round(),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(2.r),
-                            child: InkWell(
-                              onTap: () {
-                                controller.setCategoryIndex(1);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: controller.categoryIndex == 1
-                                      ? AppColors.primaryWhite
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(7.r),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 6.sp,
-                                    horizontal: 12.sp,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      controller.notificationCategoryList[1],
-                                      style: TextStyle(fontSize: 13.sp),
-                                    ),
-                                  ),
+                            Text(
+                              "Place Bid",
+                              style: TextStyle(
+                                fontSize: 17.sp,
+                                color: AppColors.primaryPurple,
+                                decoration: TextDecoration.underline,
+                                decorationColor: AppColors.primaryPurple,
+                              ),
+                            ),
+                            Text(
+                              "Just now",
+                              style: TextStyle(
+                                color: AppColors.primaryBlack.withAlpha(
+                                  (255 * .8).round(),
                                 ),
                               ),
                             ),
-                          ),
+                          ],
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(2.r),
-                            child: InkWell(
-                              onTap: () {
-                                controller.setCategoryIndex(2);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: controller.categoryIndex == 2
-                                      ? AppColors.primaryWhite
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(7.r),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 6.sp,
-                                    horizontal: 12.sp,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      controller.notificationCategoryList[2],
-                                      style: TextStyle(fontSize: 13.sp),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: EdgeInsets.all(2.r),
-                            child: InkWell(
-                              onTap: () {
-                                controller.setCategoryIndex(3);
-                              },
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: controller.categoryIndex == 3
-                                      ? AppColors.primaryWhite
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(7.r),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 6.sp,
-                                    horizontal: 12.sp,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      controller.notificationCategoryList[3],
-                                      style: TextStyle(fontSize: 13.sp),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                      ),
+                    ],
+                  ),
+                  separatorBuilder: (context, index) => Divider(
+                    color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                  ),
+                  itemCount: 10,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _buildCategorySelectionNavbar() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 25.sp, vertical: 7.sp),
+      child: Container(
+        decoration: BoxDecoration(
+          color: AppColors.primaryGray.withAlpha((255 * .12).round()),
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: GetBuilder<NotificationPageController>(
+          builder: (controller) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(2.r),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setCategoryIndex(0);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: controller.categoryIndex == 0
+                              ? AppColors.primaryWhite
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(7.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 6.sp,
+                            horizontal: 12.sp,
+                          ),
+                          child: Center(
+                            child: Text(
+                              controller.notificationCategoryList[0],
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(2.r),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setCategoryIndex(1);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: controller.categoryIndex == 1
+                              ? AppColors.primaryWhite
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(7.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 6.sp,
+                            horizontal: 12.sp,
+                          ),
+                          child: Center(
+                            child: Text(
+                              controller.notificationCategoryList[1],
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(2.r),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setCategoryIndex(2);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: controller.categoryIndex == 2
+                              ? AppColors.primaryWhite
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(7.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 6.sp,
+                            horizontal: 12.sp,
+                          ),
+                          child: Center(
+                            child: Text(
+                              controller.notificationCategoryList[2],
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.all(2.r),
+                    child: InkWell(
+                      onTap: () {
+                        controller.setCategoryIndex(3);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: controller.categoryIndex == 3
+                              ? AppColors.primaryWhite
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(7.r),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 6.sp,
+                            horizontal: 12.sp,
+                          ),
+                          child: Center(
+                            child: Text(
+                              controller.notificationCategoryList[3],
+                              style: TextStyle(fontSize: 13.sp),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
