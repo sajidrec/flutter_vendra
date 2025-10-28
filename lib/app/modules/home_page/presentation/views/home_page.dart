@@ -26,7 +26,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Get.dialog(
         Center(
@@ -299,44 +298,85 @@ class _HomePageState extends State<HomePage> {
   Padding _buildWeeklyTopPicks() {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(bottom: 14.h),
-            child: Text("Weekly Top Picks", style: TextStyle(fontSize: 28.sp)),
-          ),
-          SizedBox(
-            height: 168.h,
-            child: ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) => Column(
-                children: [
-                  Column(
-                    children: [
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(6.r),
-                        child: CachedNetworkImage(
-                          width: 133.w,
-                          height: 133.h,
-                          imageUrl:
-                              "https://t4.ftcdn.net/jpg/15/05/51/47/360_F_1505514711_kJFZM5lwKSPszilnm7ooNMfe0tYqyfXB.jpg",
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
-                        ),
-                      ),
-                      Text("BAGS", style: TextStyle(fontSize: 13.sp)),
-                    ],
-                  ),
-                ],
+      child: GestureDetector(
+        onTap: () {
+          Get.toNamed(
+            AppRoutes.lotDetailsLiveAuctionPage,
+            arguments: LotDetailsModel(
+              thumbnail:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+              isFavourite: true,
+              title: "Weekly Top Picks",
+              subtitle: "Man",
+              lotImages: [
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+              ],
+              color: "White",
+              startingPrice: 99,
+              totalBids: 5,
+              sellerProfile: SellerProfile(
+                id: "abc",
+                followerList: ["user1"],
+                name: "Unknown",
+                messageList: [""],
               ),
-              separatorBuilder: (context, index) => SizedBox(width: 8.w),
-              itemCount: 12,
+              description: "Description form param",
+              joinLiveAuction: "",
+              condition: "New",
+              size: "6 Feet",
+              timeLeft: "2 Days",
+              highestBid: 99,
+              deliveryAvailableIn: ["UK", "BAN", "IND"],
+              isLive: true,
+              specialFeature: "Special feature from param",
+            ).toJson(),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.only(bottom: 14.h),
+              child: Text(
+                "Weekly Top Picks",
+                style: TextStyle(fontSize: 28.sp),
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 168.h,
+              child: ListView.separated(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Column(
+                  children: [
+                    Column(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(6.r),
+                          child: CachedNetworkImage(
+                            width: 133.w,
+                            height: 133.h,
+                            imageUrl:
+                                "https://t4.ftcdn.net/jpg/15/05/51/47/360_F_1505514711_kJFZM5lwKSPszilnm7ooNMfe0tYqyfXB.jpg",
+                            errorWidget: (context, url, error) =>
+                                Icon(Icons.error),
+                          ),
+                        ),
+                        Text("BAGS", style: TextStyle(fontSize: 13.sp)),
+                      ],
+                    ),
+                  ],
+                ),
+                separatorBuilder: (context, index) => SizedBox(width: 8.w),
+                itemCount: 12,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
