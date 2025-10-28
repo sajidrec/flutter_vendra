@@ -77,4 +77,5 @@ class AppAssets {
   static const personFilledIcon = "assets/icons/person_filled_icon.svg";
 
   static const plusCircleFilledIcon = "assets/icons/plusCircleFilledIcon.svg";
+  static const messengerIcon = "assets/icons/messenger.svg";
 }
