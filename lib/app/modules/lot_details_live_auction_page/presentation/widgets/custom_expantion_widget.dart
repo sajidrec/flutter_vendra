@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:vendra_app/app/modules/lot_details_time_auction_page/controllers/lot_details_time_auction_page_controller.dart';
+import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/controllers/lot_details_live_auction_page_controller.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -21,7 +21,7 @@ class CustomExpantionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<LotDetailsTimeAuctionPageController>(
+    return GetBuilder<LotDetailsLiveAuctionPageController>(
       builder: (controller) {
         return Container(
           decoration: BoxDecoration(
