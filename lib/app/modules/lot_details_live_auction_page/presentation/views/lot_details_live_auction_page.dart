@@ -562,9 +562,9 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
       Dialog(
         backgroundColor: Colors.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 20),
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.all(16.sp),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -625,8 +625,8 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Text(
                     paddleNumber,
-                    style: const TextStyle(
-                      fontSize: 56,
+                    style: TextStyle(
+                      fontSize: 50.sp,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
