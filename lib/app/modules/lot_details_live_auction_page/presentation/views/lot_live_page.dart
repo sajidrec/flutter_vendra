@@ -8,7 +8,7 @@ import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentatio
 import 'package:video_player/video_player.dart';
 
 class LotLivePage extends StatefulWidget {
-  LotLivePage({super.key});
+  const LotLivePage({super.key});
 
   @override
   State<LotLivePage> createState() => _LotLivePageState();
@@ -184,7 +184,120 @@ class _LotLivePageState extends State<LotLivePage> {
                                 backgroundColor: AppColors.primaryBlack,
                                 foregroundColor: AppColors.primaryWhite,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Get.bottomSheet(
+                                  SafeArea(
+                                    child: Container(
+                                      width: Get.width - 32.sp,
+                                      padding: EdgeInsets.all(16.sp),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          6.r,
+                                        ),
+                                      ),
+
+                                      color: AppColors.primaryBlack,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            "Are you sure?",
+                                            style: TextStyle(
+                                              fontSize: 20.sp,
+                                              color: AppColors.primaryWhite,
+                                            ),
+                                          ),
+                                          Text(
+                                            "You about to enter the bidding and submit the bid amount.",
+                                            style: TextStyle(
+                                              fontSize: 15.sp,
+                                              color: AppColors.primaryWhite,
+                                            ),
+                                          ),
+
+                                          SizedBox(height: 8.h),
+                                          Text(
+                                            "Bid",
+                                            style: TextStyle(
+                                              fontSize: 16.sp,
+                                              color: AppColors.primaryWhite,
+                                            ),
+                                          ),
+                                          Text(
+                                            "£300",
+                                            style: TextStyle(
+                                              fontSize: 28.sp,
+                                              color: AppColors.primaryWhite,
+                                            ),
+                                          ),
+                                          SizedBox(height: 20.h),
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            4.r,
+                                                          ),
+                                                    ),
+                                                    backgroundColor:
+                                                        AppColors.primaryPurple,
+                                                    foregroundColor:
+                                                        AppColors.primaryWhite,
+                                                  ),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "Confirm",
+                                                    style: TextStyle(
+                                                      fontSize: 17.sp,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              SizedBox(width: 12.w),
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                            4.r,
+                                                          ),
+                                                      side: BorderSide(
+                                                        color: AppColors
+                                                            .primaryWhite,
+                                                      ),
+                                                    ),
+                                                    backgroundColor:
+                                                        AppColors.primaryBlack,
+                                                    foregroundColor:
+                                                        AppColors.primaryWhite,
+                                                  ),
+                                                  onPressed: () {},
+                                                  child: Text(
+                                                    "Cancel",
+                                                    style: TextStyle(
+                                                      fontSize: 17.sp,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+
+                                          // TODO: fix from here
+                                          // SizedBox(height: 12.h),
+                                          // Text("All bids are binding."),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
                               child: Text("Bid £300"),
                             ),
                           ),
