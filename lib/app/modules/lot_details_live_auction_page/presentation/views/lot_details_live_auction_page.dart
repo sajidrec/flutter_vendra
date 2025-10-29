@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,6 +10,7 @@ import 'package:vendra_app/app/core/constants/app_colors.dart';
 import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
 import 'package:vendra_app/app/global_widgets/dot_slider_widget.dart';
 import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/controllers/lot_details_live_auction_page_controller.dart';
+import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/views/lot_live_page.dart';
 
 import '../widgets/custom_expantion_widget.dart';
 
@@ -34,7 +36,136 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
                   child: SizedBox(
                     height: 46.h,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.dialog(
+                          Dialog(
+                            backgroundColor: AppColors.primaryWhite,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            insetPadding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Align(
+                                    alignment: Alignment.topRight,
+                                    child: GestureDetector(
+                                      onTap: () => Get.back(),
+                                      child: const Icon(Icons.close, size: 22),
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 6),
+
+                                  /// Title
+                                  const Text(
+                                    "Participate In Auction",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 4),
+
+                                  /// Step Text
+                                  const Text(
+                                    "Step 1 of 2",
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 18),
+
+                                  /// Description Text
+                                  Text(
+                                    "Confirm your attendance for ${lotDetailsModel.title} on ${DateTime.now()}.",
+                                    style: const TextStyle(
+                                      fontSize: 15,
+                                      height: 1.4,
+                                    ),
+                                  ),
+
+                                  const SizedBox(height: 26),
+
+                                  /// Buttons
+                                  Row(
+                                    children: [
+                                      /// Confirm
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          onPressed: () async {
+                                            showPaddleRequestingDialog();
+                                            await Future.delayed(
+                                              Duration(seconds: 2),
+                                            );
+                                            if (context.mounted) {
+                                              Get.back();
+                                              showRegistrationSuccessfulDialog(
+                                                "9",
+                                              );
+                                            }
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Colors.black,
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                          ),
+                                          child: const Text(
+                                            "Confirm",
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+
+                                      const SizedBox(width: 12),
+
+                                      /// Cancel
+                                      Expanded(
+                                        child: OutlinedButton(
+                                          onPressed: () => Get.back(),
+                                          style: OutlinedButton.styleFrom(
+                                            padding: const EdgeInsets.symmetric(
+                                              vertical: 14,
+                                            ),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(8),
+                                            ),
+                                            side: const BorderSide(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          child: const Text(
+                                            "Cancel",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primaryBlack,
                         foregroundColor: AppColors.primaryWhite,
@@ -400,6 +531,183 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void showPaddleRequestingDialog() {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 40),
+        backgroundColor: AppColors.primaryWhite,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: const [
+              Text("Requesting auction paddle", style: TextStyle(fontSize: 14)),
+              Spacer(),
+              CupertinoActivityIndicator(),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.4), // Dim background
+    );
+  }
+
+  void showRegistrationSuccessfulDialog(String paddleNumber) {
+    Get.dialog(
+      Dialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              /// Close Button
+              Align(
+                alignment: Alignment.topRight,
+                child: GestureDetector(
+                  onTap: () => Get.back(),
+                  child: const Icon(Icons.close, size: 22),
+                ),
+              ),
+              const SizedBox(height: 6),
+
+              /// Title
+              const Text(
+                "Registration Successful",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+              ),
+
+              const SizedBox(height: 4),
+
+              /// Step Text
+              const Text(
+                "Step 2 of 2",
+                style: TextStyle(fontSize: 13, color: Colors.grey),
+              ),
+              const SizedBox(height: 18),
+
+              /// Congratulation Line
+              const Text(
+                "Registration successful. Congrats!",
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  height: 1.4,
+                ),
+              ),
+              const SizedBox(height: 6),
+
+              /// Description
+              const Text(
+                "Wishing you the best in the auction. Your bidding paddle is displayed below and will be sent to you via email for your records.",
+                style: TextStyle(fontSize: 14, height: 1.5),
+              ),
+
+              const SizedBox(height: 22),
+
+              /// Paddle Number Display
+              Center(
+                child: Container(
+                  width: 120,
+                  height: 120,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    paddleNumber,
+                    style: const TextStyle(
+                      fontSize: 56,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 18),
+
+              /// Terms Text
+              Center(
+                child: Text.rich(
+                  TextSpan(
+                    text: "By joining the auction you agree to all ",
+                    style: const TextStyle(fontSize: 13, color: Colors.grey),
+                    children: [
+                      TextSpan(
+                        text: "Terms and Conditions.",
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              /// Buttons Row
+              Row(
+                children: [
+                  /// Join Now
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(LotLivePage());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: const Text(
+                        "Join now",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+
+                  const SizedBox(width: 12),
+
+                  /// Cancel
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Get.back(),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        side: const BorderSide(color: Colors.black),
+                      ),
+                      child: const Text(
+                        "Cancel",
+                        style: TextStyle(color: Colors.black),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+      barrierDismissible: false,
+      barrierColor: Colors.black.withOpacity(0.4),
     );
   }
 
