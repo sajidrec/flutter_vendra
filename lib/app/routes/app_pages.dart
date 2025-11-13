@@ -16,6 +16,8 @@ import 'package:vendra_app/app/modules/general_setting_page/views/general_settin
 import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/bindings/lot_details_live_auction_page_binding.dart';
 import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/views/lot_details_live_auction_page.dart';
 import 'package:vendra_app/app/modules/lot_details_time_auction_page/views/lot_details_time_auction_page.dart';
+import 'package:vendra_app/app/modules/message_page/binding/message_page_binding.dart';
+import 'package:vendra_app/app/modules/message_page/views/message_page.dart';
 import 'package:vendra_app/app/modules/notification_page/presentation/binding/notification_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/binding/on_boarding_page_binding.dart';
 import 'package:vendra_app/app/modules/on_boarding_page/views/on_boarding_page.dart';
@@ -205,6 +207,11 @@ class AppPages {
         lotDetailsModel: LotDetailsModel.fromJson(Get.arguments),
       ),
       binding: LotDetailsLiveAuctionPageBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.messageRoute,
+      page: () => MessagePage(),
+      binding: MessagePageBinding(),
     ),
   ];
 }

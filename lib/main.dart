@@ -14,7 +14,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
         getPages: AppPages.pages,
         theme: ThemeData(
           // textTheme: GoogleFonts.ptSerifTextTheme(Theme.of(context).textTheme),
+          appBarTheme: AppBarTheme(backgroundColor: AppColors.primaryWhite),
           fontFamily: "SFPro",
           scaffoldBackgroundColor: AppColors.primaryWhite,
         ),

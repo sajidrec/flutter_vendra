@@ -27,4 +27,5 @@ abstract class AppRoutes {
   static const String forgetPassRoute = '/forgetPassRoute';
   static const String lotDetailsTimeAuctionPage = '/lotDetailsTimeAuctionPage';
   static const String lotDetailsLiveAuctionPage = '/lotDetailsLiveAuctionPage';
+  static const String messageRoute = '/messageRoute';
 }

@@ -11,6 +11,7 @@ import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
 import 'package:vendra_app/app/global_widgets/dot_slider_widget.dart';
 import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/controllers/lot_details_live_auction_page_controller.dart';
 import 'package:vendra_app/app/modules/lot_details_live_auction_page/presentation/views/lot_live_page.dart';
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../widgets/custom_expantion_widget.dart';
 
@@ -391,7 +392,11 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
                                                   BorderRadius.circular(6.r),
                                             ),
                                             child: InkWell(
-                                              onTap: () {},
+                                              onTap: () {
+                                                Get.toNamed(
+                                                  AppRoutes.messageRoute,
+                                                );
+                                              },
                                               child: Padding(
                                                 padding: EdgeInsets.all(10.sp),
                                                 child: Row(
@@ -553,7 +558,7 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
         ),
       ),
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.4), // Dim background
+      barrierColor: Colors.black.withValues(alpha: 0.4), // Dim background
     );
   }
 
@@ -707,7 +712,7 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
         ),
       ),
       barrierDismissible: false,
-      barrierColor: Colors.black.withOpacity(0.4),
+      barrierColor: Colors.black.withValues(alpha: 0.4),
     );
   }
 
