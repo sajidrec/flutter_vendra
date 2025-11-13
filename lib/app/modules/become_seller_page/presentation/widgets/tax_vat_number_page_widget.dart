@@ -70,95 +70,97 @@ class TaxVatNumberPageWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.bottomSheet(
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.primaryWhite,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.r),
-                topRight: Radius.circular(10.r),
+          SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(10.r),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        IconButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          icon: Icon(Icons.close),
-                        ),
-                        Spacer(),
-                        Text(
-                          documentTypeName,
-                          style: TextStyle(
-                            fontSize: 17.sp,
-                            fontWeight: FontWeight.w600,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            icon: Icon(Icons.close),
                           ),
-                        ),
-                        Spacer(),
-                      ],
-                    ),
-                    SizedBox(height: 16.h),
-                    Text("ID Number"),
-                    TextFormField(
-                      controller: controller.idNumberTec,
-                      decoration: InputDecoration(
-                        hintText: "GB123456789",
-                        hintStyle: TextStyle(
-                          color: AppColors.primaryBlack.withAlpha(
-                            (255 * .35).round(),
+                          Spacer(),
+                          Text(
+                            documentTypeName,
+                            style: TextStyle(
+                              fontSize: 17.sp,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                        contentPadding: EdgeInsets.symmetric(
-                          horizontal: 14.w,
-                          vertical: 17.h,
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(6.r),
-                          borderSide: BorderSide(
+                          Spacer(),
+                        ],
+                      ),
+                      SizedBox(height: 16.h),
+                      Text("ID Number"),
+                      TextFormField(
+                        controller: controller.idNumberTec,
+                        decoration: InputDecoration(
+                          hintText: "GB123456789",
+                          hintStyle: TextStyle(
                             color: AppColors.primaryBlack.withAlpha(
-                              (255 * .01).round(),
+                              (255 * .35).round(),
+                            ),
+                          ),
+                          contentPadding: EdgeInsets.symmetric(
+                            horizontal: 14.w,
+                            vertical: 17.h,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(6.r),
+                            borderSide: BorderSide(
+                              color: AppColors.primaryBlack.withAlpha(
+                                (255 * .01).round(),
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: 16.h),
-                    Text("Country of Registration"),
-                    _buildSelectCountryForDocumentVerification(controller),
-                    SizedBox(height: 24.h),
-                    // Spacer(),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: AppColors.primaryWhite,
-                          backgroundColor: AppColors.primaryBlack,
+                      SizedBox(height: 16.h),
+                      Text("Country of Registration"),
+                      _buildSelectCountryForDocumentVerification(controller),
+                      SizedBox(height: 24.h),
+                      // Spacer(),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            foregroundColor: AppColors.primaryWhite,
+                            backgroundColor: AppColors.primaryBlack,
+                          ),
+                          onPressed: () {
+                            if (controller.idNumberTec.text.isNotEmpty &&
+                                controller
+                                        .selectedCountryForDocumentVerification !=
+                                    null) {
+                              Get.back();
+                              controller.increaseProgressIndex();
+                            } else {
+                              Get.snackbar("Give submit profile info", "");
+                            }
+                          },
+                          child: Text("Done"),
                         ),
-                        onPressed: () {
-                          if (controller.idNumberTec.text.isNotEmpty &&
-                              controller
-                                      .selectedCountryForDocumentVerification !=
-                                  null) {
-                            Get.back();
-                            controller.increaseProgressIndex();
-                          } else {
-                            Get.snackbar("Give submit profile info", "");
-                          }
-                        },
-                        child: Text("Done"),
                       ),
-                    ),
-                    SizedBox(height: 20.h),
-                  ],
+                      SizedBox(height: 20.h),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -198,155 +200,157 @@ class TaxVatNumberPageWidget extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             Get.bottomSheet(
-              Container(
-                decoration: BoxDecoration(
-                  color: AppColors.primaryWhite,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(10.r),
-                    topRight: Radius.circular(10.r),
+              SafeArea(
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryWhite,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.r),
+                      topRight: Radius.circular(10.r),
+                    ),
                   ),
-                ),
-                child: GetBuilder<BecomeSellerStepPageController>(
-                  builder: (controller) {
-                    return SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.w),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(height: 20.h),
-                            Row(
-                              children: [
-                                IconButton(
-                                  onPressed: () => Get.back(),
-                                  icon: const Icon(Icons.close),
-                                ),
-                                const Spacer(),
-                                Text(
-                                  "Country",
-                                  style: TextStyle(
-                                    fontSize: 17.sp,
-                                    fontWeight: FontWeight.w600,
+                  child: GetBuilder<BecomeSellerStepPageController>(
+                    builder: (controller) {
+                      return SizedBox(
+                        width: double.infinity,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16.w),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 20.h),
+                              Row(
+                                children: [
+                                  IconButton(
+                                    onPressed: () => Get.back(),
+                                    icon: const Icon(Icons.close),
                                   ),
-                                ),
-                                const Spacer(),
-                              ],
-                            ),
-                            SizedBox(height: 16.h),
-
-                            // Search
-                            TextField(
-                              onChanged: (query) {
-                                controller
-                                    .searchCountriesForDocumentVerification(
-                                      query,
-                                    );
-                              },
-                              controller: controller
-                                  .searchCountryForDocumentVerificationTec,
-                              decoration: InputDecoration(
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 13.5.h,
-                                  horizontal: 12.5.w,
-                                ),
-                                prefixIcon: const Icon(Icons.search),
-                                hintText: "Search...",
-                                filled: true,
-                                fillColor: AppColors.primaryBlack.withAlpha(
-                                  (255 * .06).round(),
-                                ),
-                                border: InputBorder.none,
-                              ),
-                            ),
-
-                            // List of countries
-                            Flexible(
-                              child: ListView.builder(
-                                shrinkWrap: true,
-                                itemCount: controller
-                                    .filteredCountryListForDocumentVerification
-                                    .length,
-                                itemBuilder: (context, index) {
-                                  var country = controller
-                                      .filteredCountryListForDocumentVerification[index];
-                                  return GestureDetector(
-                                    onTap: () {
-                                      controller
-                                          .selectCountryForDocumentVerification(
-                                            country,
-                                          );
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.all(14.sp),
-                                      child: Row(
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius: BorderRadius.circular(
-                                              50.r,
-                                            ),
-
-                                            child: SizedBox(
-                                              height: 24.h,
-                                              width: 24.h,
-                                              child:
-                                                  CountryFlag.fromCountryCode(
-                                                    country['code'],
-                                                  ),
-                                            ),
-                                          ),
-                                          SizedBox(width: 12.w),
-                                          Text(
-                                            country['name'],
-                                            style: TextStyle(fontSize: 17.sp),
-                                          ),
-                                          const Spacer(),
-                                          controller
-                                                  .isCountrySelectedForDocumentVerification(
-                                                    country,
-                                                  )
-                                              ? const Icon(Icons.check)
-                                              : const SizedBox.shrink(),
-                                        ],
-                                      ),
+                                  const Spacer(),
+                                  Text(
+                                    "Country",
+                                    style: TextStyle(
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w600,
                                     ),
-                                  );
+                                  ),
+                                  const Spacer(),
+                                ],
+                              ),
+                              SizedBox(height: 16.h),
+                
+                              // Search
+                              TextField(
+                                onChanged: (query) {
+                                  controller
+                                      .searchCountriesForDocumentVerification(
+                                        query,
+                                      );
                                 },
+                                controller: controller
+                                    .searchCountryForDocumentVerificationTec,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.symmetric(
+                                    vertical: 13.5.h,
+                                    horizontal: 12.5.w,
+                                  ),
+                                  prefixIcon: const Icon(Icons.search),
+                                  hintText: "Search...",
+                                  filled: true,
+                                  fillColor: AppColors.primaryBlack.withAlpha(
+                                    (255 * .06).round(),
+                                  ),
+                                  border: InputBorder.none,
+                                ),
                               ),
-                            ),
-
-                            Divider(
-                              color: AppColors.primaryBlack.withAlpha(
-                                (255 * .1).round(),
+                
+                              // List of countries
+                              Flexible(
+                                child: ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: controller
+                                      .filteredCountryListForDocumentVerification
+                                      .length,
+                                  itemBuilder: (context, index) {
+                                    var country = controller
+                                        .filteredCountryListForDocumentVerification[index];
+                                    return GestureDetector(
+                                      onTap: () {
+                                        controller
+                                            .selectCountryForDocumentVerification(
+                                              country,
+                                            );
+                                      },
+                                      child: Padding(
+                                        padding: EdgeInsets.all(14.sp),
+                                        child: Row(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius: BorderRadius.circular(
+                                                50.r,
+                                              ),
+                
+                                              child: SizedBox(
+                                                height: 24.h,
+                                                width: 24.h,
+                                                child:
+                                                    CountryFlag.fromCountryCode(
+                                                      country['code'],
+                                                    ),
+                                              ),
+                                            ),
+                                            SizedBox(width: 12.w),
+                                            Text(
+                                              country['name'],
+                                              style: TextStyle(fontSize: 17.sp),
+                                            ),
+                                            const Spacer(),
+                                            controller
+                                                    .isCountrySelectedForDocumentVerification(
+                                                      country,
+                                                    )
+                                                ? const Icon(Icons.check)
+                                                : const SizedBox.shrink(),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-
-                            // Done button
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.primaryBlack,
-                                  foregroundColor: AppColors.primaryWhite,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.r),
+                
+                              Divider(
+                                color: AppColors.primaryBlack.withAlpha(
+                                  (255 * .1).round(),
+                                ),
+                              ),
+                
+                              // Done button
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.primaryBlack,
+                                    foregroundColor: AppColors.primaryWhite,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.r),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: Text(
+                                    "Done",
+                                    style: TextStyle(fontSize: 17.sp),
                                   ),
                                 ),
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text(
-                                  "Done",
-                                  style: TextStyle(fontSize: 17.sp),
-                                ),
                               ),
-                            ),
-                            SizedBox(height: 20.h),
-                          ],
+                              SizedBox(height: 20.h),
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               ),
             );

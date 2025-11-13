@@ -265,133 +265,135 @@ class BusinessInfoPageWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.bottomSheet(
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.primaryWhite,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.r),
-                topRight: Radius.circular(10.r),
+          SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(10.r),
+                ),
               ),
-            ),
-            child: GetBuilder<BecomeSellerStepPageController>(
-              builder: (controller) {
-                return SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 20.h),
-                        Row(
-                          children: [
-                            IconButton(
+              child: GetBuilder<BecomeSellerStepPageController>(
+                builder: (controller) {
+                  return SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20.h),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                icon: Icon(Icons.close),
+                              ),
+                              Spacer(),
+                              Text(
+                                "State",
+                                style: TextStyle(
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Spacer(),
+                            ],
+                          ),
+                          SizedBox(height: 16.h),
+            
+                          TextField(
+                            onChanged: (query) {
+                              if (controller.stateList.isNotEmpty) {
+                                controller.searchStates(query);
+                              }
+                            },
+                            controller: controller.searchStateTec,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 13.5.h,
+                                horizontal: 12.5.w,
+                              ),
+                              prefixIcon: Icon(Icons.search),
+                              hintText: "Search...",
+                              filled: true,
+                              fillColor: AppColors.primaryBlack.withAlpha(
+                                (255 * .06).round(),
+                              ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+            
+                          Flexible(
+                            // height: 250.h,
+                            // width: double.infinity,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: controller.filteredStateList.length,
+                              itemBuilder: (context, index) {
+                                final state = controller.filteredStateList[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    controller.selectState(state);
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.sp),
+                                    child: Row(
+                                      children: [
+                                        Text(
+                                          state,
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
+                                        Spacer(),
+                                        controller.isSelected(state)
+                                            ? Icon(Icons.check)
+                                            : SizedBox.shrink(),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+            
+                          // SizedBox(height: 8.h),
+                          Divider(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .1).round(),
+                            ),
+                          ),
+                          // SizedBox(height: 8.h),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primaryBlack,
+                                foregroundColor: AppColors.primaryWhite,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.r),
+                                ),
+                              ),
                               onPressed: () {
                                 Get.back();
                               },
-                              icon: Icon(Icons.close),
-                            ),
-                            Spacer(),
-                            Text(
-                              "State",
-                              style: TextStyle(
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            Spacer(),
-                          ],
-                        ),
-                        SizedBox(height: 16.h),
-
-                        TextField(
-                          onChanged: (query) {
-                            if (controller.stateList.isNotEmpty) {
-                              controller.searchStates(query);
-                            }
-                          },
-                          controller: controller.searchStateTec,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 13.5.h,
-                              horizontal: 12.5.w,
-                            ),
-                            prefixIcon: Icon(Icons.search),
-                            hintText: "Search...",
-                            filled: true,
-                            fillColor: AppColors.primaryBlack.withAlpha(
-                              (255 * .06).round(),
-                            ),
-                            border: InputBorder.none,
-                          ),
-                        ),
-
-                        Flexible(
-                          // height: 250.h,
-                          // width: double.infinity,
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: controller.filteredStateList.length,
-                            itemBuilder: (context, index) {
-                              final state = controller.filteredStateList[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  controller.selectState(state);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.all(14.sp),
-                                  child: Row(
-                                    children: [
-                                      Text(
-                                        state,
-                                        style: TextStyle(fontSize: 17.sp),
-                                      ),
-                                      Spacer(),
-                                      controller.isSelected(state)
-                                          ? Icon(Icons.check)
-                                          : SizedBox.shrink(),
-                                    ],
-                                  ),
+                              child: Expanded(
+                                child: Text(
+                                  "Done",
+                                  style: TextStyle(fontSize: 17.sp),
                                 ),
-                              );
-                            },
-                          ),
-                        ),
-
-                        // SizedBox(height: 8.h),
-                        Divider(
-                          color: AppColors.primaryBlack.withAlpha(
-                            (255 * .1).round(),
-                          ),
-                        ),
-                        // SizedBox(height: 8.h),
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primaryBlack,
-                              foregroundColor: AppColors.primaryWhite,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4.r),
-                              ),
-                            ),
-                            onPressed: () {
-                              Get.back();
-                            },
-                            child: Expanded(
-                              child: Text(
-                                "Done",
-                                style: TextStyle(fontSize: 17.sp),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 20.h),
-                      ],
+                          SizedBox(height: 20.h),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         );
@@ -446,140 +448,142 @@ class BusinessInfoPageWidget extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Get.bottomSheet(
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.primaryWhite,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.r),
-                topRight: Radius.circular(10.r),
+          SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  topRight: Radius.circular(10.r),
+                ),
               ),
-            ),
-            child: GetBuilder<BecomeSellerStepPageController>(
-              builder: (controller) {
-                return SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 20.h),
-                        Row(
-                          children: [
-                            IconButton(
-                              onPressed: () => Get.back(),
-                              icon: const Icon(Icons.close),
-                            ),
-                            const Spacer(),
-                            Text(
-                              "Country",
-                              style: TextStyle(
-                                fontSize: 17.sp,
-                                fontWeight: FontWeight.w600,
+              child: GetBuilder<BecomeSellerStepPageController>(
+                builder: (controller) {
+                  return SizedBox(
+                    width: double.infinity,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20.h),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () => Get.back(),
+                                icon: const Icon(Icons.close),
                               ),
-                            ),
-                            const Spacer(),
-                          ],
-                        ),
-                        SizedBox(height: 16.h),
-
-                        // Search
-                        TextField(
-                          onChanged: (query) {
-                            controller.searchCountries(query);
-                          },
-                          controller: controller.searchCountryTec,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 13.5.h,
-                              horizontal: 12.5.w,
-                            ),
-                            prefixIcon: const Icon(Icons.search),
-                            hintText: "Search...",
-                            filled: true,
-                            fillColor: AppColors.primaryBlack.withAlpha(
-                              (255 * .06).round(),
-                            ),
-                            border: InputBorder.none,
+                              const Spacer(),
+                              Text(
+                                "Country",
+                                style: TextStyle(
+                                  fontSize: 17.sp,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              const Spacer(),
+                            ],
                           ),
-                        ),
-
-                        // List of countries
-                        Flexible(
-                          child: ListView.builder(
-                            shrinkWrap: true,
-                            itemCount: controller.filteredCountryList.length,
-                            itemBuilder: (context, index) {
-                              final country =
-                                  controller.filteredCountryList[index];
-                              return GestureDetector(
-                                onTap: () {
-                                  controller.selectCountry(country);
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.all(14.sp),
-                                  child: Row(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius: BorderRadius.circular(
-                                          50.r,
-                                        ),
-
-                                        child: SizedBox(
-                                          height: 24.h,
-                                          width: 24.h,
-                                          child: CountryFlag.fromCountryCode(
-                                            country['code'],
+                          SizedBox(height: 16.h),
+            
+                          // Search
+                          TextField(
+                            onChanged: (query) {
+                              controller.searchCountries(query);
+                            },
+                            controller: controller.searchCountryTec,
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: 13.5.h,
+                                horizontal: 12.5.w,
+                              ),
+                              prefixIcon: const Icon(Icons.search),
+                              hintText: "Search...",
+                              filled: true,
+                              fillColor: AppColors.primaryBlack.withAlpha(
+                                (255 * .06).round(),
+                              ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+            
+                          // List of countries
+                          Flexible(
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: controller.filteredCountryList.length,
+                              itemBuilder: (context, index) {
+                                final country =
+                                    controller.filteredCountryList[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    controller.selectCountry(country);
+                                  },
+                                  child: Padding(
+                                    padding: EdgeInsets.all(14.sp),
+                                    child: Row(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius: BorderRadius.circular(
+                                            50.r,
+                                          ),
+            
+                                          child: SizedBox(
+                                            height: 24.h,
+                                            width: 24.h,
+                                            child: CountryFlag.fromCountryCode(
+                                              country['code'],
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      SizedBox(width: 12.w),
-                                      Text(
-                                        country['name'],
-                                        style: TextStyle(fontSize: 17.sp),
-                                      ),
-                                      const Spacer(),
-                                      controller.isCountrySelected(country)
-                                          ? const Icon(Icons.check)
-                                          : const SizedBox.shrink(),
-                                    ],
+                                        SizedBox(width: 12.w),
+                                        Text(
+                                          country['name'],
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
+                                        const Spacer(),
+                                        controller.isCountrySelected(country)
+                                            ? const Icon(Icons.check)
+                                            : const SizedBox.shrink(),
+                                      ],
+                                    ),
                                   ),
+                                );
+                              },
+                            ),
+                          ),
+            
+                          Divider(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .1).round(),
+                            ),
+                          ),
+            
+                          // Done button
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppColors.primaryBlack,
+                                foregroundColor: AppColors.primaryWhite,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(4.r),
                                 ),
-                              );
-                            },
-                          ),
-                        ),
-
-                        Divider(
-                          color: AppColors.primaryBlack.withAlpha(
-                            (255 * .1).round(),
-                          ),
-                        ),
-
-                        // Done button
-                        SizedBox(
-                          width: double.infinity,
-                          child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.primaryBlack,
-                              foregroundColor: AppColors.primaryWhite,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4.r),
+                              ),
+                              onPressed: () => Get.back(),
+                              child: Text(
+                                "Done",
+                                style: TextStyle(fontSize: 17.sp),
                               ),
                             ),
-                            onPressed: () => Get.back(),
-                            child: Text(
-                              "Done",
-                              style: TextStyle(fontSize: 17.sp),
-                            ),
                           ),
-                        ),
-                        SizedBox(height: 20.h),
-                      ],
+                          SizedBox(height: 20.h),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         );

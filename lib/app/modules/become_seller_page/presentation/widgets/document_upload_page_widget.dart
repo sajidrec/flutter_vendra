@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path/path.dart' as path;
+import 'package:vendra_app/app/routes/app_routes.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -226,7 +227,10 @@ class DocumentUploadPageWidget extends StatelessWidget {
                                                       >()
                                                       .setVerifiedSeller(true);
 
-                                                  Get.back();
+                                                  Get.offAll(
+                                                    AppRoutes.bottomNavRoute,
+                                                  );
+                                                  // Get.back();
                                                 },
                                                 child: Text(
                                                   "Done",

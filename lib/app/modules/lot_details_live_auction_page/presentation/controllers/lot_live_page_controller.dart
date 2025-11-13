@@ -5,20 +5,28 @@ class LotLivePageController extends GetxController {
   late VideoPlayerController videoController;
   bool isInitialized = false;
 
+  bool bided = false;
+
+  void setBided(bool value) {
+    bided = value;
+    update();
+  }
+
   @override
   void onInit() {
     super.onInit();
 
-    videoController = VideoPlayerController.networkUrl(
-      Uri.parse(
-        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-      ),
-    )
-      ..initialize().then((_) {
-        isInitialized = true;
-        update(); // refresh GetBuilder
-        videoController.play(); // optional: auto-play
-      });
+    videoController =
+        VideoPlayerController.networkUrl(
+            Uri.parse(
+              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+            ),
+          )
+          ..initialize().then((_) {
+            isInitialized = true;
+            update(); // refresh GetBuilder
+            videoController.play(); // optional: auto-play
+          });
   }
 
   void playPauseVideo() {
