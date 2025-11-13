@@ -16,6 +16,8 @@ class BottomNavbarPage extends StatelessWidget {
       bottomNavigationBar: GetBuilder<BottomNavbarPageController>(
         builder: (controller) {
           return BottomNavigationBar(
+            unselectedFontSize: 12.sp,
+            selectedFontSize: 12.sp,
             backgroundColor: AppColors.primaryWhite,
             selectedItemColor: AppColors.primaryBlack,
             unselectedItemColor: AppColors.primaryBlack,

@@ -29,7 +29,7 @@ class NotificationPage extends StatelessWidget {
         ],
         title: Text(
           "Notifications",
-          style: TextStyle(fontWeight: FontWeight.w700),
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 17.sp),
         ),
         centerTitle: true,
       ),

@@ -18,7 +18,7 @@ class BottomNavbarPageController extends GetxController {
       auctionItemModel: AuctionItemModel(
         description: "Testing description",
         highestBid: 99,
-        imgUrl: "https://img.freepik.com/free-vector/white-product-podium-with-green-tropical-palm-leaves-golden-round-arch-green-wall_87521-3023.jpg",
+        imgUrl: "https://pngimg.com/uploads/headphones/headphones_PNG101974.png",
         isFavourite: false,
         itemName: "testProduct",
         timeLeft: DateTime.now().toString(),

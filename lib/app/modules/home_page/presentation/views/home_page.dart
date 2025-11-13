@@ -194,7 +194,8 @@ class _HomePageState extends State<HomePage> {
                                 id: "unique01",
                                 messageList: ["user01"],
                               ),
-                              thumbnail: "https://i.sstatic.net/zMoo4.jpg",
+                              thumbnail:
+                                  "https://png.pngtree.com/png-vector/20250124/ourmid/pngtree-a-red-headphone-png-image_15320037.png",
                               totalBids: 5,
                               startingPrice: 75,
                               specialFeature: "Nothing",
