@@ -29,13 +29,10 @@ class LotDetailsTimeAuctionPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16.sp, vertical: 8.sp),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              // Align both vertically
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  // Center items vertically
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  // Align text left
                   children: [
                     Text(
                       "Amount",
@@ -89,8 +86,8 @@ class LotDetailsTimeAuctionPage extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       height: 1.4,
-                                      color: AppColors.primaryBlack.withOpacity(
-                                        .7,
+                                      color: AppColors.primaryBlack.withValues(
+                                        alpha: .7,
                                       ),
                                     ),
                                   ),
@@ -102,8 +99,8 @@ class LotDetailsTimeAuctionPage extends StatelessWidget {
                                     style: TextStyle(
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.primaryBlack.withOpacity(
-                                        .6,
+                                      color: AppColors.primaryBlack.withValues(
+                                        alpha: .6,
                                       ),
                                     ),
                                   ),
@@ -151,7 +148,7 @@ class LotDetailsTimeAuctionPage extends StatelessWidget {
                                           style: TextStyle(
                                             fontSize: 14.sp,
                                             color: AppColors.primaryBlack
-                                                .withOpacity(.8),
+                                                .withValues(alpha: .8),
                                           ),
                                         ),
                                       ),
