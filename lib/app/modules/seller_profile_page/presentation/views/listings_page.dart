@@ -35,7 +35,7 @@ class ListingsPage extends StatelessWidget {
                       imgUrl:
                           "https://cdn.mos.cms.futurecdn.net/yDn3ZSXu9eSBxmXQDZ4PCF.jpg",
                       isFavourite: false,
-                      itemName: "I-phun",
+                      itemName: "I-phone",
                       timeLeft: "",
                       topBidders: [
                         TopBidders(
