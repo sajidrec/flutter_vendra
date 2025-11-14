@@ -185,12 +185,16 @@ class LotDetailsPage extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Select",
+                          controller.selectedCategoryIndex == -1
+                              ? "Select"
+                              : "Optimal Media",
                           style: TextStyle(
                             fontSize: 17.sp,
-                            color: AppColors.primaryBlack.withAlpha(
-                              (255 * .35).round(),
-                            ),
+                            color: controller.selectedCategoryIndex == -1
+                                ? AppColors.primaryBlack.withAlpha(
+                                    (255 * .35).round(),
+                                  )
+                                : AppColors.primaryBlack,
                           ),
                         ),
                         Spacer(),
