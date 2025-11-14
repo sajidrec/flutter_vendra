@@ -227,9 +227,12 @@ class DocumentUploadPageWidget extends StatelessWidget {
                                                       >()
                                                       .setVerifiedSeller(true);
 
-                                                  Get.offAll(
-                                                    AppRoutes.bottomNavRoute,
-                                                  );
+                                                  if (context.mounted) {
+                                                    Get.offAllNamed(
+                                                      AppRoutes.bottomNavRoute,
+                                                    );
+                                                  }
+
                                                   // Get.back();
                                                 },
                                                 child: Text(
