@@ -26,7 +26,7 @@ class SellPageController extends GetxController {
   bool timeAuctionMode = false;
   bool liveAuctionMode = false;
 
-  int auctionPrice = 0;
+  int auctionPrice = 1;
   int progressedIndex = 1;
   int selectedCategoryIndex = -1;
 
@@ -170,7 +170,7 @@ class SellPageController extends GetxController {
   }
 
   void decreaseAuctionPrice() {
-    if (auctionPrice > 0) {
+    if (auctionPrice > 1) {
       auctionPrice--;
       auctionPriceTec.text = auctionPrice.toString();
     }
