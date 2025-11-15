@@ -35,11 +35,81 @@ class BuyerProfilePage extends StatelessWidget {
                 SizedBox(height: 20.h),
                 _buildProfileShortStatistics(),
                 SizedBox(height: 20.h),
+
+                _buildNavMenu(),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  GetBuilder<BuyerProfilePageController> _buildNavMenu() {
+    return GetBuilder<BuyerProfilePageController>(
+      builder: (controller) {
+        return Container(
+          width: double.infinity,
+          height: Get.height / 2.5,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6.r),
+            border: Border.all(
+              color: AppColors.primaryBlack.withAlpha((255 * 0.1).round()),
+            ),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryGray.withAlpha((255 * .12).round()),
+                    borderRadius: BorderRadius.circular(8.r),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: controller.navList
+                        .asMap()
+                        .entries
+                        .map(
+                          (entry) => GestureDetector(
+                            onTap: () {
+                              controller.changeNavIndex(index: entry.key);
+                            },
+                            child: Padding(
+                              padding: EdgeInsets.all(2.sp),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: controller.index == entry.key
+                                      ? AppColors.primaryWhite
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(7.r),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(8.sp),
+                                  child: Text(entry.value.toString()),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                    vertical: 14.w,
+                  ),
+                  child: controller.pages[controller.index],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
