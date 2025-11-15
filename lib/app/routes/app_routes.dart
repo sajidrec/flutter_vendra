@@ -28,4 +28,5 @@ abstract class AppRoutes {
   static const String lotDetailsTimeAuctionPage = '/lotDetailsTimeAuctionPage';
   static const String lotDetailsLiveAuctionPage = '/lotDetailsLiveAuctionPage';
   static const String messageRoute = '/messageRoute';
+  static const String buyerProfileRoute = '/buyerProfileRoute';
 }

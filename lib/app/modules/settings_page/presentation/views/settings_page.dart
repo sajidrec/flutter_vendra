@@ -73,7 +73,7 @@ class SettingsPage extends StatelessWidget {
                       isScrollControlled: true,
                       backgroundColor: Colors.transparent,
                     );
-            
+
                     if (selected != null) {
                       log("Selected currency: $selected");
                     }
@@ -450,42 +450,88 @@ class SettingsPage extends StatelessWidget {
     );
   }
 
-  Container _buildSwitchToPremiumMsgButton() {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.primaryPurple.withAlpha((255 * .07).round()),
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(12.sp),
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(right: 24.w, left: 10.w),
-              child: SvgPicture.asset(
-                AppAssets.switchPeopleVersionIcon,
-                width: 24.w,
-                height: 24.h,
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Switch to Pro. Buyer",
-                    style: TextStyle(fontSize: 17.sp),
+  GetBuilder<SettingsPageController> _buildSwitchToPremiumMsgButton() {
+    return GetBuilder<SettingsPageController>(
+      builder: (controller) {
+        return InkWell(
+          onTap: () async {
+            Get.dialog(
+              AlertDialog(
+                title: Text("Are you sure?"),
+
+                actions: [
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primarySuccess,
+                        foregroundColor: AppColors.primaryWhite,
+                      ),
+                      onPressed: () async {
+                        await controller.toggleBuyerModeStatus();
+                        Get.offAllNamed(AppRoutes.bottomNavRoute);
+                      },
+                      child: Text("Confirm"),
+                    ),
                   ),
-                  Text(
-                    "Switch your account to pro. buyer account safely",
-                    style: TextStyle(fontSize: 13.sp),
+                  SizedBox(width: 12.w),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryDanger,
+                        foregroundColor: AppColors.primaryWhite,
+                      ),
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: Text("Cancel"),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              color: AppColors.primaryPurple.withAlpha((255 * .07).round()),
+              borderRadius: BorderRadius.circular(10.r),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(12.sp),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 24.w, left: 10.w),
+                    child: SvgPicture.asset(
+                      AppAssets.switchPeopleVersionIcon,
+                      width: 24.w,
+                      height: 24.h,
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          controller.inBuyerMode
+                              ? "Switch to Seller"
+                              : "Switch to Pro. Buyer",
+                          style: TextStyle(fontSize: 17.sp),
+                        ),
+                        Text(
+                          controller.inBuyerMode
+                              ? "Switch your account to seller account safely"
+                              : "Switch your account to pro. buyer account safely",
+                          style: TextStyle(fontSize: 13.sp),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

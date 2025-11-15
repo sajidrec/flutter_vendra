@@ -1,0 +1,334 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+
+import '../../../core/constants/app_assets.dart';
+import '../../../core/constants/app_colors.dart';
+import '../../../routes/app_routes.dart';
+import '../../seller_profile_page/presentation/views/support_page.dart';
+
+class BuyerProfilePage extends StatelessWidget {
+  const BuyerProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "My Profile",
+          style: TextStyle(fontSize: 17.sp, fontWeight: FontWeight.w600),
+        ),
+        centerTitle: true,
+
+        actions: [_buildMoreOptions()],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(child: Column(children: [])),
+      ),
+    );
+  }
+
+  IconButton _buildMoreOptions() {
+    return IconButton(
+      onPressed: () {
+        Get.bottomSheet(
+          SafeArea(
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.primaryWhite,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(6.r),
+                  topRight: Radius.circular(6.r),
+                ),
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(16.sp),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes.lotDetailsRoute,
+                          arguments: {"shouldWrapWithScaffold": true},
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.addInsideSquareIcon,
+                            width: 30.w,
+                            height: 30.h,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(9.sp),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Create new listing",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Add a new item to your listing",
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      color: AppColors.primaryBlack.withAlpha(
+                                        (255 * .6).round(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.toNamed(AppRoutes.settingsRoute);
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.settingsIcon,
+                            width: 30.w,
+                            height: 30.h,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(9.sp),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Settings",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Update security, add payment method change currency ",
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: AppColors.primaryBlack.withAlpha(
+                                        (255 * .6).round(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(SupportPage());
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.supportIcon,
+                            width: 30.w,
+                            height: 30.h,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(9.sp),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Support",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Get instant Live support from admin",
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: AppColors.primaryBlack.withAlpha(
+                                        (255 * .6).round(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Divider(
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Get.dialog(
+                          Center(
+                            child: Material(
+                              color: Colors.transparent,
+                              child: Container(
+                                width: Get.width - 30.w,
+                                padding: EdgeInsets.all(20),
+                                decoration: BoxDecoration(
+                                  color: AppColors.primaryWhite,
+                                  borderRadius: BorderRadius.circular(6.r),
+                                ),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SvgPicture.asset(
+                                          AppAssets.logoutIcon,
+                                          width: 24.w,
+                                          height: 24.h,
+                                        ),
+                                        Text(
+                                          "Log out",
+                                          style: TextStyle(
+                                            fontSize: 20.sp,
+                                            color: AppColors.primaryDanger,
+                                          ),
+                                        ),
+
+                                        Spacer(),
+                                        IconButton(
+                                          onPressed: () {
+                                            Get.back();
+                                          },
+                                          icon: Icon(Icons.close),
+                                        ),
+                                      ],
+                                    ),
+                                    Divider(),
+
+                                    Padding(
+                                      padding: EdgeInsets.only(bottom: 20.h),
+                                      child: Text(
+                                        "Do you want to log out your account?",
+                                        style: TextStyle(
+                                          fontSize: 16.sp,
+                                          color: AppColors.primaryBlack
+                                              .withAlpha((255 * .8).round()),
+                                        ),
+                                      ),
+                                    ),
+
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColors.primaryBlack,
+                                              foregroundColor:
+                                                  AppColors.primaryWhite,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.r),
+                                              ),
+                                            ),
+                                            onPressed: () {
+                                              Get.back();
+                                            },
+                                            child: Text(
+                                              "No, keep me in",
+                                              style: TextStyle(fontSize: 17.sp),
+                                            ),
+                                          ),
+                                        ),
+
+                                        SizedBox(width: 12.w),
+
+                                        Expanded(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  AppColors.primaryDanger,
+                                              foregroundColor:
+                                                  AppColors.primaryWhite,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(4.r),
+                                              ),
+                                            ),
+                                            onPressed: () {},
+                                            child: Text(
+                                              "Yes, log out",
+                                              style: TextStyle(fontSize: 17.sp),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Row(
+                        children: [
+                          SvgPicture.asset(
+                            AppAssets.logoutIcon,
+                            width: 30.w,
+                            height: 30.h,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding: EdgeInsets.all(9.sp),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Log out",
+                                    style: TextStyle(fontSize: 17.sp),
+                                  ),
+                                  Text(
+                                    "Exit from your account",
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
+                                      overflow: TextOverflow.ellipsis,
+                                      color: AppColors.primaryBlack.withAlpha(
+                                        (255 * .6).round(),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      icon: Icon(Icons.more_vert_outlined),
+    );
+  }
+}

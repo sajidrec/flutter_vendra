@@ -9,6 +9,8 @@ import 'package:vendra_app/app/modules/become_seller_page/presentation/binding/b
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_page.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_step_page.dart';
 import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bottom_navbar_page.dart';
+import 'package:vendra_app/app/modules/buyer_profile_page/binding/buyer_profile_page_binding.dart';
+import 'package:vendra_app/app/modules/buyer_profile_page/views/buyer_profile_page.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favorite_page_binding.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/general_setting_page/bindings/general_setting_page_binding.dart';
@@ -194,6 +196,7 @@ class AppPages {
       page: () => ForgetPassPage(),
       binding: ForgetPassPageBinding(),
     ),
+
     GetPage(
       name: AppRoutes.lotDetailsTimeAuctionPage,
       page: () => LotDetailsTimeAuctionPage(
@@ -201,6 +204,7 @@ class AppPages {
       ),
       binding: LotDetailsTimeAuctionPageBinding(),
     ),
+
     GetPage(
       name: AppRoutes.lotDetailsLiveAuctionPage,
       page: () => LotDetailsLiveAuctionPage(
@@ -208,10 +212,17 @@ class AppPages {
       ),
       binding: LotDetailsLiveAuctionPageBinding(),
     ),
+
     GetPage(
       name: AppRoutes.messageRoute,
       page: () => MessagePage(),
       binding: MessagePageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.buyerProfileRoute,
+      page: () => BuyerProfilePage(),
+      binding: BuyerProfilePageBinding(),
     ),
   ];
 }
