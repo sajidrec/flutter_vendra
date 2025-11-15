@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/buyer_profile_page/controllers/buyer_profile_page_controller.dart';
 
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
@@ -24,8 +26,179 @@ class BuyerProfilePage extends StatelessWidget {
         actions: [_buildMoreOptions()],
       ),
       body: SafeArea(
-        child: SingleChildScrollView(child: Column(children: [])),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: Column(
+              children: [
+                _buildHeaderSection(),
+                SizedBox(height: 20.h),
+                _buildProfileShortStatistics(),
+                SizedBox(height: 20.h),
+              ],
+            ),
+          ),
+        ),
       ),
+    );
+  }
+
+  Row _buildProfileShortStatistics() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.r),
+              border: Border.all(color: AppColors.primaryLightGray),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("24"), Text("Items won")],
+              ),
+            ),
+          ),
+        ),
+
+        SizedBox(width: 8.w),
+
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.r),
+              border: Border.all(color: AppColors.primaryLightGray),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("£94,850"), Text("Total spent")],
+              ),
+            ),
+          ),
+        ),
+
+        SizedBox(width: 8.w),
+
+        Expanded(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4.r),
+              border: Border.all(color: AppColors.primaryLightGray),
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [Text("15"), Text("Favorite")],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Row _buildHeaderSection() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Stack(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100.r),
+              child: CachedNetworkImage(
+                width: 100.w,
+                height: 100.h,
+                fit: BoxFit.cover,
+                imageUrl:
+                    "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?cs=srgb&dl=pexels-italo-melo-881954-2379004.jpg&fm=jpg",
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
+            ),
+            Positioned(
+              right: 0,
+              bottom: 0,
+              child: GestureDetector(
+                onTap: () {},
+                child: SvgPicture.asset(AppAssets.cameraInsideCircleIcon),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(width: 16.w),
+        GetBuilder<BuyerProfilePageController>(
+          init: BuyerProfilePageController(),
+          builder: (controller) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    SizedBox(
+                      width: Get.width / 2.1,
+                      child: TextField(
+                        readOnly: !controller.editMode,
+                        controller: TextEditingController(text: "Alex Morgan"),
+                        decoration: InputDecoration(
+                          enabledBorder: controller.editMode
+                              ? OutlineInputBorder()
+                              : InputBorder.none,
+                          focusedBorder: controller.editMode
+                              ? OutlineInputBorder()
+                              : InputBorder.none,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(width: 16.w),
+                    InkWell(
+                      onTap: () {
+                        controller.toggleEditMode();
+                      },
+                      child: Icon(
+                        controller.editMode ? Icons.save : Icons.edit_outlined,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  "@alex_morgan",
+                  style: TextStyle(
+                    fontSize: 13.sp,
+                    color: AppColors.primaryBlack.withAlpha((255 * .6).round()),
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                SizedBox(
+                  width: 254.w,
+                  height: 40.h,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryPurple,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4.r),
+                      ),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Upgrade to pro. buyer",
+                      style: TextStyle(
+                        fontSize: 17.sp,
+                        color: AppColors.primaryWhite,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ],
     );
   }
 

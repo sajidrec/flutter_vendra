@@ -458,7 +458,6 @@ class SettingsPage extends StatelessWidget {
             Get.dialog(
               AlertDialog(
                 title: Text("Are you sure?"),
-
                 actions: [
                   Expanded(
                     child: ElevatedButton(
