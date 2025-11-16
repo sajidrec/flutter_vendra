@@ -80,5 +80,6 @@ class AppAssets {
   static const messengerIcon = "assets/icons/messenger.svg";
   static const videoIcon = "assets/icons/video_icon.svg";
   static const trophyGreenIcon = "assets/icons/trophy_green_icon.svg";
-
+  static const hammerIcon = "assets/icons/hammer_icon.svg";
+  static const purchaseIcon = "assets/icons/purchace_bag_icon.svg";
 }

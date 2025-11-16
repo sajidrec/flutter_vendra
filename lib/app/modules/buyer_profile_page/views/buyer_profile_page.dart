@@ -50,7 +50,7 @@ class BuyerProfilePage extends StatelessWidget {
       builder: (controller) {
         return Container(
           width: double.infinity,
-          height: Get.height / 2.5,
+          height: Get.height / 2.3,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(6.r),
             border: Border.all(
