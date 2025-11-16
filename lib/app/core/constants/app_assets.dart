@@ -82,4 +82,8 @@ class AppAssets {
   static const trophyGreenIcon = "assets/icons/trophy_green_icon.svg";
   static const hammerIcon = "assets/icons/hammer_icon.svg";
   static const purchaseIcon = "assets/icons/purchace_bag_icon.svg";
+  static const watchImg = "assets/images/watch_img.png";
+  static const planeIcon = "assets/icons/plane_icon.svg";
+  static const whatsNextImg = "assets/images/whats_new_img.svg";
+  static const downloadIcon = "assets/icons/download_icon.svg";
 }
