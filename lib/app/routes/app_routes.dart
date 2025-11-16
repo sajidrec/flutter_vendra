@@ -31,4 +31,5 @@ abstract class AppRoutes {
   static const String buyerProfileRoute = '/buyerProfileRoute';
   static const String recieptDetailsRoute = '/recieptDetailsRoute';
   static const String editProfileRoute = '/editProfileRoute';
+  static const String becomeProBuyerRoute = '/becomeProBuyerRoute';
 }

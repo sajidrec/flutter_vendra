@@ -4,6 +4,8 @@ import 'package:vendra_app/app/modules/auth/forget_pass_page/binding/forget_pass
 import 'package:vendra_app/app/modules/auth/forget_pass_page/views/forget_pass_page.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/binding/login_page_binding.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/views/login_page.dart';
+import 'package:vendra_app/app/modules/become_professional_buyer/presentation/bindings/become_pro_buyer_page_binding.dart';
+import 'package:vendra_app/app/modules/become_professional_buyer/presentation/views/become_pro_buyer_page.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/binding/become_seller_page_binding.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/binding/become_seller_step_one_page_binding.dart';
 import 'package:vendra_app/app/modules/become_seller_page/presentation/views/become_seller_page.dart';
@@ -238,6 +240,12 @@ class AppPages {
       name: AppRoutes.editProfileRoute,
       page: () => EditProfilePage(),
       binding: EditProfilePageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.becomeProBuyerRoute,
+      page: () => BecomeProBuyerPage(),
+      binding: BecomeProBuyerPageBinding(),
     ),
   ];
 }

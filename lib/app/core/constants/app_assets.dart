@@ -87,4 +87,5 @@ class AppAssets {
   static const whatsNextImg = "assets/images/whats_new_img.svg";
   static const downloadIcon = "assets/icons/download_icon.svg";
   static const headPhoneImage = "assets/images/head_phone_img.png";
+  static const becomeProBuyerImg = "assets/images/become_pro_buyer_img.png";
 }

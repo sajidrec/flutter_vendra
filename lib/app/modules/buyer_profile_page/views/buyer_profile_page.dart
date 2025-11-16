@@ -255,7 +255,9 @@ class BuyerProfilePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4.r),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.becomeProBuyerRoute);
+                    },
                     child: Text(
                       "Upgrade to pro. buyer",
                       style: TextStyle(
