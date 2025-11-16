@@ -130,7 +130,7 @@ class SellerProfilePage extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(AppRoutes.settingsRoute);
+                        Get.toNamed(AppRoutes.settingsRoute, arguments: true);
                       },
                       child: Row(
                         children: [

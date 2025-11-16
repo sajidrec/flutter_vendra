@@ -12,7 +12,9 @@ import 'package:vendra_app/app/routes/app_routes.dart';
 import '../widgets/choose_currency_bottomsheet_widget.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({super.key, required this.generalVisible});
+
+  final bool generalVisible;
 
   @override
   Widget build(BuildContext context) {
@@ -30,17 +32,27 @@ class SettingsPage extends StatelessWidget {
               children: [
                 _buildSwitchToPremiumMsgButton(),
                 SizedBox(height: 16.h),
-                _buildOptions(
-                  iconPath: AppAssets.generalPeopleIcon,
-                  optionName: "General",
-                  optionDescription: "Change display name & other information",
-                  onTap: () {
-                    Get.toNamed(AppRoutes.generalSettingRoute);
-                  },
-                ),
-                Divider(
-                  color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
-                ),
+                generalVisible
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildOptions(
+                            iconPath: AppAssets.generalPeopleIcon,
+                            optionName: "General",
+                            optionDescription:
+                                "Change display name & other information",
+                            onTap: () {
+                              Get.toNamed(AppRoutes.generalSettingRoute);
+                            },
+                          ),
+                          Divider(
+                            color: AppColors.primaryBlack.withAlpha(
+                              (255 * .1).round(),
+                            ),
+                          ),
+                        ],
+                      )
+                    : SizedBox.shrink(),
                 _buildOptions(
                   iconPath: AppAssets.lockIcon,
                   optionName: "Security",

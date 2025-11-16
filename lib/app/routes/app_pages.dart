@@ -171,7 +171,7 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.settingsRoute,
-      page: () => SettingsPage(),
+      page: () => SettingsPage(generalVisible: Get.arguments),
       binding: SettingsPageBinding(),
     ),
     GetPage(

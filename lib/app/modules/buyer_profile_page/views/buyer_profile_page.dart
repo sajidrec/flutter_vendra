@@ -293,52 +293,7 @@ class BuyerProfilePage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(
-                          AppRoutes.lotDetailsRoute,
-                          arguments: {"shouldWrapWithScaffold": true},
-                        );
-                      },
-                      child: Row(
-                        children: [
-                          SvgPicture.asset(
-                            AppAssets.addInsideSquareIcon,
-                            width: 30.w,
-                            height: 30.h,
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.all(9.sp),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Create new listing",
-                                    style: TextStyle(fontSize: 17.sp),
-                                  ),
-                                  Text(
-                                    "Add a new item to your listing",
-                                    style: TextStyle(
-                                      fontSize: 13.sp,
-                                      color: AppColors.primaryBlack.withAlpha(
-                                        (255 * .6).round(),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Divider(
-                      color: AppColors.primaryBlack.withAlpha(
-                        (255 * .1).round(),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Get.toNamed(AppRoutes.settingsRoute);
+                        Get.toNamed(AppRoutes.settingsRoute, arguments: false);
                       },
                       child: Row(
                         children: [
