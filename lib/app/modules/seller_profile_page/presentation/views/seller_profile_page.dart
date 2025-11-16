@@ -288,7 +288,7 @@ class SellerProfilePage extends StatelessWidget {
                                             },
                                             child: Text(
                                               "No, keep me in",
-                                              style: TextStyle(fontSize: 17.sp),
+                                              style: TextStyle(fontSize: 14.sp),
                                             ),
                                           ),
                                         ),
@@ -310,7 +310,7 @@ class SellerProfilePage extends StatelessWidget {
                                             onPressed: () {},
                                             child: Text(
                                               "Yes, log out",
-                                              style: TextStyle(fontSize: 17.sp),
+                                              style: TextStyle(fontSize: 14.sp),
                                             ),
                                           ),
                                         ),
