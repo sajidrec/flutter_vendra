@@ -12,6 +12,8 @@ import 'package:vendra_app/app/modules/bottom_navbar_page/presentation/views/bot
 import 'package:vendra_app/app/modules/buyer_profile_page/binding/buyer_profile_page_binding.dart';
 import 'package:vendra_app/app/modules/buyer_profile_page/views/buyer_profile_page.dart';
 import 'package:vendra_app/app/modules/buyer_profile_page/views/reciept_details_page.dart';
+import 'package:vendra_app/app/modules/edit_profile_page/presentation/binding/edit_profile_page_binding.dart';
+import 'package:vendra_app/app/modules/edit_profile_page/presentation/views/edit_profile_page.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/binding/favorite_page_binding.dart';
 import 'package:vendra_app/app/modules/favorite_page/presentation/views/favorite_page.dart';
 import 'package:vendra_app/app/modules/general_setting_page/bindings/general_setting_page_binding.dart';
@@ -230,6 +232,12 @@ class AppPages {
       name: AppRoutes.recieptDetailsRoute,
       page: () => RecieptDetailsPage(),
       binding: BuyerProfilePageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.editProfileRoute,
+      page: () => EditProfilePage(),
+      binding: EditProfilePageBinding(),
     ),
   ];
 }

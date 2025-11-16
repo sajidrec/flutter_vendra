@@ -124,7 +124,9 @@ class SellerProfilePage extends StatelessWidget {
                       ),
                     ),
                     Divider(
-                      color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -165,7 +167,9 @@ class SellerProfilePage extends StatelessWidget {
                       ),
                     ),
                     Divider(
-                      color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -206,7 +210,9 @@ class SellerProfilePage extends StatelessWidget {
                       ),
                     ),
                     Divider(
-                      color: AppColors.primaryBlack.withAlpha((255 * .1).round()),
+                      color: AppColors.primaryBlack.withAlpha(
+                        (255 * .1).round(),
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {
@@ -239,7 +245,7 @@ class SellerProfilePage extends StatelessWidget {
                                             color: AppColors.primaryDanger,
                                           ),
                                         ),
-            
+
                                         Spacer(),
                                         IconButton(
                                           onPressed: () {
@@ -250,20 +256,19 @@ class SellerProfilePage extends StatelessWidget {
                                       ],
                                     ),
                                     Divider(),
-            
+
                                     Padding(
                                       padding: EdgeInsets.only(bottom: 20.h),
                                       child: Text(
                                         "Do you want to log out your account?",
                                         style: TextStyle(
                                           fontSize: 16.sp,
-                                          color: AppColors.primaryBlack.withAlpha(
-                                            (255 * .8).round(),
-                                          ),
+                                          color: AppColors.primaryBlack
+                                              .withAlpha((255 * .8).round()),
                                         ),
                                       ),
                                     ),
-            
+
                                     Row(
                                       children: [
                                         Expanded(
@@ -287,9 +292,9 @@ class SellerProfilePage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-            
+
                                         SizedBox(width: 12.w),
-            
+
                                         Expanded(
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
@@ -607,7 +612,8 @@ class SellerProfilePage extends StatelessWidget {
                     SizedBox(width: 16.w),
                     InkWell(
                       onTap: () {
-                        controller.toggleEditMode();
+                        // controller.toggleEditMode();
+                        Get.toNamed(AppRoutes.editProfileRoute);
                       },
                       child: Icon(
                         controller.editMode ? Icons.save : Icons.edit_outlined,

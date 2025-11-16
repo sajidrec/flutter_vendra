@@ -228,7 +228,8 @@ class BuyerProfilePage extends StatelessWidget {
                     SizedBox(width: 16.w),
                     InkWell(
                       onTap: () {
-                        controller.toggleEditMode();
+                        // controller.toggleEditMode();
+                        Get.toNamed(AppRoutes.editProfileRoute);
                       },
                       child: Icon(
                         controller.editMode ? Icons.save : Icons.edit_outlined,
