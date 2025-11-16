@@ -8,9 +8,10 @@ class FavoritePage extends StatelessWidget {
   FavoritePage({super.key});
 
   final List<AuctionItemModel> auctionItemModelList = [
+
     AuctionItemModel(
       imgUrl:
-          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
+          "https://donders1860.com/wp-content/uploads/2025/08/52648_999_1.jpg",
       id: "ABC",
       topBidders: [
         TopBidders(
@@ -21,14 +22,14 @@ class FavoritePage extends StatelessWidget {
         ),
       ],
       timeLeft: "2days",
-      itemName: "Test item",
+      itemName: "Leather jacket",
       isFavourite: false,
       highestBid: 999,
-      description: "Lorem ipsum dolor sit amet, ",
+      description: "very good condition",
     ),
     AuctionItemModel(
       imgUrl:
-          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
+          "https://donders1860.com/wp-content/uploads/2025/08/52648_999_1.jpg",
       id: "ABC",
       topBidders: [
         TopBidders(
@@ -39,28 +40,10 @@ class FavoritePage extends StatelessWidget {
         ),
       ],
       timeLeft: "2days",
-      itemName: "Test item",
+      itemName: "Leather jacket",
       isFavourite: false,
       highestBid: 999,
-      description: "nothing to say",
-    ),
-    AuctionItemModel(
-      imgUrl:
-          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
-      id: "ABC",
-      topBidders: [
-        TopBidders(
-          profilePic:
-              "https://media.istockphoto.com/id/636379014/photo/hands-forming-a-heart-shape-with-sunset-silhouette.jpg?s=612x612&w=0&k=20&c=CgjWWGEasjgwia2VT7ufXa10azba2HXmUDe96wZG8F0=",
-          price: 99,
-          name: "profile pic",
-        ),
-      ],
-      timeLeft: "2days",
-      itemName: "Test item",
-      isFavourite: false,
-      highestBid: 999,
-      description: "nothing to say",
+      description: "very good condition",
     ),
   ];
 

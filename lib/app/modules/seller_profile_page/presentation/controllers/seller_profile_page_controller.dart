@@ -18,7 +18,7 @@ class SellerProfilePageController extends GetxController {
         highestBid: 12345,
         imgUrl: "https://cdn.mos.cms.futurecdn.net/yDn3ZSXu9eSBxmXQDZ4PCF.jpg",
         isFavourite: false,
-        itemName: "I-phun",
+        itemName: "I-Phone",
         timeLeft: "2025-10-21T18:00:00Z",
         topBidders: [
           TopBidders(

@@ -8,7 +8,10 @@ import 'package:get/get.dart';
 import 'package:vendra_app/app/core/data/models/auction_item_model.dart';
 
 class SellerAuctionItemDetailPage extends StatelessWidget {
-  const SellerAuctionItemDetailPage({super.key, required this.auctionItemModel});
+  const SellerAuctionItemDetailPage({
+    super.key,
+    required this.auctionItemModel,
+  });
 
   final AuctionItemModel auctionItemModel;
 
@@ -307,7 +310,7 @@ class SellerAuctionItemDetailPage extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 12.h),
+                SizedBox(height: 8.h),
 
                 Center(
                   child: Text(
