@@ -191,13 +191,9 @@ class LotDetailsTimeAuctionPage extends StatelessWidget {
                         .map(
                           (imgUrl) => SizedBox(
                             width: double.infinity,
-                            child: CachedNetworkImage(
-                              imageUrl: imgUrl,
-                              fit: BoxFit.cover,
-                              errorWidget: (context, url, error) => Icon(
-                                Icons.error,
-                                color: AppColors.primaryDanger,
-                              ),
+                            child: Image.asset(
+                              AppAssets.headPhoneImage,
+                              fit: BoxFit.contain,
                             ),
                           ),
                         )

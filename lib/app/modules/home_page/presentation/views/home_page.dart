@@ -29,68 +29,71 @@ class _HomePageState extends State<HomePage> {
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => Get.dialog(
         Center(
-          child: Material(
-            color: Colors.transparent,
-            child: SingleChildScrollView(
-              child: Container(
-                // width: MediaQuery.of(context).size.width - 20.w,
-                // height: 428.h,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryWhite,
-                  borderRadius: BorderRadius.circular(10.r),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(16.w),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Expanded(
-                            child: Text(
-                              "Your auction journey starts here",
-                              style: TextStyle(
-                                fontSize: 28.sp,
-                                color: AppColors.primaryBlack,
-                              ), // use Material text style
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              Get.back();
-                            },
-                            icon: Icon(
-                              Icons.close,
-
-                              color: AppColors.primaryBlack.withAlpha(
-                                (255 * .6).round(),
+          child: Padding(
+            padding: EdgeInsets.all(16.sp),
+            child: Material(
+              color: Colors.transparent,
+              child: SingleChildScrollView(
+                child: Container(
+                  // width: MediaQuery.of(context).size.width - 20.w,
+                  // height: 428.h,
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryWhite,
+                    borderRadius: BorderRadius.circular(10.r),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(16.w),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                "Your auction journey starts here",
+                                style: TextStyle(
+                                  fontSize: 28.sp,
+                                  color: AppColors.primaryBlack,
+                                ), // use Material text style
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 103.h,
-                        child: SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
-                      ),
-                      // SizedBox(height: 8.h),
-                      SizedBox(
-                        width: double.infinity,
-                        height: 123.h,
-                        child: SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
-                      ),
-                      SizedBox(height: 18.h),
-                      Row(
-                        children: [
-                          Expanded(child: _buildLoginButton()),
-                          SizedBox(width: 12.w),
-                          Expanded(child: _buildRegisterButton()),
-                        ],
-                      ),
-                    ],
+                            IconButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              icon: Icon(
+                                Icons.close,
+
+                                color: AppColors.primaryBlack.withAlpha(
+                                  (255 * .6).round(),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 103.h,
+                          child: SvgPicture.asset(AppAssets.popUpMsgSegmentOne),
+                        ),
+                        // SizedBox(height: 8.h),
+                        SizedBox(
+                          width: double.infinity,
+                          height: 123.h,
+                          child: SvgPicture.asset(AppAssets.popUpMsgSegmentTwo),
+                        ),
+                        SizedBox(height: 18.h),
+                        Row(
+                          children: [
+                            Expanded(child: _buildLoginButton()),
+                            SizedBox(width: 12.w),
+                            Expanded(child: _buildRegisterButton()),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -171,7 +174,7 @@ class _HomePageState extends State<HomePage> {
                           Get.toNamed(
                             AppRoutes.lotDetailsTimeAuctionPage,
                             arguments: LotDetailsModel(
-                              color: "Black",
+                              color: "Red",
                               highestBid: 999,
                               isFavourite: true,
                               timeLeft: DateTime.now().toString(),
@@ -181,12 +184,12 @@ class _HomePageState extends State<HomePage> {
                               deliveryAvailableIn: ["USA", "UK", "BD"],
                               isLive: false,
                               joinLiveAuction: null,
-                              title: "PARADA",
-                              subtitle: "Vintage Leather Jacket",
+                              title: "Headphone",
+                              subtitle: "Classic headphone",
                               lotImages: [
-                                "https://i.sstatic.net/zMoo4.jpg",
-                                "https://i.sstatic.net/zMoo4.jpg",
-                                "https://i.sstatic.net/zMoo4.jpg",
+                                "https://png.pngtree.com/png-vector/20250124/ourmid/pngtree-a-red-headphone-png-image_15320037.png",
+                                "https://png.pngtree.com/png-vector/20250124/ourmid/pngtree-a-red-headphone-png-image_15320037.png",
+                                "https://png.pngtree.com/png-vector/20250124/ourmid/pngtree-a-red-headphone-png-image_15320037.png",
                               ],
                               sellerProfile: SellerProfile(
                                 name: "sajid",
@@ -220,12 +223,10 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Stack(
                                   children: [
-                                    CachedNetworkImage(
+                                    Image.asset(
                                       width: double.infinity,
                                       height: 142.h,
-                                      fit: BoxFit.contain,
-                                      imageUrl:
-                                          widget.auctionItemModel.imgUrl ?? "",
+                                      AppAssets.headPhoneImage,
                                     ),
                                     Positioned(
                                       right: 0,
