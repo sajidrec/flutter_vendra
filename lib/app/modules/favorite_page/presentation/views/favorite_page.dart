@@ -10,7 +10,7 @@ class FavoritePage extends StatelessWidget {
   final List<AuctionItemModel> auctionItemModelList = [
     AuctionItemModel(
       imgUrl:
-          "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?cs=srgb&dl=pexels-lukas-hartmann-304281-1557652.jpg&fm=jpg",
+          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
       id: "ABC",
       topBidders: [
         TopBidders(
@@ -28,7 +28,7 @@ class FavoritePage extends StatelessWidget {
     ),
     AuctionItemModel(
       imgUrl:
-          "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?cs=srgb&dl=pexels-lukas-hartmann-304281-1557652.jpg&fm=jpg",
+          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
       id: "ABC",
       topBidders: [
         TopBidders(
@@ -46,7 +46,7 @@ class FavoritePage extends StatelessWidget {
     ),
     AuctionItemModel(
       imgUrl:
-          "https://images.pexels.com/photos/1557652/pexels-photo-1557652.jpeg?cs=srgb&dl=pexels-lukas-hartmann-304281-1557652.jpg&fm=jpg",
+          "https://www.billionaire.com/on/demandware.static/-/Sites-billionaire-master-catalog/default/dwdd608fe6/images/large/O19C-MLB0960-BLE003P_13_sf.jpg",
       id: "ABC",
       topBidders: [
         TopBidders(
@@ -84,7 +84,7 @@ class FavoritePage extends StatelessWidget {
                   imageUrl: auctionItemModelList[index].imgUrl ?? "",
                   width: 204.w,
                   height: 204.h,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.contain,
                 ),
 
                 Expanded(
@@ -93,7 +93,7 @@ class FavoritePage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                       children: [
+                      children: [
                         Text(
                           auctionItemModelList[index].itemName ?? "",
                           style: TextStyle(fontSize: 20.sp),

@@ -200,7 +200,7 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
                             width: double.infinity,
                             child: CachedNetworkImage(
                               imageUrl: imgUrl,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.contain,
                               errorWidget: (context, url, error) => Icon(
                                 Icons.error,
                                 color: AppColors.primaryDanger,

@@ -306,15 +306,15 @@ class _HomePageState extends State<HomePage> {
             AppRoutes.lotDetailsLiveAuctionPage,
             arguments: LotDetailsModel(
               thumbnail:
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+                  "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
               isFavourite: true,
               title: "Weekly Top Picks",
-              subtitle: "Man",
+              subtitle: "bag",
               lotImages: [
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMUDp3aV5EOTHgkQp6AB782rSKOyhhkdkx8Q&s",
+                "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
+                "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
+                "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
+                "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
               ],
               color: "White",
               startingPrice: 99,
@@ -363,7 +363,7 @@ class _HomePageState extends State<HomePage> {
                             width: 133.w,
                             height: 133.h,
                             imageUrl:
-                                "https://t4.ftcdn.net/jpg/15/05/51/47/360_F_1505514711_kJFZM5lwKSPszilnm7ooNMfe0tYqyfXB.jpg",
+                                "https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp",
                             errorWidget: (context, url, error) =>
                                 Icon(Icons.error),
                           ),
