@@ -95,6 +95,9 @@ class _LotLivePageState extends State<LotLivePage> {
                               if (!controller.isPipActive)
                                 Stack(
                                   children: [
+
+
+
                                     AspectRatio(
                                       aspectRatio: controller
                                           .videoController
@@ -160,6 +163,8 @@ class _LotLivePageState extends State<LotLivePage> {
                                   ],
                                 ),
                               SizedBox(height: 14.h),
+                              if(controller.isPipActive)
+                                Image.network("https://smartdeal.com.bd/public/uploads/all/7nSZhRYRVCtQYJ072Awgc2jEmW8nBPqdiXvWQpgX.webp"),
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 16.sp,
