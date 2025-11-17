@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 
 class PipOverlay extends StatefulWidget {
@@ -19,7 +18,7 @@ class PipOverlay extends StatefulWidget {
 
 class _PipOverlayState extends State<PipOverlay> {
   Offset position = Offset(16.w, 100.h);
-  Size pipSize = Size(150.w, 100.h);
+  Size pipSize = Size(266.w, 150.h);
   bool isDragging = false;
 
   @override
@@ -59,7 +58,7 @@ class _PipOverlayState extends State<PipOverlay> {
               color: Colors.black,
               borderRadius: BorderRadius.circular(8.r),
               border: Border.all(
-                color: Colors.white.withOpacity(0.3),
+                color: Colors.white.withValues(alpha: 0.3),
                 width: 2,
               ),
             ),
@@ -80,7 +79,7 @@ class _PipOverlayState extends State<PipOverlay> {
                     child: Container(
                       padding: EdgeInsets.all(4.sp),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Colors.black.withValues(alpha: 0.7),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -98,12 +97,12 @@ class _PipOverlayState extends State<PipOverlay> {
                     onTap: () {
                       widget.onClose();
                       // Return to full screen
-                      Get.back();
+                      // Get.back();
                     },
                     child: Container(
                       padding: EdgeInsets.all(4.sp),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.7),
+                        color: Colors.black.withValues(alpha: 0.7),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -137,10 +136,7 @@ class _PipOverlayState extends State<PipOverlay> {
       // Keep within vertical bounds
       position = Offset(
         position.dx,
-        position.dy.clamp(
-          80.h,
-          screenHeight - pipSize.height - 16.h,
-        ),
+        position.dy.clamp(80.h, screenHeight - pipSize.height - 16.h),
       );
     });
   }
