@@ -4,11 +4,16 @@ import 'package:video_player/video_player.dart';
 class LotLivePageController extends GetxController {
   late VideoPlayerController videoController;
   bool isInitialized = false;
-
   bool bided = false;
+  bool isPipActive = false;
 
   void setBided(bool value) {
     bided = value;
+    update();
+  }
+
+  void setPipActive(bool value) {
+    isPipActive = value;
     update();
   }
 
@@ -16,17 +21,29 @@ class LotLivePageController extends GetxController {
   void onInit() {
     super.onInit();
 
-    videoController =
-        VideoPlayerController.networkUrl(
-            Uri.parse(
-              'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-            ),
-          )
-          ..initialize().then((_) {
-            isInitialized = true;
-            update(); // refresh GetBuilder
-            videoController.play(); // optional: auto-play
-          });
+    videoController = VideoPlayerController.networkUrl(
+      Uri.parse(
+        'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+      ),
+    )..initialize().then((_) {
+      isInitialized = true;
+      update();
+      videoController.play();
+    });
+  }
+
+  void enterPipMode() {
+    if (!isPipActive) {
+      isPipActive = true;
+      update();
+    }
+  }
+
+  void exitPipMode() {
+    if (isPipActive) {
+      isPipActive = false;
+      update();
+    }
   }
 
   void playPauseVideo() {

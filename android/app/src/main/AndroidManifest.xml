@@ -21,8 +21,8 @@
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
             android:resizeableActivity="true"
-            android:screenOrientation="portrait"
             android:supportsPictureInPicture="true"
+            android:screenOrientation="portrait"
             android:taskAffinity=""
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
