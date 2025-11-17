@@ -296,57 +296,62 @@ class RecieptDetailsPage extends StatelessWidget {
 
         SizedBox(height: 16.h),
 
-        Row(
-          children: [
-            SizedBox(
-              height: 52.h,
-              width: 52.w,
-              child: CircleAvatar(
-                backgroundImage: NetworkImage(
-                  "https://wallpapers.com/images/hd/letter-p-gold-0t63xvvp6g6i3knt.jpg",
+        InkWell(
+          onTap: () {
+            Get.toNamed(AppRoutes.auctionerProfileRoute);
+          },
+          child: Row(
+            children: [
+              SizedBox(
+                height: 52.h,
+                width: 52.w,
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    "https://wallpapers.com/images/hd/letter-p-gold-0t63xvvp6g6i3knt.jpg",
+                  ),
                 ),
               ),
-            ),
 
-            SizedBox(width: 16.w),
+              SizedBox(width: 16.w),
 
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Pristine Auction", style: TextStyle(fontSize: 17.sp)),
-                Text(
-                  "New York, USA",
-                  style: TextStyle(
-                    fontSize: 13.sp,
-                    color: AppColors.primaryBlack.withValues(alpha: 0.8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Pristine Auction", style: TextStyle(fontSize: 17.sp)),
+                  Text(
+                    "New York, USA",
+                    style: TextStyle(
+                      fontSize: 13.sp,
+                      color: AppColors.primaryBlack.withValues(alpha: 0.8),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
 
-            Spacer(),
+              Spacer(),
 
-            InkWell(
-              onTap: () {
-                Get.toNamed(AppRoutes.messageRoute);
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(0),
-                  border: Border.all(
-                    color: AppColors.primaryBlack.withValues(alpha: .1),
+              InkWell(
+                onTap: () {
+                  Get.toNamed(AppRoutes.messageRoute);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(0),
+                    border: Border.all(
+                      color: AppColors.primaryBlack.withValues(alpha: .1),
+                    ),
                   ),
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 8.w,
-                    vertical: 12.h,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                      vertical: 12.h,
+                    ),
+                    child: Text("Contact"),
                   ),
-                  child: Text("Contact"),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
 
         SizedBox(height: 16.h),
