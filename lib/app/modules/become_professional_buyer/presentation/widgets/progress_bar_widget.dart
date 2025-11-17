@@ -25,10 +25,11 @@ class ProgressBarWidget extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            controller.decreaseProgressIndex();
-            if (controller.progressedIndex == 0) {
-              Get.back();
-            }
+            Get.back();
+            // controller.decreaseProgressIndex();
+            // if (controller.progressedIndex == 0) {
+            //   Get.back();
+            // }
           },
           child: SvgPicture.asset(
             AppAssets.backArrowIcon,

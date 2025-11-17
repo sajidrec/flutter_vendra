@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/become_professional_buyer/presentation/views/business_info_page.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../controllers/become_pro_buyer_page_controller.dart';
@@ -148,7 +149,7 @@ class PersonalInfo extends StatelessWidget {
                           (controller.firstNameFilled &&
                               controller.lastNameFilled)
                           ? () {
-                              controller.increaseProgressIndex();
+                              Get.to(BusinessInfoPage());
                             }
                           : null,
                       style: ElevatedButton.styleFrom(
