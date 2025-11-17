@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 import 'package:vendra_app/app/core/data/models/lot_details_model.dart';
+import 'package:vendra_app/app/modules/auctioner_profile_page/presentation/binding/auctioner_profile_page_binding.dart';
+import 'package:vendra_app/app/modules/auctioner_profile_page/presentation/views/auctioner_profile_page.dart';
 import 'package:vendra_app/app/modules/auth/forget_pass_page/binding/forget_pass_page_binding.dart';
 import 'package:vendra_app/app/modules/auth/forget_pass_page/views/forget_pass_page.dart';
 import 'package:vendra_app/app/modules/auth/login_page/presentation/binding/login_page_binding.dart';
@@ -246,6 +248,12 @@ class AppPages {
       name: AppRoutes.becomeProBuyerRoute,
       page: () => BecomeProBuyerPage(),
       binding: BecomeProBuyerPageBinding(),
+    ),
+
+    GetPage(
+      name: AppRoutes.auctionerProfileRoute,
+      page: () => AuctionerProfilePage(),
+      binding: AuctionerProfilePageBinding(),
     ),
   ];
 }

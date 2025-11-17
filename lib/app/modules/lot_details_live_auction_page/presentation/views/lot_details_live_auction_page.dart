@@ -324,101 +324,110 @@ class LotDetailsLiveAuctionPage extends StatelessWidget {
 
                         SizedBox(height: 20.h),
 
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: EdgeInsets.only(right: 16.w),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(100.r),
-                                child: CachedNetworkImage(
-                                  imageUrl:
-                                      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST0lk0Ds9xP0Bpozi81cqOhD71vgYGgFie-Q&s",
-                                  width: 60.w,
-                                  height: 60.h,
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoutes.auctionerProfileRoute);
+                          },
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(right: 16.w),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100.r),
+                                  child: CachedNetworkImage(
+                                    imageUrl:
+                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcST0lk0Ds9xP0Bpozi81cqOhD71vgYGgFie-Q&s",
+                                    width: 60.w,
+                                    height: 60.h,
+                                  ),
                                 ),
                               ),
-                            ),
 
-                            Expanded(
-                              child: Row(
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Pristine Auction",
-                                        style: TextStyle(fontSize: 17.sp),
-                                      ),
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Pristine Auction",
+                                          style: TextStyle(fontSize: 17.sp),
+                                        ),
 
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                color: AppColors.primaryBlack
-                                                    .withAlpha(
-                                                      (255 * .1).round(),
-                                                    ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: AppColors.primaryBlack
+                                                      .withAlpha(
+                                                        (255 * .1).round(),
+                                                      ),
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.r),
                                               ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.r),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsets.all(10.sp),
-                                              child: InkWell(
-                                                onTap: () {},
-                                                child: Text("Follow"),
-                                              ),
-                                            ),
-                                          ),
-
-                                          SizedBox(width: 8.w),
-
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              border: Border.all(
-                                                color: AppColors.primaryBlack
-                                                    .withAlpha(
-                                                      (255 * .1).round(),
-                                                    ),
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(6.r),
-                                            ),
-                                            child: InkWell(
-                                              onTap: () {
-                                                Get.toNamed(
-                                                  AppRoutes.messageRoute,
-                                                );
-                                              },
                                               child: Padding(
                                                 padding: EdgeInsets.all(10.sp),
-                                                child: Row(
-                                                  children: [
-                                                    SvgPicture.asset(
-                                                      AppAssets.messengerIcon,
-                                                    ),
-                                                    SizedBox(width: 8.w),
-                                                    Text("Message Auctioneer"),
-                                                  ],
+                                                child: InkWell(
+                                                  onTap: () {},
+                                                  child: Text("Follow"),
                                                 ),
                                               ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+
+                                            SizedBox(width: 8.w),
+
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                border: Border.all(
+                                                  color: AppColors.primaryBlack
+                                                      .withAlpha(
+                                                        (255 * .1).round(),
+                                                      ),
+                                                ),
+                                                borderRadius:
+                                                    BorderRadius.circular(6.r),
+                                              ),
+                                              child: InkWell(
+                                                onTap: () {
+                                                  Get.toNamed(
+                                                    AppRoutes.messageRoute,
+                                                  );
+                                                },
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(
+                                                    10.sp,
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      SvgPicture.asset(
+                                                        AppAssets.messengerIcon,
+                                                      ),
+                                                      SizedBox(width: 8.w),
+                                                      Text(
+                                                        "Message Auctioneer",
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
 
                         SizedBox(height: 60.h),
