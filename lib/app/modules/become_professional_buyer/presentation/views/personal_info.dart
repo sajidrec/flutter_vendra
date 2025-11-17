@@ -29,6 +29,8 @@ class PersonalInfo extends StatelessWidget {
                     controller: controller,
                   ),
 
+                  SizedBox(height: 10),
+
                   Text(
                     "Personal information",
                     style: TextStyle(fontSize: 28.sp),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:vendra_app/app/modules/become_professional_buyer/presentation/views/tax_vat_number_page.dart';
 
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -24,14 +25,19 @@ class BusinessInfoPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProgressBarWidget(progressedIndex: 2, progressLength: 4, controller: controller),
+                    ProgressBarWidget(
+                      progressedIndex: 2,
+                      progressLength: 4,
+                      controller: controller,
+                    ),
+                    SizedBox(height: 10.h),
                     Text(
                       "Business information",
                       style: TextStyle(fontSize: 28.sp),
                     ),
-                
+
                     SizedBox(height: 20.h),
-                
+
                     Text(
                       "Business Name",
                       style: TextStyle(
@@ -107,7 +113,7 @@ class BusinessInfoPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                
+
                     SizedBox(height: 24.h),
                     Text("Business Address", style: TextStyle(fontSize: 17.sp)),
                     SizedBox(height: 8.h),
@@ -148,7 +154,7 @@ class BusinessInfoPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                
+
                     SizedBox(height: 16.h),
                     Text(
                       "City",
@@ -187,9 +193,9 @@ class BusinessInfoPage extends StatelessWidget {
                         ),
                       ),
                     ),
-                
+
                     SizedBox(height: 24.h),
-                
+
                     Text(
                       "State (Optional)",
                       style: TextStyle(
@@ -197,7 +203,7 @@ class BusinessInfoPage extends StatelessWidget {
                         color: AppColors.primaryBlack,
                       ),
                     ),
-                
+
                     _buildSelectState(controller),
                     SizedBox(height: 24.h),
                     Text(
@@ -207,10 +213,10 @@ class BusinessInfoPage extends StatelessWidget {
                         color: AppColors.primaryBlack,
                       ),
                     ),
-                
+
                     _buildSelectCountry(controller),
                     SizedBox(height: 36.h),
-                
+
                     RichText(
                       text: TextSpan(
                         style: TextStyle(color: AppColors.primaryBlack),
@@ -236,7 +242,9 @@ class BusinessInfoPage extends StatelessWidget {
                               decoration: TextDecoration.underline,
                             ),
                           ),
-                          TextSpan(text: " to learn how use your personal data."),
+                          TextSpan(
+                            text: " to learn how use your personal data.",
+                          ),
                         ],
                       ),
                     ),
@@ -252,6 +260,7 @@ class BusinessInfoPage extends StatelessWidget {
                                 controller.selectedCountry != null)
                             ? () {
                                 // controller.increaseProgressIndex();
+                                Get.to(TaxVatNumberPage());
                               }
                             : null,
                         style: ElevatedButton.styleFrom(

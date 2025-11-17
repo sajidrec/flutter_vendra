@@ -96,6 +96,38 @@ class BecomeProBuyerPageController extends GetxController {
     update();
   }
 
+  void searchCountriesForDocumentVerification(String query) {
+    if (countryFuseForDocumentVerification == null) return;
+    if (query.isEmpty) {
+      filteredCountryListForDocumentVerification = List.from(
+        countryListForDocumentVerification,
+      );
+    } else {
+      final results = countryFuseForDocumentVerification!.search(query);
+      filteredCountryListForDocumentVerification = results
+          .map(
+            (r) => countryListForDocumentVerification.firstWhere(
+              (c) => c['name'] == r.item,
+            ),
+          )
+          .toList();
+    }
+    update();
+  }
+
+  void selectCountryForDocumentVerification(Map<String, dynamic> country) {
+    selectedCountryForDocumentVerification =
+        (selectedCountryForDocumentVerification?['name'] == country['name'])
+        ? null
+        : country;
+    update();
+  }
+
+  bool isCountrySelectedForDocumentVerification(Map<String, dynamic> country) {
+    return selectedCountryForDocumentVerification != null &&
+        selectedCountryForDocumentVerification!['name'] == country['name'];
+  }
+
   bool isCountrySelected(Map<String, dynamic> country) {
     return selectedCountry != null &&
         selectedCountry!['name'] == country['name'];
