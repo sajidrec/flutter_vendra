@@ -115,6 +115,22 @@ class BecomeProBuyerPageController extends GetxController {
     update();
   }
 
+  Future<void> pickFiles() async {
+    pickedFiles = await FilePicker.platform.pickFiles(allowMultiple: true);
+
+    if (pickedFiles != null) {
+      pickedFileList =
+          pickedFiles?.paths.map((path) => File(path!)).toList() ?? [];
+    } else {}
+
+    update();
+  }
+
+  void removePickedFileAt(int index) async {
+    pickedFileList.removeAt(index);
+    update();
+  }
+
   void selectCountryForDocumentVerification(Map<String, dynamic> country) {
     selectedCountryForDocumentVerification =
         (selectedCountryForDocumentVerification?['name'] == country['name'])

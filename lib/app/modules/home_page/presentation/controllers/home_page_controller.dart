@@ -13,7 +13,7 @@ class HomePageController extends GetxController {
 
   @override
   void onClose() {
-    searchTEC.dispose();
+    // searchTEC.dispose();
     super.onClose();
   }
 }

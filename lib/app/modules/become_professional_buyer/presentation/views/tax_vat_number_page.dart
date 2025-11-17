@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:vendra_app/app/modules/become_professional_buyer/presentation/controllers/become_pro_buyer_page_controller.dart';
+import 'package:vendra_app/app/modules/become_professional_buyer/presentation/views/document_upload_page.dart';
 import 'package:vendra_app/app/modules/become_professional_buyer/presentation/widgets/progress_bar_widget.dart';
 
 import '../../../../core/constants/app_assets.dart';
@@ -63,6 +64,27 @@ class TaxVatNumberPage extends StatelessWidget {
                   _buildVerificationDocumentTypeButton(
                     controller,
                     documentTypeName: 'Other',
+                  ),
+
+                  SizedBox(height: 16.h),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.to(DocumentUploadPage());
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryBlack,
+                        foregroundColor: AppColors.primaryWhite,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.r),
+                        ),
+                      ),
+                      child: Text(
+                        "Continue",
+                        style: TextStyle(fontSize: 17.sp),
+                      ),
+                    ),
                   ),
                 ],
               ),
