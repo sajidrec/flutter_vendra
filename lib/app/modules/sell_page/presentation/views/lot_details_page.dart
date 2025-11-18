@@ -88,81 +88,83 @@ class LotDetailsPage extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   Get.bottomSheet(
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryWhite,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(6.r),
-                          topLeft: Radius.circular(6.r),
+                    SafeArea(
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryWhite,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(6.r),
+                            topLeft: Radius.circular(6.r),
+                          ),
                         ),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(14.sp),
-                        child: Column(
-                          children: [
-                            Text("Category", style: TextStyle(fontSize: 16.sp)),
-                            SizedBox(height: 8.h),
-                            Expanded(
-                              child: GetBuilder<SellPageController>(
-                                builder: (controller) {
-                                  return ListView.builder(
-                                    shrinkWrap: true,
-                                    itemBuilder: (context, index) => InkWell(
-                                      onTap: () {
-                                        if (controller.selectedCategoryIndex ==
-                                            index) {
-                                          controller.setSelectedCategoryIndex(
-                                            -1,
-                                          );
-                                        } else {
-                                          controller.setSelectedCategoryIndex(
-                                            index,
-                                          );
-                                        }
-                                      },
-                                      child: Padding(
-                                        padding: EdgeInsets.all(12.sp),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              "Optimal Media",
-                                              style: TextStyle(fontSize: 16.sp),
-                                            ),
-                                            Spacer(),
-                                            index ==
-                                                    controller
-                                                        .selectedCategoryIndex
-                                                ? Icon(Icons.check)
-                                                : SizedBox.shrink(),
-                                          ],
+                        child: Padding(
+                          padding: EdgeInsets.all(14.sp),
+                          child: Column(
+                            children: [
+                              Text("Category", style: TextStyle(fontSize: 16.sp)),
+                              SizedBox(height: 8.h),
+                              Expanded(
+                                child: GetBuilder<SellPageController>(
+                                  builder: (controller) {
+                                    return ListView.builder(
+                                      shrinkWrap: true,
+                                      itemBuilder: (context, index) => InkWell(
+                                        onTap: () {
+                                          if (controller.selectedCategoryIndex ==
+                                              index) {
+                                            controller.setSelectedCategoryIndex(
+                                              -1,
+                                            );
+                                          } else {
+                                            controller.setSelectedCategoryIndex(
+                                              index,
+                                            );
+                                          }
+                                        },
+                                        child: Padding(
+                                          padding: EdgeInsets.all(12.sp),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                "Optimal Media",
+                                                style: TextStyle(fontSize: 16.sp),
+                                              ),
+                                              Spacer(),
+                                              index ==
+                                                      controller
+                                                          .selectedCategoryIndex
+                                                  ? Icon(Icons.check)
+                                                  : SizedBox.shrink(),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    itemCount: 50,
-                                  );
-                                },
-                              ),
-                            ),
-                            SizedBox(height: 16.h),
-                            SizedBox(
-                              width: double.infinity,
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6.r),
-                                  ),
-                                  backgroundColor: AppColors.primaryBlack,
-                                  foregroundColor: AppColors.primaryWhite,
+                                      itemCount: 50,
+                                    );
+                                  },
                                 ),
-                                onPressed: () {
-                                  Get.back();
-                                },
-                                child: Text("Done"),
                               ),
-                            ),
-                            SizedBox(height: 16.h),
-                          ],
+                              SizedBox(height: 16.h),
+                              SizedBox(
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(6.r),
+                                    ),
+                                    backgroundColor: AppColors.primaryBlack,
+                                    foregroundColor: AppColors.primaryWhite,
+                                  ),
+                                  onPressed: () {
+                                    Get.back();
+                                  },
+                                  child: Text("Done"),
+                                ),
+                              ),
+                              SizedBox(height: 16.h),
+                            ],
+                          ),
                         ),
                       ),
                     ),

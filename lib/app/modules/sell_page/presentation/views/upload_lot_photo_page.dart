@@ -19,7 +19,11 @@ class UploadLotPhotoPage extends StatelessWidget {
         : (Get.arguments["shouldWrapWithScaffold"] ?? false)
         ? GetBuilder<SellPageController>(
             builder: (controller) {
-              return Scaffold(body: SafeArea(child: SingleChildScrollView(child: _buildPage())));
+              return Scaffold(
+                body: SafeArea(
+                  child: SingleChildScrollView(child: _buildPage()),
+                ),
+              );
             },
           )
         : _buildPage();
@@ -70,35 +74,47 @@ class UploadLotPhotoPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           IconButton(onPressed: () {}, icon: Icon(Icons.image)),
-                          Spacer(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                path.basenameWithoutExtension(
-                                  controller.pickedFiles[index].name,
+                          // Spacer(),
+                          // Wrap the Column with an Expanded to handle text overflow
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                // Apply overflow handling for the file name
+                                Text(
+                                  path.basenameWithoutExtension(
+                                    controller.pickedFiles[index].name,
+                                  ),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  // Truncate with ellipsis
+                                  style: TextStyle(fontSize: 17.sp),
                                 ),
-                                style: TextStyle(fontSize: 17.sp),
-                              ),
-                              Text(controller.pickedFiles[index].name),
-                              GestureDetector(
-                                onTap: () {
-                                  OpenFile.open(
-                                    controller.pickedFiles[index].path,
-                                  );
-                                },
-                                child: Text(
-                                  "Click to view",
-                                  style: TextStyle(
-                                    fontSize: 17.sp,
-                                    fontWeight: FontWeight.w600,
+                                Text(
+                                  controller.pickedFiles[index].name,
+                                  maxLines: 1,
+                                  overflow: TextOverflow
+                                      .ellipsis, // Truncate with ellipsis
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    OpenFile.open(
+                                      controller.pickedFiles[index].path,
+                                    );
+                                  },
+                                  child: Text(
+                                    "Click to view",
+                                    style: TextStyle(
+                                      fontSize: 17.sp,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                          Spacer(),
+                          // Spacer(),
                           IconButton(
                             onPressed: () {
                               controller.deleteFile(index);
