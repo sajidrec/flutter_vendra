@@ -1,16 +1,18 @@
-# vendra_app
+# Vendra: Auction Mobile App Frontend
 
-A new Flutter project.
+**Vendra** is a mobile auction platform that offers a seamless user experience for browsing, bidding, and managing auction items. Built with **Flutter**, the app provides a user-friendly interface and real-time bidding features.
 
-## Getting Started
+## Key Features
 
-This project is a starting point for a Flutter application.
+* **User-friendly Interface** for browsing and bidding.
+* **Real-time Bidding** for live auction participation.
+* **Secure Transactions** with payment processing integration.
+* **Notifications** for bid updates and auction reminders.
+* **Categories** to filter auction items.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* **Flutter**: Framework for building the app.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Click to view Screenshots](https://github.com/sajidrec/flutter_vendra/blob/master/assets/vendra_ss.pdf)  
+
